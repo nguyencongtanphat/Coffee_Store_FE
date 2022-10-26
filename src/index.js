@@ -2,22 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import "./index.css";
-<<<<<<< HEAD
-import Bill from './modules/confirmPage/components/Bill';
-=======
-import './assests/fonts/Lexend/Lexend-VariableFont_wght.ttf'
-import './assests/fonts/Ms_Madi/MsMadi-Regular.ttf'
->>>>>>> dev
-
+import './assests/fonts/Lexend/Lexend-VariableFont_wght.ttf';
+import './assests/fonts/Ms_Madi/MsMadi-Regular.ttf';
+import ConfirmPage from './modules/orderConfirm/screens/ConfirmPage'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-<<<<<<< HEAD
-    <Bill/>
-=======
-    <App/>
->>>>>>> dev
+    <ConfirmPage/>
   </React.StrictMode>
 );
 
