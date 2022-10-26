@@ -2,6 +2,28 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
+    fontSize:{
+      h1: ['40px','bold'],
+      h2: ['32','bold'],
+      h3: ['30px','bold'],
+      b1: ['40px','bold'],
+      b2: ['40px','regular'],
+      b3: ['32px','bold'],
+      b4: ['32px','regular'],
+      b5: ['24px','bold'],
+      b6: ['24px','regular'],
+      b7: ['18px','bold'],
+      b8: ['18px','regular'],
+      b9: ['18px','regular'],
+      b10: ['14px','bold'],
+      b11: ['14px','regular'],
+      b12: ['12px','bold'],
+      b13: ['12px','regular'],
+    },
+    fontFamily:{
+      MsMadi: ['MsMadi'],
+      Lexend: ['Lexend']
+    },
     extend: {
       colors: {
         brown: "#9D5C0D",
