@@ -4,7 +4,6 @@ import logo from '../../assests/images/global/logo.png'
 import { faBagShopping, faBars, faClose, faUser } from '@fortawesome/free-solid-svg-icons';
 import Drawer from 'react-modern-drawer'
 import 'react-modern-drawer/dist/index.css'
-import { useLocation } from 'react-router';
 
 const NavigationBar = () => {
     const [isOpenDrawer, setOpenDrawer] = useState(false);
@@ -16,8 +15,6 @@ const NavigationBar = () => {
     useEffect(() => {
         setPathname(window.location.pathname);
     }, [window.location])
-
-    console.log(pathname);
 
     const navItems = () => (
         <div className="flex flex-col aligns-start justify-center">
