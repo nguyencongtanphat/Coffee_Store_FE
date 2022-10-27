@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     fontSize:{
       h1: ['40px','bold'],
-      h2: ['32','bold'],
+      h2: ['32px','bold'],
       h3: ['30px','bold'],
       b1: ['40px','bold'],
       b2: ['40px','regular'],
