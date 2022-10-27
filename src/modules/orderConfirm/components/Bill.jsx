@@ -35,7 +35,7 @@ export default function Bill() {
       <hr className='border-solid border-grey400 md:my-2'/>
       <div className='flex'>
         <div className='flex-auto w-64'>
-          <h1 className='text-b12 text-orange ml-4 m-2 md:text-b8 md:ml-7'>Tổng cộng:</h1>
+          <h1 className='text-b12 text-orange ml-4 m-2 md:text-b7 md:ml-7'>Tổng cộng:</h1>
         </div>
         <div className='flex-auto w-32'>
           <h1 className='text-b10 text-orange mt-1.5 ml-7 md:text-b7 md:ml-7'>196.000đ</h1>
