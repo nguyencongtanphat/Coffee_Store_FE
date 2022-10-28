@@ -1517,13 +1517,13 @@ __metadata:
   linkType: hard
 
 "@babel/types@npm:^7.8.3":
-  version: 7.19.4
-  resolution: "@babel/types@npm:7.19.4"
+  version: 7.20.0
+  resolution: "@babel/types@npm:7.20.0"
   dependencies:
     "@babel/helper-string-parser": ^7.19.4
     "@babel/helper-validator-identifier": ^7.19.1
     to-fast-properties: ^2.0.0
-  checksum: 4032f6407093f80dd4f4764be676f7527d2a5c0381586967cd79683cf8af01cdc16745a381b9cef045f702f0c9b0dffd880d84ee55dad59ba01bd23d5d52a8e0
+  checksum: 8729b1114c707a03625cd79e3ae3a28d69b36ddcf804cb0a4599af226e5e9fad71665bdc0e56c43527ecfcabc545d9c797231f5ce718ae1ab52d31a57b6c2024
   languageName: node
   linkType: hard
 
@@ -1891,6 +1891,52 @@ __metadata:
     minimatch: ^3.1.2
     strip-json-comments: ^3.1.1
   checksum: 2074dca47d7e1c5c6323ff353f690f4b25d3ab53fe7d27337e2592d37a894cf60ca0e85ca66b50ff2db0bc7e630cc1e9c7347d65bb185b61416565584c38999c
+  languageName: node
+  linkType: hard
+
+"@fortawesome/fontawesome-common-types@npm:6.2.0":
+  version: 6.2.0
+  resolution: "@fortawesome/fontawesome-common-types@npm:6.2.0"
+  checksum: 1d0a3340dc2d2798609195cf77f1b0db98f0d87144044eb7cd3d78745baac8509705c6ebc7cce3d9bb36c7d7358ca064f77f39d86478ab1e7aa7aadc344cfd91
+  languageName: node
+  linkType: hard
+
+"@fortawesome/fontawesome-svg-core@npm:^6.2.0":
+  version: 6.2.0
+  resolution: "@fortawesome/fontawesome-svg-core@npm:6.2.0"
+  dependencies:
+    "@fortawesome/fontawesome-common-types": 6.2.0
+  checksum: 3bae680cba4098bc3a6aee04e655e0c6b6bab2d78e6709dc0a44d106f57a09bc2fd979310108777a373df301273a2a276739056f8984cd8bc5a50d37338c5380
+  languageName: node
+  linkType: hard
+
+"@fortawesome/free-regular-svg-icons@npm:^6.2.0":
+  version: 6.2.0
+  resolution: "@fortawesome/free-regular-svg-icons@npm:6.2.0"
+  dependencies:
+    "@fortawesome/fontawesome-common-types": 6.2.0
+  checksum: 1b68a25590b273653c7adfa18bd6ef0ee533710687a46ef21c7b5395deae280a2faaff0b024717d9e54fdaedb8165769f281342704821777f86316223d5264ba
+  languageName: node
+  linkType: hard
+
+"@fortawesome/free-solid-svg-icons@npm:^6.2.0":
+  version: 6.2.0
+  resolution: "@fortawesome/free-solid-svg-icons@npm:6.2.0"
+  dependencies:
+    "@fortawesome/fontawesome-common-types": 6.2.0
+  checksum: b5edf24be491e8493028b7fd2158fb73f3a76491087970609c0ef6a4449fd4744312fe768bfcffc90a5ef86b9980f9ab8ebb36927ba8d9854c2fa638ceadb0ac
+  languageName: node
+  linkType: hard
+
+"@fortawesome/react-fontawesome@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "@fortawesome/react-fontawesome@npm:0.2.0"
+  dependencies:
+    prop-types: ^15.8.1
+  peerDependencies:
+    "@fortawesome/fontawesome-svg-core": ~1 || ~6
+    react: ">=16.3"
+  checksum: f652a0c2172e7b209e2d9e7e511f9b8c17abad85f55e0bd09bb1175ea1927693215da47eb6cd95b1f3a23bd124368553c677907fa76cb17c5093afc1fcffe338
   languageName: node
   linkType: hard
 
@@ -2396,6 +2442,13 @@ __metadata:
     webpack-plugin-serve:
       optional: true
   checksum: 3490649181878cc8808fb91f3870ef095e5a1fb9647b3ac83740df07379c9d1cf540f24bf2b09d5f26a3a8c805b2c6b9c5be7192bdb9317d0ffffa67426e9f66
+  languageName: node
+  linkType: hard
+
+"@remix-run/router@npm:1.0.2":
+  version: 1.0.2
+  resolution: "@remix-run/router@npm:1.0.2"
+  checksum: bf410f9cbb31308fc306bc8c5e3a732b9ad81ddb84281e37804bdd196b6db7ddd86abc29e15c5b21883e01b37f250d0b8db7bee5f5a9af6c7c532b68280676c9
   languageName: node
   linkType: hard
 
@@ -5363,6 +5416,15 @@ __metadata:
     domhandler: ^4.2.0
     entities: ^2.0.0
   checksum: fbb0b01f87a8a2d18e6e5a388ad0f7ec4a5c05c06d219377da1abc7bb0f674d804f4a8a94e3f71ff15f6cb7dcfc75704a54b261db672b9b3ab03da6b758b0b22
+  languageName: node
+  linkType: hard
+
+"dom7@npm:^4.0.4":
+  version: 4.0.4
+  resolution: "dom7@npm:4.0.4"
+  dependencies:
+    ssr-window: ^4.0.0
+  checksum: b38604f74e915b4d05b6634f9ff239a708c468180f498a28ff67f2a61233697d9bd7192703b788a24541c3591e7f1a6e83a2cbf70bc871a85e033f82e19abc31
   languageName: node
   linkType: hard
 
@@ -10567,10 +10629,43 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-modern-drawer@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "react-modern-drawer@npm:1.1.2"
+  peerDependencies:
+    react: ">16.0.0"
+  checksum: 285e5199741f3c607a8bf8102de83193417875d0d0994e4fa12c0f5a44abccbd7bb9af826bb9073c5f533d8d30bcd7a94b51bafb6b9640ab0b7e143c3fc59c4e
+  languageName: node
+  linkType: hard
+
 "react-refresh@npm:^0.11.0":
   version: 0.11.0
   resolution: "react-refresh@npm:0.11.0"
   checksum: 112178a05b1e0ffeaf5d9fb4e56b4410a34a73adeb04dbf13abdc50d9ac9df2ada83e81485156cca0b3fa296aa3612751b3d6cd13be4464642a43679b819cbc7
+  languageName: node
+  linkType: hard
+
+"react-router-dom@npm:^6.4.2":
+  version: 6.4.2
+  resolution: "react-router-dom@npm:6.4.2"
+  dependencies:
+    "@remix-run/router": 1.0.2
+    react-router: 6.4.2
+  peerDependencies:
+    react: ">=16.8"
+    react-dom: ">=16.8"
+  checksum: 858e6a5c4c5da56615dbf53118d576d61851157f077805dfe476b10c332329f8b1494062d75a8de6f1bdd35fbcb8a510f8e23beb2306440d2452b9f2fe4b079d
+  languageName: node
+  linkType: hard
+
+"react-router@npm:6.4.2":
+  version: 6.4.2
+  resolution: "react-router@npm:6.4.2"
+  dependencies:
+    "@remix-run/router": 1.0.2
+  peerDependencies:
+    react: ">=16.8"
+  checksum: c229d65d9b0df88dd4e8c57bd59793e371f2c84b4cb200b77ead9f601c8fd7758f72acfffc9a2fc5cb31877af3a0e08ae24aeb75ab2b20681f3b1d33ca671552
   languageName: node
   linkType: hard
 
@@ -11488,6 +11583,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ssr-window@npm:^4.0.0, ssr-window@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "ssr-window@npm:4.0.2"
+  checksum: df182600927f4f3225224cf8c02338ea637c9750519505bbfb9a9236741a2a7ec088386fb948bca7b447b8303d9109e7dc7672e3de041c79ac2a0e03665af7d2
+  languageName: node
+  linkType: hard
+
 "ssri@npm:^9.0.0":
   version: 9.0.1
   resolution: "ssri@npm:9.0.1"
@@ -11839,6 +11941,16 @@ __metadata:
   bin:
     svgo: bin/svgo
   checksum: b92f71a8541468ffd0b81b8cdb36b1e242eea320bf3c1a9b2c8809945853e9d8c80c19744267eb91cabf06ae9d5fff3592d677df85a31be4ed59ff78534fa420
+  languageName: node
+  linkType: hard
+
+"swiper@npm:^8.4.4":
+  version: 8.4.4
+  resolution: "swiper@npm:8.4.4"
+  dependencies:
+    dom7: ^4.0.4
+    ssr-window: ^4.0.2
+  checksum: 1b016e2be22573f764d00963c919dc3338a47e261bce3d5b50d6e2abb5e1760c606441739b789c96a777675457e85595d76d851a80c3d34417e0c78c9886cb93
   languageName: node
   linkType: hard
 
@@ -12382,6 +12494,10 @@ __metadata:
   dependencies:
     "@emotion/react": ^11.10.4
     "@emotion/styled": ^11.10.4
+    "@fortawesome/fontawesome-svg-core": ^6.2.0
+    "@fortawesome/free-regular-svg-icons": ^6.2.0
+    "@fortawesome/free-solid-svg-icons": ^6.2.0
+    "@fortawesome/react-fontawesome": ^0.2.0
     "@testing-library/jest-dom": ^5.14.1
     "@testing-library/react": ^13.0.0
     "@testing-library/user-event": ^13.2.1
@@ -12389,8 +12505,11 @@ __metadata:
     postcss: ^8.4.16
     react: ^18.2.0
     react-dom: ^18.2.0
+    react-modern-drawer: ^1.1.2
+    react-router-dom: ^6.4.2
     react-scripts: 5.0.1
     styled-components: ^5.3.5
+    swiper: ^8.4.4
     tailwindcss: ^3.1.8
     web-vitals: ^2.1.0
   languageName: unknown
