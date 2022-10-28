@@ -3,7 +3,7 @@ import Item from './Item'
 
 export default function Bill() {
   return (
-    <div className='m-4 bg-white rounded-3xl p-5 pb-10 border-spacing-2 border-grey300 border-solid md:pl-10 md:ml-20 md:rounded-[25]'>
+    <div className='m-4 bg-white rounded-3xl p-5 pb-10 border-spacing-2 border-grey300 border-solid md:rounded-[25]'>
       <h1 className='text-orange text-b10 align-middle text-center md:text-b5 md:mb-10'>Hoá đơn</h1>
       <h2 className='text-b12 text-orange mt-4 md:text-b7'>Các món đã chọn</h2>
       <hr className='border-solid border-orange w-14 mt-1 md:my-2'/>

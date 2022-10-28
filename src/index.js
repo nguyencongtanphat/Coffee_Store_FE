@@ -8,7 +8,8 @@ import './tailwind.css'
 import CartPage from './modules/cartPage/screens/CartPage';
 import HomePage from './modules/homePage/screens/HomePage';
 import ErrorPage from './modules/errorPage/screens/ErrorPage';
-import Header from './globalComponents/Header/Header'
+import Header from './globalComponents/Header/Header';
+import ConfirmPage from './modules/orderConfirm/screens/ConfirmPage'
 
 const router = createBrowserRouter([
   {
@@ -50,7 +51,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Header />
-    <RouterProvider router={router} />
+    <ConfirmPage/>
   </React.StrictMode>
 );
 
