@@ -86,10 +86,9 @@ const NavigationBar = () => {
                 />
             </a>
             <div className="hidden lg:flex aligns-center jusfify-center">
-            <a className={`no-underline text-b8 p-4 hover:text-orange 
-                    ${(pathname === '/coffees') ? 'text-orange' : 'text-black'}`}
+                <a className={`no-underline text-b8 p-4 hover:text-orange 
+                        ${(pathname === '/coffees') ? 'text-orange' : 'text-black'}`}
                     href="/coffees"
-
                 >Cà phê</a>
                 <a className={`no-underline text-b8 p-4 hover:text-orange 
                     ${(pathname === '/teas') ? 'text-orange' : 'text-black'}`}

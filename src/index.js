@@ -18,32 +18,32 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: 'coffees',
+    path: "/coffees",
     errorElement: <ErrorPage />,
   },
   {
-    path: 'teas',
+    path: "/teas",
     errorElement: <ErrorPage />,
-
   },
   {
-    path: 'cakes',
+    path: "/cakes",
     errorElement: <ErrorPage />,
-
   },
   {
-    path: 'blogs',
+    path: "/blogs",
     errorElement: <ErrorPage />,
-
   },
   {
-    path: 'account',
+    path: "/account",
     errorElement: <ErrorPage />,
-
   },
   {
-    path: "cart",
+    path: "/cart",
     element: <CartPage />,
+  },
+  {
+    path: "/confirm",
+    element: <ConfirmPage />,
   },
 ]);
 
@@ -51,7 +51,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Header />
-    <ConfirmPage/>
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
