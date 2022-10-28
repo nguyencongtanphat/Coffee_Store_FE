@@ -1,11 +1,12 @@
 import React from "react";
 
-function AppButton({ icon, text, onClick }) {
+function AppButton({ icon, text, onClick, className }) {
+  
   return (
     <button
-      className="flex bg-orange border-none px-4 justify-center
+      className={`flex bg-orange border-none px-4 justify-center
                 py-3 gap-3 rounded-xl
-                md:py-5 md:px-8"
+                md:py-5 md:px-8 ${className}`}
       onClick={onClick}
     >
       <div className="text-white text-12 
