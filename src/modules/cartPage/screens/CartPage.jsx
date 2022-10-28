@@ -3,6 +3,8 @@ import AppButton from "../../../globalComponents/AppButton";
 import PageTitle from "../../../globalComponents/PageTitle";
 import Table from "../components/Table";
 import style from "../index.module.css"
+import leafBgR from "../../../assests/images/global/leaf-bg-right.png"
+import leafBgL from "../../../assests/images/global/leaf-bg-left.png";
 
 
 function CartPage() {
@@ -10,7 +12,7 @@ function CartPage() {
     alert("jjsdnfjnsj");
   };
   return (
-    <div className={`${style.cartPage} w-100`}>
+    <div className="w-full relative">
       <div className={`flex flex-col items-center p-2 `}>
         <PageTitle title="Giỏ hàng"></PageTitle>
         <h2 className="text-b12 text-grey300 md:text-b6 mb-3">
@@ -25,6 +27,17 @@ function CartPage() {
         </div>
         <AppButton text="Thanh toán" onClick={test} />
       </div>
+      {/* image background */}
+      <img
+        src={leafBgR}
+        alt=""
+        className="absolute hidden top-0 right-0 -z-10 md:block md:w-[300px] lg:w-[400px]"
+      />
+      <img
+        src={leafBgL}
+        alt=""
+        className="absolute hidden top-0  -z-10 md:block md:w-[300px] lg:w-[400px] "
+      />
     </div>
   );
 }

@@ -8,48 +8,53 @@ import './tailwind.css'
 import CartPage from './modules/cartPage/screens/CartPage';
 import HomePage from './modules/homePage/screens/HomePage';
 import ErrorPage from './modules/errorPage/screens/ErrorPage';
-import Header from './globalComponents/Header/Header'
+import Root from './Root'
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage />,
+    element: <Root />,
     errorElement: <ErrorPage />,
-  },
-  {
-    path: 'coffees',
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: 'teas',
-    errorElement: <ErrorPage />,
-
-  },
-  {
-    path: 'cakes',
-    errorElement: <ErrorPage />,
-
-  },
-  {
-    path: 'blogs',
-    errorElement: <ErrorPage />,
-
-  },
-  {
-    path: 'account',
-    errorElement: <ErrorPage />,
-
-  },
-  {
-    path: "cart",
-    element: <CartPage />,
+    children:[
+      {
+        path: '/',
+        element: <HomePage />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: 'coffees',
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: 'teas',
+        errorElement: <ErrorPage />,
+    
+      },
+      {
+        path: 'cakes',
+        errorElement: <ErrorPage />,
+    
+      },
+      {
+        path: 'blogs',
+        errorElement: <ErrorPage />,
+    
+      },
+      {
+        path: 'account',
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "cart",
+        element: <CartPage />,
+      },
+    ],
   },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Header />
     <RouterProvider router={router} />
   </React.StrictMode>
 );
