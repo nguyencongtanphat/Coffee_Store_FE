@@ -1,13 +1,13 @@
 import React from "react";
 
-function PageTitle({ title }) {
+function PageTitle({ title, className }) {
   const titlePage = (title ?? "Default Page Title").toUpperCase();
   return (
-    <div className="flex items-center m-2">
+    <div className={`flex items-center m-2 ${className}`}>
       <img
         src="https://img.freepik.com/free-vector/start_53876-25533.jpg"
         alt=""
-        width="40"
+        className="w-[20px] md:w-[40px]"
       />
       <h1
         className="text-b10 text-orange
@@ -19,7 +19,7 @@ function PageTitle({ title }) {
       <img
         src="https://img.freepik.com/free-vector/start_53876-25533.jpg"
         alt=""
-        width="40"
+        className="w-[20px] md:w-[40px]"
       />
     </div>
   );
