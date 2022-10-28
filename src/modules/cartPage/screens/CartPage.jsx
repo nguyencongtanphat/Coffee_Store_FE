@@ -31,12 +31,12 @@ function CartPage() {
       <img
         src={leafBgR}
         alt=""
-        className="absolute hidden top-0 right-0 md:block md:w-[300px] lg:w-[400px]"
+        className="absolute hidden top-0 right-0 -z-10 md:block md:w-[300px] lg:w-[400px]"
       />
       <img
         src={leafBgL}
         alt=""
-        className="absolute hidden top-0  rotate-90 md:block md:w-[300px] lg:w-[400px] "
+        className="absolute hidden top-0  -z-10 md:block md:w-[300px] lg:w-[400px] "
       />
     </div>
   );
