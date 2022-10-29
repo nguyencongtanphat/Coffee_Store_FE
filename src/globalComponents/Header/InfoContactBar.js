@@ -40,19 +40,19 @@ const InfoContactBar = () => {
                 <div className="flex items-center justify-center mt-2">
                     <FontAwesomeIcon icon={faLocationDot} color="orange" />
                     <p 
-                        className="ml-2 hover:text-orange hover:cursor-pointer"
+                        className="ml-2 hover:text-orange"
                     >Hàn Thuyên, Thủ Đức, TP. HCM</p>
                 </div>
                 <div className="flex items-center justify-center mt-2">
                     <FontAwesomeIcon icon={faPhone} color="orange" />
                     <p 
-                        className="ml-2 hover:text-orange hover:cursor-pointer"
+                        className="ml-2 hover:text-orange"
                     >083 913 2695</p>
                 </div>
                 <div className="flex items-center justify-center mt-2">
                     <FontAwesomeIcon icon={faTruckFast} color="orange" />
                     <p 
-                        className="ml-2 hover:text-orange hover:cursor-pointer"
+                        className="ml-2 hover:text-orange"
                     >Freeship từ 100.000đ</p>
                 </div>
             </div>
