@@ -66,7 +66,7 @@ const NavigationBar = () => {
 
     return (
         <div className="flex w-screen justify-between">
-            <button className="border-none outline-none bg-transparent cursor-pointer ml-2 lg:hidden"
+            <button className="border-none outline-none bg-transparent cursor-pointer ml-2 mt-4 lg:hidden"
                 onClick={toggleDrawer(true)}
             >
                 <FontAwesomeIcon icon={faBars} size="2xl"
@@ -84,27 +84,27 @@ const NavigationBar = () => {
                 </Drawer>
             </div>
             <Link to="/">
-                <img src={logo} alt="logo" className="ml-6 my-4" onClick={() => { }}
+                <img src={logo} alt="logo" className="ml-6 w-32 mt-1" onClick={() => { }}
                     style={{ cursor: 'pointer' }}
                 />
             </Link>
             <nav className="hidden lg:flex aligns-center jusfify-center">
-                <Link className={`no-underline text-b8 p-4 hover:text-orange 
+                <Link className={`no-underline text-b8 p-4 pt-6 hover:text-orange 
                     ${(pathname === '/coffees') ? 'text-orange' : 'text-black'}`}
                     to="/coffees"
 
                 >Cà phê</Link>
-                <Link className={`no-underline text-b8 p-4 hover:text-orange 
+                <Link className={`no-underline text-b8 p-4 pt-6 hover:text-orange 
                     ${(pathname === '/teas') ? 'text-orange' : 'text-black'}`}
                     to="/teas"
 
                 >Trà</Link>
-                <Link className={`no-underline text-b8 p-4 hover:text-orange 
+                <Link className={`no-underline text-b8 p-4 pt-6 hover:text-orange 
                     ${(pathname === '/cakes') ? 'text-orange' : 'text-black'}`}
                     to="/cakes"
 
                 >Bánh ngọt</Link>
-                <Link className={`no-underline text-b8 p-4 hover:text-orange 
+                <Link className={`no-underline text-b8 p-4 pt-6 hover:text-orange 
                     ${(pathname === '/blogs') ? 'text-orange' : 'text-black'}`}
                     to="/blogs"
 
