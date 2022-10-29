@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 function AppButton({ icon, text, onClick, className }) {
   
   return (
@@ -14,5 +14,16 @@ function AppButton({ icon, text, onClick, className }) {
     </button>
   );
 }
+
+AppButton.propTypes = {
+  text: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
+  className:PropTypes.string,
+  icon: PropTypes.any,
+};
+
+AppButton.defaultProps = {
+  text: "default text",
+};
 
 export default AppButton;
