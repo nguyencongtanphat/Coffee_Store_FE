@@ -87,15 +87,6 @@ const NavigationBar = () => {
                 <img src={logo} alt="logo" className="ml-6 w-32 mt-1" onClick={() => { }}
                     style={{ cursor: 'pointer' }}
                 />
-<<<<<<< HEAD
-            </a>
-            <div className="hidden lg:flex aligns-center jusfify-center">
-                <a className={`no-underline text-b8 p-4 hover:text-orange 
-                        ${(pathname === '/coffees') ? 'text-orange' : 'text-black'}`}
-                    href="/coffees"
-                >Cà phê</a>
-                <a className={`no-underline text-b8 p-4 hover:text-orange 
-=======
             </Link>
             <nav className="hidden lg:flex aligns-center jusfify-center">
                 <Link className={`no-underline text-b8 p-4 pt-6 hover:text-orange 
@@ -104,7 +95,6 @@ const NavigationBar = () => {
 
                 >Cà phê</Link>
                 <Link className={`no-underline text-b8 p-4 pt-6 hover:text-orange 
->>>>>>> dev
                     ${(pathname === '/teas') ? 'text-orange' : 'text-black'}`}
                     to="/teas"
 

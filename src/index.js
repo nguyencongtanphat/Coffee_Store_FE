@@ -52,7 +52,9 @@ const router = createBrowserRouter([
   },
   {
     path: "/confirm",
-    element: <ConfirmPage />,
+    element: <h1>
+      confirm
+    </h1>,
   },
 ]);
 
