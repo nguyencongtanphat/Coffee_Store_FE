@@ -94,11 +94,11 @@ const NavigationBar = () => {
                     to="/coffees"
 
                 >Cà phê</Link>
-                <Link className={`no-underline text-b8 p-4 pt-6 hover:text-orange 
+                {/* <Link className={`no-underline text-b8 p-4 pt-6 hover:text-orange 
                     ${(pathname === '/teas') ? 'text-orange' : 'text-black'}`}
                     to="/teas"
 
-                >Trà</Link>
+                >Trà</Link> */}
                 <Link className={`no-underline text-b8 p-4 pt-6 hover:text-orange 
                     ${(pathname === '/cakes') ? 'text-orange' : 'text-black'}`}
                     to="/cakes"

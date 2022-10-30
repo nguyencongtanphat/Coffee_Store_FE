@@ -19,70 +19,70 @@ export default function Footer({props}) {
     }, [location])
 
     return (
-        <div className={
-            `w-screen bg-grey relative bottom-0 left-0 h-80
+        <footer className={
+            `w-screen bg-grey h-82 sm:h-96
             ${(pathname === '/') ? 'bg-white': 'bg-grey'}`
             }>
-            <div className="flex flex-row flex-wrap items-center p-2">
-                <div className="basis-full h-28 "> 
-                    <div className='mx-auto mt-[28px] w-min'>
+            <div className="flex flex-row flex-wrap sm:flex-nowrap p-2">
+                <div className="basis-full sm:basis-4/12 sm:mt-[50px] h-28 "> 
+                    <div className='mx-auto w-min'>
                         <Link to="/">
-                            <img src={logo} alt="logo" className=" w-48 sm:basic-64" onClick={() => { }}
+                            <img src={logo} alt="logo" className=" w-48 sm:w-60" onClick={() => { }}
                                 style={{ cursor: 'pointer' }}
                             />
                         </Link>
-                        <div className="flex flex-row  mx-auto mt-[10px] justify-between w-[132px]">
-                            <Link className="basis-1/3 h-max w-max"
-                            to="/">
+                        <div className="flex flex-row mx-auto sm:mt-4 justify-between w-[132px]">
+                            <a className="basis-1/3 h-max w-max"
+                            href="https://www.facebook.com/">
                                 <BgFacebook className="absolute"/>
                                 <IconFacebook className="relative top-[7px] left-[11.25px]"/>
-                            </Link>
-                            <Link className="basis-1/3" 
-                            to="/">
+                            </a>
+                            <a className="basis-1/3" 
+                            href="https://www.instagram.com/">
                                 <BgInstagram className="absolute"/>
-                                <IconInstagram className="relative top-[6.5px] left-[7.5px]"/>
-                            </Link>
-                            <Link className="basis-1/3"
-                            to="/">
+                                <IconInstagram className="relative top-[6.5px] left-[7.25px]"/>
+                            </a>
+                            <a className="basis-1/3"
+                            href="https://www.youtube.com/">
                                 <BgYoutube className="absolute"/>
                                 <IconYoutube className="relative top-[8.5px] left-[7.75px]"/>
-                            </Link>
+                            </a>
                         </div>
                     </div>
                 </div>
-                <div className="basis-5/12 h-52 mt-8"> 
-                    <p className="text-b12 pl-[20px] my-[16.5px]">Giới thiệu</p>
+                <div className="basis-5/12 sm:basis-3/12 mt-4 sm:mt-[50px]"> 
+                    <p className="text-b12 sm:text-b7 pl-[20px] my-[16.5px]">Giới thiệu</p>
                     <ul className="list-none pl-[20px]">
-                        <li className="my-[16.5px]">
-                            <Link className="no-underline text-b13 text-black" to="/coffees">
+                        <li className="my-[16.5px] sm:my-[30px]">
+                            <Link className="no-underline text-b13 sm:text-b8 text-black" to="/coffees">
                                 Cà phê
                             </Link>
                         </li>
-                        <li className="my-[16.5px]">
-                            <Link className="no-underline text-b13 text-black" to="/teas">
+                        <li className="my-[16.5px] sm:my-[30px]">
+                            <Link className="no-underline text-b13 sm:text-b8 text-black" to="/teas">
                                 Trà
                             </Link>
                         </li>
-                        <li className="my-[16.5px]">
-                            <Link className=" no-underline text-b13 text-black" to="/cakes">
+                        <li className="my-[16.5px] sm:my-[30px]">
+                            <Link className=" no-underline text-b13 sm:text-b8 text-black" to="/cakes">
                                 Bánh ngọt
                             </Link>
                         </li>
-                        <li className="my-[16.5px]">
-                            <Link className=" no-underline text-b13 text-black" to="/blogs">
+                        <li className="my-[16.5px] sm:my-[30px]">
+                            <Link className=" no-underline text-b13 sm:text-b8 text-black" to="/blogs">
                                 Chuyện nhà
                             </Link>
                         </li>
                     </ul>
                 </div>
-                <div className="basis-7/12 h-52 mt-8 ">
-                    <p className="text-b12 pl-[20px] my-[16.5px]">Thông tin liên hệ</p>
+                <div className="basis-7/12 sm:basis-5/12 mt-4 sm:mt-[50px]">
+                    <p className="text-b12 sm:text-b7 pl-[20px] my-[16.5px]">Thông tin liên hệ</p>
                         <ul className="list-none pl-[20px]">
-                            <li className="my-[16.5px] text-b13">Số điện thoại <br /><span className="text-orange" >083 913 2695</span></li>
-                            <li className="my-[16.5px] text-b13">Địa chỉ <br /><span className="text-orange" >Hàn Thuyên, Thủ Đức, TP HCM</span></li>
+                            <li className="my-[16.5px] sm:my-[30px] text-b13 sm:text-b8 ">Số điện thoại: <br className="sm:hidden"/><span className="text-orange" >083 913 2695</span></li>
+                            <li className="my-[16.5px] sm:my-[30px] text-b13 sm:text-b8 ">Địa chỉ: <br className="sm:hidden"/><span className="text-orange" >Hàn Thuyên, Thủ Đức, TP HCM</span></li>
                         </ul>
                 </div>
             </div>
-        </div>
+        </footer>
     )
 }
