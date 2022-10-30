@@ -6,7 +6,7 @@ function AppButton({ icon, text, onClick, className }) {
     <button
       className={`flex bg-orange border-none px-4 justify-center
                 py-3 gap-3 rounded-xl
-                md:py-5 md:px-8 ${className}`}
+                md:py-5 md:px-8 ${className} `}
       onClick={onClick}
     >
       <div className="text-white text-12 
