@@ -10,6 +10,7 @@ import HomePage from './modules/homePage/screens/HomePage';
 import ErrorPage from './modules/errorPage/screens/ErrorPage';
 import Header from './globalComponents/Header/Header';
 import ConfirmPage from './modules/orderConfirm/screens/ConfirmPage'
+import LoginPopup from './modules/loginPopup/screen/loginPopup';
 
 const router = createBrowserRouter([
   {
@@ -50,8 +51,7 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Header />
-    <RouterProvider router={router} />
+    <LoginPopup/>
   </React.StrictMode>
 );
 
