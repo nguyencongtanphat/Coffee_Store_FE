@@ -8,50 +8,57 @@ import './tailwind.css'
 import CartPage from './modules/cartPage/screens/CartPage';
 import HomePage from './modules/homePage/screens/HomePage';
 import ErrorPage from './modules/errorPage/screens/ErrorPage';
+import Root from './Root'
+import ConfirmPage from './modules/orderConfirm/screens/ConfirmPage';
 import Header from './globalComponents/Header/Header';
-import ConfirmPage from './modules/orderConfirm/screens/ConfirmPage'
-import LoginPopup from './modules/loginPopup/screen/loginPopup';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage />,
+    element: <Root />,
     errorElement: <ErrorPage />,
-  },
-  {
-    path: "/coffees",
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/teas",
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/cakes",
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/blogs",
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/account",
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/cart",
-    element: <CartPage />,
-  },
-  {
-    path: "/confirm",
-    element: <ConfirmPage />,
+    children: [
+      {
+        path: "/",
+        element: <HomePage />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "coffees",
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "teas",
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "cakes",
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "blogs",
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "account",
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "cart",
+        element: <CartPage />,
+      },
+      {
+        path: "/confirm",
+        element: <ConfirmPage />,
+      },
+    ],
   },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <LoginPopup/>
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
