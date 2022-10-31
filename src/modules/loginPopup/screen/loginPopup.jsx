@@ -31,12 +31,12 @@ function LoginPopup(){
                             <div className="">
                                 <input className="w-[198px] h-[32px] mt-[18px] p-0 pl-[11px] text-[11px] 
                                 bg-transparent rounded-md border border-double border-gray outline-none 
-                                md:w-[328px] md:h-[48px] md:text-b13" type="text" placeholder="Nhập số điện thoại"/>
+                                md:w-[328px] md:h-[48px] md:text-b13" type="tel" placeholder="Nhập số điện thoại"/>
                             </div>
                             <div className=""> 
                                 <input className="w-[198px] h-[32px] mt-[7px] p-0 pl-[11px] text-[11px] 
                                 bg-transparent rounded-md border border-double border-gray outline-none 
-                                md:w-[328px] md:h-[48px] md:text-b13" type="text" placeholder="Nhập mật khẩu"/>
+                                md:w-[328px] md:h-[48px] md:text-b13" type="password" placeholder="Nhập mật khẩu"/>
                             </div>
                             <div>
                                 <p className="mt-[7px] text-[10px] text-end">Quên mật khẩu</p>
@@ -54,5 +54,6 @@ function LoginPopup(){
         </div> 
         </div>
 
-    )
+    );
 }
+export default LoginPopup;
