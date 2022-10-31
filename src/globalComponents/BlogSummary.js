@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types';
 const BlogSummary = (props) => {
   return (
-    <div className="w-60 lg:w-64 pb-8">
+    <div className={`w-60 lg:w-64 pb-8 ${props.className}`}>
       <img src={props.avtSrc} alt="This is the avatar of a blog" className="w-56 lg:w-64 my-2" />
       <p className="text-white text-b11"
       >{props.updateDate}</p>
@@ -16,6 +16,7 @@ const BlogSummary = (props) => {
 
 BlogSummary.propTypes = {
   avtSrc: PropTypes.string.isRequired,
+  className: PropTypes.string,
   title: PropTypes.string.isRequired,
   updateDate: PropTypes.string.isRequired,
   summaryContent: PropTypes.string.isRequired
