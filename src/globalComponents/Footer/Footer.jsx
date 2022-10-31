@@ -23,7 +23,7 @@ export default function Footer({props}) {
             `w-screen bg-grey h-82 sm:h-96
             ${(pathname === '/') ? 'bg-white': 'bg-grey'}`
             }>
-            <div className="flex flex-row flex-wrap sm:flex-nowrap p-2">
+            <div className="flex flex-row flex-wrap sm:flex-nowrap sm:pl-[50px] p-2">
                 <div className="basis-full sm:basis-4/12 sm:mt-[50px] h-28 "> 
                     <div className='mx-auto w-min'>
                         <Link to="/">
@@ -50,7 +50,7 @@ export default function Footer({props}) {
                         </div>
                     </div>
                 </div>
-                <div className="basis-5/12 sm:basis-3/12 mt-4 sm:mt-[50px]"> 
+                <div className="basis-5/12 sm:basis-1/5 mt-4 sm:mt-[50px]"> 
                     <p className="text-b12 sm:text-b7 pl-[20px] my-[16.5px]">Giới thiệu</p>
                     <ul className="list-none pl-[20px]">
                         <li className="my-[16.5px] sm:my-[30px]">
