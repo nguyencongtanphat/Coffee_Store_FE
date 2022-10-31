@@ -9,44 +9,47 @@ import CartPage from './modules/cartPage/screens/CartPage';
 import HomePage from './modules/homePage/screens/HomePage';
 import ErrorPage from './modules/errorPage/screens/ErrorPage';
 import Root from './Root'
+import ConfirmPage from './modules/orderConfirm/screens/ConfirmPage';
+import Header from './globalComponents/Header/Header';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
     errorElement: <ErrorPage />,
-    children:[
+    children: [
       {
-        path: '/',
+        path: "/",
         element: <HomePage />,
         errorElement: <ErrorPage />,
       },
       {
-        path: 'coffees',
+        path: "coffees",
         errorElement: <ErrorPage />,
       },
       {
-        path: 'teas',
+        path: "teas",
         errorElement: <ErrorPage />,
-    
       },
       {
-        path: 'cakes',
+        path: "cakes",
         errorElement: <ErrorPage />,
-    
       },
       {
-        path: 'blogs',
+        path: "blogs",
         errorElement: <ErrorPage />,
-    
       },
       {
-        path: 'account',
+        path: "account",
         errorElement: <ErrorPage />,
       },
       {
         path: "cart",
         element: <CartPage />,
+      },
+      {
+        path: "/confirm",
+        element: <ConfirmPage />,
       },
     ],
   },
