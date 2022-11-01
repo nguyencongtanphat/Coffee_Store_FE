@@ -2,13 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types';
 const BlogSummary = (props) => {
   return (
-    <div className={`w-60 lg:w-64 pb-8 ${props.className}`}>
-      <img src={props.avtSrc} alt="This is the avatar of a blog" className="w-56 lg:w-64 my-2" />
-      <p className="text-white text-b11"
+    <div className={`w-60 lg:w-96 pb-8 ${props.className}`}>
+      <img src={props.avtSrc} alt="This is the avatar of a blog" className="w-56 lg:w-96 my-2" />
+      <p className="text-white text-b11 lg:text-b9"
       >{props.updateDate}</p>
-      <p className="text-orange text-b9"
+      <p className="text-beige text-b9 lg:text-b5"
       >{props.title}</p>
-      <p className="text-b13 text-grey400"
+      <p className="text-b13 text-grey400 lg:text-b11"
       >{props.summaryContent}</p>
     </div>
   )
