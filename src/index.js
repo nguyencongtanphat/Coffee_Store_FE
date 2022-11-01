@@ -11,6 +11,7 @@ import ErrorPage from './modules/errorPage/screens/ErrorPage';
 import Root from './Root'
 import ConfirmPage from './modules/orderConfirm/screens/ConfirmPage';
 import Header from './globalComponents/Header/Header';
+import ChitietPage from './modules/chitietPage/screens/ChitietPage';
 
 const router = createBrowserRouter([
   {
@@ -25,7 +26,7 @@ const router = createBrowserRouter([
       },
       {
         path: "coffees",
-        errorElement: <ErrorPage />,
+        element: <ChitietPage />,
       },
       {
         path: "teas",
@@ -57,9 +58,7 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+  <ChitietPage/>
 );
 
 // If you want to start measuring performance in your app, pass a function
