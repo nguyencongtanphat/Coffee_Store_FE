@@ -7,6 +7,12 @@ function HomePage() {
   return (
     <div>
       <ProductCard avtSrc={product_sample} name="coffee" category="coffee" price="200"></ProductCard>
+      <BlogSummary avtSrc={sample_thumbnail} title="CÁCH NHẬN BIẾT HƯƠNG VỊ CÀ PHÊ NGON"
+        updateDate="20/09/2022"
+        summaryContent="Cùng Arabica, Robusta cũng là loại cà phê nổi tiếng được sử dụng phổ biến ở Việt Nam 
+        và nhiều nước khác trên thế giới. Với nhiều đặc..."
+        className="bg-brown"
+      />
     </div>
   )
 }
