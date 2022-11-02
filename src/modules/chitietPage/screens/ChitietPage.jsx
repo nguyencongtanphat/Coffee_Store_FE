@@ -18,9 +18,9 @@ function ChitietPage() {
         <h2 className="text-b13 text-grey100 md:text-b6 mb-3">
           Thông tin sản phẩm
         </h2>
-        <div className="flex flex-col md:flex-row">
+        <div className="flex flex-col md:flex-row justify-center">
             <div>
-              <div className="flex justify-center">
+              <div className="flex">
                 <img
                   src={chitietCoffee}
                   alt=""
@@ -30,20 +30,20 @@ function ChitietPage() {
             </div>
             <div className="md:ml-[30px]">
               <div className="w-[283px] h-auto md:w-[480px]">
-                <p className="mt-[20px] md:mt-0 text-brown text-b7">Cà phê Mouse Kem Cheese</p>
+                <p className="mt-[20px] md:mt-0 text-brown text-b7 lg:text-b5">Cà phê Mouse Kem Cheese</p>
                 <p className="mt-[10px] text-orange text-b5">32.000đ</p>
-                <p className="mt-[10px] text-gray-500 text-b13 md:text-b11">CloudFee Creme Brulee Caramel ngon khó cưỡng bởi lớp 
+                <p className="mt-[10px] text-gray-500 text-b13 md:text-b11 lg:text-b9">CloudFee Creme Brulee Caramel ngon khó cưỡng bởi lớp 
                   kem trứng Creme Brulee bồng bềnh béo mịn, ngọt thanh 
                   của Caramel, thêm xíu đắng nhẹ từ cà phê, kèm topping 
                   thạch cà phê dai dai giòn giòn. </p>
               </div>
-              <div className="mt-[10px] flex flex-row w-[283px] h-auto items-center">
+              <div className="mt-[10px] flex flex-row w-[425px] h-auto items-center">
                 <p className="text-b11 md:text-b10 lg:text-b9">Size:</p>
                 <AppButton2 className="ml-[10px]" text="Vừa (+0đ)" />
                 <AppButton2 className="ml-[10px]" text="Lớn (+10.000đ)" />
               </div>
               <div>
-                <div className="mt-[10px] flex flex-row w-[325px] h-auto items-center">
+                <div className="mt-[10px] flex flex-row w-[600px] h-auto items-center">
                   <p className="text-b11 md:text-b10 lg:text-b9">Topping:</p>
                   <AppButton2 className="ml-[10px]" text="Macchiato (+5.000đ)" />
                   <AppButton2 className="ml-[10px]" text="Sốt caramel (+7.000đ)" />
@@ -57,8 +57,8 @@ function ChitietPage() {
                 <p className="text-b11 md:text-b10 lg:text-b9 ml-[10px] text-gray-400">+</p>
               </did>
               <div className="flex flex-col md:flex-row">
-                  <AppButton className="mt-[15px] items-center" text="Thêm vào giỏ hàng"/>
-                  <AppButton className="md:ml-[10px] mt-[15px] items-center" text="Đặt hàng ngay"/>
+                  <AppButton className="mt-[15px] items-center w-[300px]" text="Thêm vào giỏ hàng"/>
+                  <AppButton className="md:ml-[10px] mt-[15px] items-center w-[300px]" text="Đặt hàng ngay"/>
               </div>
             </div>
         </div>
