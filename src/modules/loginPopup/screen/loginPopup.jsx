@@ -1,7 +1,8 @@
 import React, { useState }  from "react";
 import AppButton from "../../../globalComponents/AppButton";
 import InputField from "../../orderConfirm/components/InputField";
-import bgCoffee from "d:/CUOIKY/Coffee_Store_FE/src/assests/images/login/bg-coffee.png";
+//import bgCoffee from "d:/CUOIKY/Coffee_Store_FE/src/assests/images/login/bg-coffee.png";
+import bgCoffee from "../../../assests/images/login/bg-coffee.png";
 function LoginPopup(){
     const [popup,setPop]=useState(false)
     const handleClickOpen=()=>{
