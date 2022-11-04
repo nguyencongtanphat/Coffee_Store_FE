@@ -11,9 +11,10 @@ import ErrorPage from './modules/errorPage/screens/ErrorPage';
 import Root from './Root'
 import ConfirmPage from './modules/orderConfirm/screens/ConfirmPage';
 import Header from './globalComponents/Header/Header';
-import ChitietPage from './modules/chitietPage/screens/ChitietPage';
+import DetailPage from './modules/DetailPage/screens/DetailPage';
 import LoginPopup from './modules/loginPopup/screen/loginPopup';
 import SigninPopup from './modules/signinPopup/screen/signinPopup';
+
 
 const router = createBrowserRouter([
   {
@@ -27,13 +28,14 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />,
       },
       {
+        path: "coffees/:id",
+        element: <DetailPage />,
+      },
+      {
         path: "coffees",
         element: <ErrorPage />,
       },
-      {
-        path: "coffees/:id",
-        element: <ChitietPage />,
-      },
+
       {
         path: "teas",
         errorElement: <ErrorPage />,
