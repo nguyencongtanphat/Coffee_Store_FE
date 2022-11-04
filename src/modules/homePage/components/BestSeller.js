@@ -13,31 +13,31 @@ const BestSeller = () => {
                     avtSrc={sample_product}
                     name="Cà Phê Mouse Kem Cheese"
                     category="Cà phê"
-                    price="32000"
+                    price={32000}
                 />
-                                <ProductCard 
+                    <ProductCard 
                     avtSrc={sample_product}
                     name="Cà Phê Mouse Kem Cheese"
                     category="Cà phê"
-                    price="32000"
-                />
-                <ProductCard 
-                    avtSrc={sample_product}
-                    name="Cà Phê Mouse Kem Cheese"
-                    category="Cà phê"
-                    price="32000"
+                    price={32000}
                 />
                 <ProductCard 
                     avtSrc={sample_product}
                     name="Cà Phê Mouse Kem Cheese"
                     category="Cà phê"
-                    price="32000"
+                    price={32000}
                 />
                 <ProductCard 
                     avtSrc={sample_product}
                     name="Cà Phê Mouse Kem Cheese"
                     category="Cà phê"
-                    price="32000"
+                    price={32000}
+                />
+                <ProductCard 
+                    avtSrc={sample_product}
+                    name="Cà Phê Mouse Kem Cheese"
+                    category="Cà phê"
+                    price={32000}
                 />
 
             </div>
