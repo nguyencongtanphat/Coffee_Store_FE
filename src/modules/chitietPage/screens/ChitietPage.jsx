@@ -4,7 +4,8 @@ import AppButton2 from "../components/AppButton2";
 import PageTitle from "../../../globalComponents/PageTitle";
 import leafBgR from "../../../assests/images/global/leaf-bg-right.png"
 import leafBgL from "../../../assests/images/global/leaf-bg-left.png";
-import chitietCoffee from "d:/3rd/Coffee_Store_FE/src/assests/images/chitietPage/chitietCoffee.png"
+import chitietCoffee from "../../../assests/images/chitietPage/chitietCoffee.png";
+//import chitietCoffee from "d:/3rd/Coffee_Store_FE/src/assests/images/chitietPage/chitietCoffee.png"
 import PropTypes from "prop-types";
 
 function ChitietPage() {
