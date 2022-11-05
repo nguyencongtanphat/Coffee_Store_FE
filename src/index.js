@@ -10,7 +10,8 @@ import HomePage from './modules/homePage/screens/HomePage';
 import ErrorPage from './modules/errorPage/screens/ErrorPage';
 import Root from './Root'
 import ConfirmPage from './modules/orderConfirm/screens/ConfirmPage';
-import Header from './globalComponents/Header/Header';
+import CategoryPage from './modules/categoryPage/screens/CategoryPage';
+
 
 const router = createBrowserRouter([
   {
@@ -25,14 +26,17 @@ const router = createBrowserRouter([
       },
       {
         path: "coffees",
+        element: <CategoryPage title="CÀ PHÊ" />,
         errorElement: <ErrorPage />,
       },
       {
         path: "teas",
+        element: <CategoryPage title="TRÀ" />,
         errorElement: <ErrorPage />,
       },
       {
         path: "cakes",
+        element: <CategoryPage title="BÁNH NGỌT" />,
         errorElement: <ErrorPage />,
       },
       {
