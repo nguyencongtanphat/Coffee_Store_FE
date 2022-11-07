@@ -11,6 +11,10 @@ import ErrorPage from './modules/errorPage/screens/ErrorPage';
 import Root from './Root'
 import ConfirmPage from './modules/orderConfirm/screens/ConfirmPage';
 import CategoryPage from './modules/categoryPage/screens/CategoryPage';
+import Header from './globalComponents/Header/Header';
+import DetailPage from './modules/DetailPage/screens/DetailPage';
+import LoginPopup from './modules/loginPopup/screen/loginPopup';
+import SigninPopup from './modules/signinPopup/screen/signinPopup';
 
 
 const router = createBrowserRouter([
@@ -25,10 +29,16 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />,
       },
       {
+        path: "coffees/:id",
+        element: <DetailPage />,
+        errorElement: <ErrorPage />,
+      },
+      {
         path: "coffees",
         element: <CategoryPage title="CÀ PHÊ" />,
         errorElement: <ErrorPage />,
       },
+
       {
         path: "teas",
         element: <CategoryPage title="TRÀ" />,
@@ -55,16 +65,20 @@ const router = createBrowserRouter([
         path: "/confirm",
         element: <ConfirmPage />,
       },
+      {
+        path: "/login",
+        element: <LoginPopup />,
+      },
+      {
+        path: "/signup",
+        element: <SigninPopup />,
+      },
     ],
   },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
-);
+root.render(<RouterProvider router={router} />);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
