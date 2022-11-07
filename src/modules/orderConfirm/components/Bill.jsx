@@ -1,7 +1,7 @@
 import React from 'react'
 import Item from './Item'
 
-export default function Bill() {
+export default function Bill({cat}) {
   return (
     <div className=" bg-white rounded-3xl p-5 m-4 md:p-8 pb-10 border-spacing-2 border-grey300 border-solid md:rounded-[25]">
       <h1 className="text-orange text-b10 align-middle text-center md:text-b5 md:mb-10">
@@ -9,12 +9,10 @@ export default function Bill() {
       </h1>
       <h2 className="text-b12 text-orange mt-4 md:text-b7">Các món đã chọn</h2>
       <hr className="border-solid border-orange w-14 mt-1 md:my-2" />
-      <Item />
-      <hr className="border-solid border-grey400 md:my-2" />
-      <Item />
-      <hr className="border-solid border-grey400 md:my-2" />
-      <Item />
-
+      {cat.map(item => (<div>
+            <Item item = {item} key = {item.id}/>
+            <hr className="border-solid border-grey400 md:my-2" /></div>
+        ))}
       <h2 className="text-b12 text-orange mt-4 md:text-b7">Tổng cộng</h2>
       <hr className="border-solid border-orange w-14 mt-1 md:my-2" />
       <div className="flex">
