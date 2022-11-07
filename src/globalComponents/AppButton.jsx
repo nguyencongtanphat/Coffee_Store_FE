@@ -1,5 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-regular-svg-icons";
+
 function AppButton({ icon, text, onClick, className }) {
   
   return (
@@ -9,6 +12,7 @@ function AppButton({ icon, text, onClick, className }) {
                 md:py-5 md:px-8 ${className} `}
       onClick={onClick}
     >
+      <FontAwesomeIcon icon={faStar} color="orange" size="10x" ></FontAwesomeIcon>
       <div className="text-white text-12 
                       md:text-b10 lg:text-b9 "> {text}</div>
     </button>
