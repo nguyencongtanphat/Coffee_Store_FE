@@ -10,12 +10,14 @@ import { useState } from "react";
 
 export default function ConfirmPage() {
   const [dtInfo, setDtInfo] = useState({});
+  const [cat, setCat] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
       const response = await axios.get(HttpService.appUrl + "/order/1");
       setDtInfo(response.data.Orders);
-      console.log(dtInfo);
+      setCat(response.data.Orders.DetailOrder);
+      console.log(response.data.Orders);
     }
     fetchData();
   }, []);
@@ -28,7 +30,7 @@ export default function ConfirmPage() {
           <CustomerInfo phone={dtInfo.PhoneNumber} addr={dtInfo.Address}/>
         </div>
         <div class="md:flex-initial md:h-full md:w-6/12 md:ml-10 flex flex-col justify-center items-center">
-          <Bill class=" md:pl-10 md:ml-20" cat={dtInfo.DetailOrder}/>
+        <Bill class=" md:pl-10 md:ml-20" cat={cat}/>
           <AppButton
             text="Đặt hàng"
             className="w-fit "

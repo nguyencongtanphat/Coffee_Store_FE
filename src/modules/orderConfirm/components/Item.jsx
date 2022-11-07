@@ -1,4 +1,5 @@
 import React from 'react'
+import { FormatterService } from "../../../service";
 
 export default function Item({item}) {
   return (
@@ -9,7 +10,7 @@ export default function Item({item}) {
         <p className='text-b15 text-grey200 m-2 ml-8 md:text-b11 md:ml-10 md:my-3'>Topping: Sốt caramel</p>
       </div>
       <div className='flex-auto '>
-        <p className='text-b13 mt-7 text-black text-left ml-7 md:text-b9 md:ml-7'>{item.Price}</p>
+        <p className='text-b13 mt-7 text-black text-left ml-7 md:text-b9 md:ml-7'>{FormatterService.format(item.Price)}</p>
       </div>
     </div>
   )
