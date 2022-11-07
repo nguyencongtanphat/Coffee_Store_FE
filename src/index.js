@@ -10,6 +10,7 @@ import HomePage from './modules/homePage/screens/HomePage';
 import ErrorPage from './modules/errorPage/screens/ErrorPage';
 import Root from './Root'
 import ConfirmPage from './modules/orderConfirm/screens/ConfirmPage';
+import CategoryPage from './modules/categoryPage/screens/CategoryPage';
 import Header from './globalComponents/Header/Header';
 import DetailPage from './modules/DetailPage/screens/DetailPage';
 import LoginPopup from './modules/loginPopup/screen/loginPopup';
@@ -30,18 +31,22 @@ const router = createBrowserRouter([
       {
         path: "coffees/:id",
         element: <DetailPage />,
+        errorElement: <ErrorPage />,
       },
       {
         path: "coffees",
-        element: <ErrorPage />,
+        element: <CategoryPage title="CÀ PHÊ" />,
+        errorElement: <ErrorPage />,
       },
 
       {
         path: "teas",
+        element: <CategoryPage title="TRÀ" />,
         errorElement: <ErrorPage />,
       },
       {
         path: "cakes",
+        element: <CategoryPage title="BÁNH NGỌT" />,
         errorElement: <ErrorPage />,
       },
       {
