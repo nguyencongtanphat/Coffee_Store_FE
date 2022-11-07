@@ -22,6 +22,7 @@ module.exports = {
       b14: ['10px',{fontWeight:'bold'}],
       b15: ['10px',{fontWeight:'normal'}],
       b16: ['9px',{fontWeight:'normal'}],
+      b17: ['10px',{fontWeight:'bold'}], 
     },
     fontFamily:{
       MsMadi: ['MsMadi'],
