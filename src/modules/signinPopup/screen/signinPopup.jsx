@@ -19,8 +19,11 @@ function SigninPopup(){
                 <div className="flex justify-center items-center">
                     <div className="w-[294px] h-[310px] rounded-t-2xl md:w-[382px] md:h-[505px] md:relative md:rounded-none md:rounded-l-2xl bg-beige100 flex justify-center items-center order-1 md:order-2">
                     <div className="">
+                            <div className="md:hidden">
+                                <p className="mt-[3px] mr-[-20px] text-black text-opacity-60 text-[20px] text-end hover:text-brown cursor-pointer md:text-[25px]">x</p>
+                            </div>
                             <div className="">
-                                <p className="mt-5 text-orange text-b7 text-center md:text-b5 md:text-start md:mt-[70px]">Đăng ký</p>
+                                <p className="mt-[-20px] text-orange text-b7 text-center md:text-b5 md:text-start md:mt-[70px]">Đăng ký</p>
                             </div>
                             <div className="">
                                 <input className="w-[198px] h-[32px] mt-[18px] p-0 pl-[11px] text-[11px] 
@@ -57,6 +60,9 @@ function SigninPopup(){
                         alt=""
                         className="w-[294px] h-[174px] object-cover rounded-b-2xl md:w-full md:h-auto md:rounded-none md:rounded-r-2xl"
                     />
+                </div>
+                <div className="invisible md:visible md:absolute">
+                    <p className="md:mt-[-235px] md:mr-[-350px] md:text-white text-opacity-60 text-[20px] text-end hover:text-orange cursor-pointer md:text-[25px]">x</p>
                 </div>
             </div>
         </div> 
