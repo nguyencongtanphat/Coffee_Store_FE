@@ -9,11 +9,7 @@ import HttpService from "../../../service";
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
-
-const formatter = new Intl.NumberFormat("vi-VN", {
-  style: "currency",
-  currency: "VND",
-});
+import { FormatterService } from "../../../service";
 
 function DetailPage() {
   const [dtInfo, setDtInfo] = useState({});
@@ -72,10 +68,10 @@ function DetailPage() {
           <div className="md:ml-[30px]">
             <div className="w-[283px] h-auto md:w-[480px]">
               <p className="mt-[20px] md:mt-0 text-brown text-b7 lg:text-b5">
-                {dtInfo.Name || "default"}
+                {dtInfo.Name || "Tên sản phẩm"}
               </p>
               <p className="mt-[10px] text-orange text-b5">
-                {formatter.format(price)}
+                {FormatterService.format(price)}
               </p>
               <p className="mt-[10px] text-gray-500 text-b13 md:text-b11 lg:text-b9">
                 CloudFee Creme Brulee Caramel ngon khó cưỡng bởi lớp kem trứng
