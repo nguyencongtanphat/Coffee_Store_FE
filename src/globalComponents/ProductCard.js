@@ -9,7 +9,7 @@ const ProductCard = (props) => {
                 className="w-16 lg:w-28 mx-11 lg:mx-20 my-4 lg:m-8 "
             />
             <div className="p-4">
-                <p className="text-b11 lg:text-b6 font-semibold text-grey200"
+                <p className="text-b11 lg:text-b6 font-semibold text-grey200 h-9 lg:h-16"
                 >{props.name}</p>
                 <p className="text-b13 lg:text-b8 text-grey300"
                 >{props.category}</p>

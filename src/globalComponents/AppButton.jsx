@@ -1,5 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-regular-svg-icons";
+
 function AppButton({ icon, text, onClick, className }) {
   
   return (
