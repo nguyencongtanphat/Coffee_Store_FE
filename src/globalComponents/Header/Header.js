@@ -3,7 +3,9 @@ import NavigationBar from './NavigationBar'
 import InfoContactBar from './InfoContactBar'
 const Header = () => {
     return (
-        <div>
+        <div className="bg-white sticky top-0 z-10"
+            style={{borderBottom: '1px solid black'}}
+        >
             <InfoContactBar />
             <NavigationBar />
         </div>
