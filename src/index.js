@@ -15,6 +15,7 @@ import Header from './globalComponents/Header/Header';
 import DetailPage from './modules/DetailPage/screens/DetailPage';
 import LoginPopup from './modules/loginPopup/screen/loginPopup';
 import SigninPopup from './modules/signinPopup/screen/signinPopup';
+import Provider from './store/Provider';
 
 
 const router = createBrowserRouter([
@@ -78,7 +79,11 @@ const router = createBrowserRouter([
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<RouterProvider router={router} />);
+root.render(
+  <Provider>
+    <RouterProvider router={router} />
+  </Provider>
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
