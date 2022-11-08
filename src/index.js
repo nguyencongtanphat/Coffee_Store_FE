@@ -36,18 +36,18 @@ const router = createBrowserRouter([
       },
       {
         path: "coffees",
-        element: <CategoryPage title="CÀ PHÊ" />,
+        element: <CategoryPage title="CÀ PHÊ" type="3"/>,
         errorElement: <ErrorPage />,
       },
 
       {
         path: "teas",
-        element: <CategoryPage title="TRÀ" />,
+        element: <CategoryPage title="TRÀ" type="1"/>,
         errorElement: <ErrorPage />,
       },
       {
         path: "cakes",
-        element: <CategoryPage title="BÁNH NGỌT" />,
+        element: <CategoryPage title="BÁNH NGỌT" type="2"/>,
         errorElement: <ErrorPage />,
       },
       {
@@ -88,4 +88,3 @@ root.render(
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-
