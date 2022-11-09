@@ -11,7 +11,6 @@ import ErrorPage from './modules/errorPage/screens/ErrorPage';
 import Root from './Root'
 import ConfirmPage from './modules/orderConfirm/screens/ConfirmPage';
 import CategoryPage from './modules/categoryPage/screens/CategoryPage';
-import Header from './globalComponents/Header/Header';
 import DetailPage from './modules/DetailPage/screens/DetailPage';
 import LoginPopup from './modules/loginPopup/screen/loginPopup';
 import SigninPopup from './modules/signinPopup/screen/signinPopup';
@@ -87,5 +86,5 @@ root.render(
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals 
 

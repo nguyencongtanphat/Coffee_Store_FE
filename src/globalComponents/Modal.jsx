@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-function Modal({ children,className }) {
+function Modal({ children,}) {
   return ReactDOM.createPortal(
-    <div id="modal-wrapper" className={className}>
+    <>
       {children}
-    </div>,
-    document.querySelector("body")
+    </>,
+    document.getElementById("modal-wrapper")
   );
 }
 
