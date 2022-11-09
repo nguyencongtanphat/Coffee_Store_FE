@@ -8,6 +8,8 @@ import { Link, useLocation } from 'react-router-dom';
 import { useContext } from 'react';
 import Context from '../../store/Context';
 import LoginPopup from '../../modules/loginPopup/screen/loginPopup';
+import SigninPopup from '../../modules/signinPopup/screen/signinPopup';
+import AppButton from '../AppButton';
 
 
 const NavigationBar = () => {
@@ -71,13 +73,30 @@ const NavigationBar = () => {
         </div>
     )
 
-    const [isOpenSiginPopup, setIsOpenSigninPopup] = useState(false);
+    const [isOpenLoginPopup, setIsOpenLoginPopup] = useState(false);
+    const [isOpenSignupPopup, setIsOpenSignupPopup] = useState(false);
+
+    const togglePopupLogin = () =>{
+      console.log("click parent")
+      setIsOpenLoginPopup((prev) => !prev);
+    }
+
+     const togglePopupSignup = () => {
+       console.log("click parent");
+       setIsOpenSignupPopup((prev) => !prev);
+     };
     return (
       <>
         <LoginPopup
-          className={`fksdfk ${isOpenSiginPopup ? "block" : "hidden"}`}
+          className={`${isOpenLoginPopup ? "block" : "hidden"}`}
+          togglePopupLogin={togglePopupLogin}
         ></LoginPopup>
-        <div className="flex w-screen justify-between">
+        <SigninPopup
+          className={`${isOpenSignupPopup ? "block" : "hidden"}`}
+          togglePopupSignup={togglePopupSignup}
+          togglePopupLogin={togglePopupLogin}
+        ></SigninPopup>
+        <div className="flex items-center justify-between">
           <button
             className="border-none outline-none bg-transparent cursor-pointer ml-2 mt-4 lg:hidden"
             onClick={toggleDrawer(true)}
@@ -135,7 +154,22 @@ const NavigationBar = () => {
               Chuyện nhà
             </Link>
           </nav>
-          <div className="flex mt-4">
+
+          {/* login signup btn */}
+          <div className={` mt-4 ${!appState.isLogin ? "flex" : "hidden"}`}>
+            <AppButton
+              text="Đăng nhập"
+              className="mr-2 mb-2"
+              onClick={togglePopupLogin}
+            ></AppButton>
+            <AppButton
+              onClick={togglePopupSignup}
+              text="Đăng kí"
+              className="mr-2 mb-2"
+            ></AppButton>
+          </div>
+          {/* user Info show when logined */}
+          <div className={` mt-4 ${appState.isLogin ? "flex" : "hidden"}`}>
             <Link className="mr-2" to="account">
               <FontAwesomeIcon
                 icon={faUser}

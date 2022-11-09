@@ -11,7 +11,6 @@ import ErrorPage from './modules/errorPage/screens/ErrorPage';
 import Root from './Root'
 import ConfirmPage from './modules/orderConfirm/screens/ConfirmPage';
 import CategoryPage from './modules/categoryPage/screens/CategoryPage';
-import Header from './globalComponents/Header/Header';
 import DetailPage from './modules/DetailPage/screens/DetailPage';
 import LoginPopup from './modules/loginPopup/screen/loginPopup';
 import SigninPopup from './modules/signinPopup/screen/signinPopup';
