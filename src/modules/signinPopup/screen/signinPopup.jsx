@@ -73,12 +73,17 @@ function SigninPopup({ className, togglePopupSignup, togglePopupLogin }) {
     <Modal>
       <div
         className={`${className} w-full h-screen absolute top-0 bg-black bg-opacity-75 flex justify-center items-center`}
+        onClick={(e)=>{
+          if(e.currentTarget === e.target){
+            togglePopupSignup();
+          }
+        }}
       >
         <div className="flex flex-col justify-center items-center md:flex-row">
           <div className="flex justify-center items-center">
             <div className="w-[294px] h-[310px] rounded-t-2xl md:w-[382px] md:h-[505px] md:relative md:rounded-none md:rounded-l-2xl bg-beige100 flex justify-center items-center order-1 md:order-2">
               <div className="">
-                <div className="md:hidden">
+                <div className="md:hidden" onClick={togglePopupSignup}>
                   <p className="mt-[3px] mr-[-20px] text-black text-opacity-60 text-[20px] text-end hover:text-brown cursor-pointer md:text-[25px]">
                     x
                   </p>
