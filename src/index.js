@@ -36,18 +36,18 @@ const router = createBrowserRouter([
       },
       {
         path: "coffees",
-        element: <CategoryPage title="CÀ PHÊ" />,
+        element: <CategoryPage title="CÀ PHÊ" type="3"/>,
         errorElement: <ErrorPage />,
       },
 
       {
         path: "teas",
-        element: <CategoryPage title="TRÀ" />,
+        element: <CategoryPage title="TRÀ" type="1"/>,
         errorElement: <ErrorPage />,
       },
       {
         path: "cakes",
-        element: <CategoryPage title="BÁNH NGỌT" />,
+        element: <CategoryPage title="BÁNH NGỌT" type="2"/>,
         errorElement: <ErrorPage />,
       },
       {
