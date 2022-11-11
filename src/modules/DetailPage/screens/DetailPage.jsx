@@ -22,7 +22,7 @@ function DetailPage() {
     async function fetchData() {
       const response = await axios.get(HttpService.appUrl + "/menu/products/1");
       setDtInfo(response.data.data);
-      console.log(dtInfo);
+     
     }
     fetchData();
   }, []);
@@ -35,7 +35,6 @@ function DetailPage() {
   }, [dtInfo.MPrice, dtInfo.SPrice, dtInfo.LPrice, size]);
 
   const changeSize = (sz) => {
-    console.log(sz);
     setSize(() => sz);
   };
 

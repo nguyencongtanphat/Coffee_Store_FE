@@ -1,6 +1,6 @@
-import { SET_STATE_LOGIN } from "./Constant";
+import { ADD_NEW_CART_PRODUCT, FETCH_CART_FROM_SERVER, SET_STATE_LOGIN } from "./Constant";
 
-const initState = {
+const initAppState = {
   id: "",
   fullName: "",
   phoneNumber: "",
@@ -8,10 +8,11 @@ const initState = {
   isLogin: false,
 };
 
-const Reducer = (currentState, action) => {
+const initCartState = [];
+
+const AppReducer = (currentState, action) => {
   switch (action.type) {
     case SET_STATE_LOGIN: {
-      console.log(action.payload);
       const userinfo = action.payload.userInfo.user;
       return {
         ...currentState,
@@ -28,5 +29,22 @@ const Reducer = (currentState, action) => {
   }
 };
 
-export default Reducer;
-export { initState };
+const CartReducer = (currentState, action) =>{
+  switch (action.type) {
+    case ADD_NEW_CART_PRODUCT:
+      return [
+        action.payload,
+        ...currentState
+      ]
+    case FETCH_CART_FROM_SERVER:
+      return [
+        ...action.payload,
+      ]
+    default:
+      throw new Error("this Action is not supported");
+
+  }
+}
+
+
+export { initAppState, AppReducer, initCartState, CartReducer };
