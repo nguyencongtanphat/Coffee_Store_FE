@@ -6,8 +6,9 @@ import "swiper/css";
 import "swiper/css/autoplay"
 import { Autoplay } from 'swiper';
 
-const InfoContactBar = () => {
 
+const InfoContactBar = () => {
+     
     return (
         <div>
             <Swiper 

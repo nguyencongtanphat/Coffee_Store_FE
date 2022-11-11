@@ -46,7 +46,7 @@ function SigninPopup({ className, togglePopupSignup, togglePopupLogin }) {
         isAddressValid
       ) {
         const userInfo = {
-          fullName: fullNameInput.current.value,
+          Fullname: fullNameInput.current.value,
           Username: userNameInput.current.value,
           Password: passwordInput.current.value,
           PhoneNumber: numberPhoneInput.current.value,
@@ -56,7 +56,6 @@ function SigninPopup({ className, togglePopupSignup, togglePopupLogin }) {
           HttpService.appUrl + "/user/signup",
           userInfo
         );
-        console.log(response);
         alert("Bạn đã đăng kí thành công");
         successSignupHandler();
        

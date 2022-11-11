@@ -4,12 +4,14 @@ import AppButton from "../../../globalComponents/AppButton";
 import bgCoffee from "../../../assests/images/login/bg-coffee.png";
 import Modal from "../../../globalComponents/Modal";
 import HttpService from "../../../service";
-import Context from "../../../store/Context";
+import { UserContext } from "../../../store/Context";
 import { useContext } from "react";
 import { SET_STATE_LOGIN } from "../../../store/Constant";
 import { setStatusLogin } from "../../../store/Actions";
 function LoginPopup(props) {
-  const [appState, dispatch] = useContext(Context);
+ 
+
+  const [appState, dispatch] = useContext(UserContext);
 
   const userNameInput = useRef("");
   const passwordInput = useRef("");
@@ -29,13 +31,13 @@ function LoginPopup(props) {
     }
   };
 
-  const successLoginHandler = (userData)=>{
-     props.togglePopupHandler();
-     dispatch(setStatusLogin(userData));
-  }
+  const successLoginHandler = (userData) => {
+    props.togglePopupLogin();
+    dispatch(setStatusLogin(userData));
+  };
 
   const submitHandler = async () => {
-    try{
+    try {
       let isUserNameValid = isValid(userNameInput);
       let isPasswordValid = isValid(passwordInput);
       if (isUserNameValid && isPasswordValid) {
@@ -47,24 +49,27 @@ function LoginPopup(props) {
           HttpService.appUrl + "/user/login",
           userInfo
         );
-       successLoginHandler(response.data);
+  
+        return successLoginHandler(response.data);
       } else {
         alert("Bạn cần nhập đầy đủ thông tin!!!");
       }
-    }catch(e){
-        alert("Đăng nhập thất bại, bạn vui lòng kiểm tra lại thông tin và thử lại!!!");
-        userNameInput.current.value="";
-        passwordInput.current.value = "";
+    } catch (e) {
+      alert(
+        "Đăng nhập thất bại, bạn vui lòng kiểm tra lại thông tin và thử lại!!!" +
+          e.message
+      );
+      userNameInput.current.value = "";
+      passwordInput.current.value = "";
     }
-    
   };
 
   return (
     <Modal>
       <div
         className={`${props.className} w-full h-screen fixed top-0 bg-black bg-opacity-75 flex justify-center items-center`}
-        onClick={(e)=>{
-          if(e.currentTarget === e.target){
+        onClick={(e) => {
+          if (e.currentTarget === e.target) {
             props.togglePopupLogin();
           }
         }}
