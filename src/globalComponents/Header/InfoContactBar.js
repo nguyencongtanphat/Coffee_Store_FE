@@ -37,20 +37,20 @@ const InfoContactBar = () => {
                     </div>
                 </SwiperSlide>
             </Swiper>
-            <div className="pt-2 hidden lg:flex lg:items-center lg:justify-evenly">
-                <div className="flex items-center justify-center mt-2">
+            <div className="py-1 hidden lg:flex lg:items-center lg:justify-evenly">
+                <div className="flex items-center justify-center ">
                     <FontAwesomeIcon icon={faLocationDot} color="orange" />
                     <p 
                         className="ml-2 hover:text-orange"
                     >Hàn Thuyên, Thủ Đức, TP. HCM</p>
                 </div>
-                <div className="flex items-center justify-center mt-2">
+                <div className="flex items-center justify-center ">
                     <FontAwesomeIcon icon={faPhone} color="orange" />
                     <p 
                         className="ml-2 hover:text-orange"
                     >083 913 2695</p>
                 </div>
-                <div className="flex items-center justify-center mt-2">
+                <div className="flex items-center justify-center ">
                     <FontAwesomeIcon icon={faTruckFast} color="orange" />
                     <p 
                         className="ml-2 hover:text-orange"
