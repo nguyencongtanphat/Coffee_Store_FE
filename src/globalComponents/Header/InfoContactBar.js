@@ -8,7 +8,7 @@ import { Autoplay } from 'swiper';
 
 
 const InfoContactBar = () => {
-     
+
     return (
         <div>
             <Swiper 

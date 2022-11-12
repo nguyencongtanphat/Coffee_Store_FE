@@ -18,9 +18,8 @@ import AppButton from "../AppButton";
 
 
 
-const NavigationBar = () => {
+const NavigationBar = (props) => {
   const [appState, dispatch] = useContext(UserContext);
-  console.log("app state:", appState);
 
   const location = useLocation();
   const [isOpenDrawer, setOpenDrawer] = useState(false);
@@ -35,7 +34,7 @@ const NavigationBar = () => {
 
 
   const navItems = () => (
-    <div className="flex flex-col aligns-start justify-center">
+    <div className="flex flex-col aligns-start justify-center" >
       <button
         className="border-none outline-none bg-transparent cursor-pointer px-4 my-2 w-8 h-8"
         onClick={toggleDrawer(false)}
@@ -102,7 +101,6 @@ const NavigationBar = () => {
   };
 
 
- 
   return (
     <>
       <LoginPopup
@@ -114,7 +112,7 @@ const NavigationBar = () => {
         togglePopupSignup={togglePopupSignup}
         togglePopupLogin={togglePopupLogin}
       ></SigninPopup>
-      <div className="flex items-center justify-between">
+      <div className={`flex items-center justify-between ${props.className}`} style={{backgroundColor:'#F4D8B2'}}>
         <button
           className="border-none outline-none bg-transparent cursor-pointer ml-2 mt-4 lg:hidden"
           onClick={toggleDrawer(true)}
