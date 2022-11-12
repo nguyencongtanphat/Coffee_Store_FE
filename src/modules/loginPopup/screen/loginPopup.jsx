@@ -3,14 +3,13 @@ import axios from "axios";
 import AppButton from "../../../globalComponents/AppButton";
 import bgCoffee from "../../../assests/images/login/bg-coffee.png";
 import Modal from "../../../globalComponents/Modal";
-import HttpService from "../../../service";
+import HttpService, {  createAxiosInstance, getLogin } from "../../../service";
 import { UserContext } from "../../../store/Context";
 import { useContext } from "react";
 import { SET_STATE_LOGIN } from "../../../store/Constant";
 import { setStatusLogin } from "../../../store/Actions";
+import { useEffect } from "react";
 function LoginPopup(props) {
- 
-
   const [appState, dispatch] = useContext(UserContext);
 
   const userNameInput = useRef("");
@@ -31,9 +30,14 @@ function LoginPopup(props) {
     }
   };
 
-  const successLoginHandler = (userData) => {
+  const successLoginHandler =async (userData) => {
     props.togglePopupLogin();
-    dispatch(setStatusLogin(userData));
+    const accessToken = userData.accessToken;
+    //set accessToken to localStorage
+    
+    await localStorage.setItem("accessToken", JSON.stringify(accessToken));
+    //update user state for app
+    dispatch(setStatusLogin(userData.userInfo.user));
   };
 
   const submitHandler = async () => {
@@ -45,13 +49,11 @@ function LoginPopup(props) {
           Username: userNameInput.current.value,
           Password: passwordInput.current.value,
         };
-        const response = await axios.post(
-          HttpService.appUrl + "/user/login",
+        const response = await createAxiosInstance().post(
+         "/user/login",
           userInfo
         );
 
-        console.log("info from response loggin:", response);
-  
         return successLoginHandler(response.data);
       } else {
         alert("Bạn cần nhập đầy đủ thông tin!!!");
@@ -66,6 +68,13 @@ function LoginPopup(props) {
     }
   };
 
+  useEffect(() => {
+    const loginHandler = async () => {
+      const response = await createAxiosInstance().get("/user/login");
+      dispatch(setStatusLogin(response.data.user));
+    };
+    loginHandler();
+  }, []);
   return (
     <Modal>
       <div
