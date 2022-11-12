@@ -16,15 +16,20 @@ function CartPage() {
   
    const navigate = useNavigate();
   const [cartState, cartDispatch] = useContext(CartContext);
+
   const [appState, dispatch] = useContext(UserContext);
   const [sumBill, setSumBill] = useState(0);
   const [listCartConfirm, setListCartConfirm] = useState([]);
 
+  
   useEffect(() => {
     async function fetchData() {
-      const response = await axios.get(HttpService.appUrl + "/cart/1");
-      const cartList = response.data.data;
-      cartDispatch(fetchCartFromServer(cartList));
+      const response = await axios.get(HttpService.appUrl + "/cart/1",{
+        withCredentials:true,
+      });
+      
+      console.log("data: ", response)
+      
     }
     fetchData();
   }, [cartDispatch, appState]);

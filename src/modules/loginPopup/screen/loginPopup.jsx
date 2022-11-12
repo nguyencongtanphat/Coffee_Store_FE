@@ -49,6 +49,8 @@ function LoginPopup(props) {
           HttpService.appUrl + "/user/login",
           userInfo
         );
+
+        console.log("info from response loggin:", response);
   
         return successLoginHandler(response.data);
       } else {
@@ -67,7 +69,7 @@ function LoginPopup(props) {
   return (
     <Modal>
       <div
-        className={`${props.className} w-full h-screen fixed top-0 bg-black bg-opacity-75 flex justify-center items-center`}
+        className={`${props.className} z-30 w-full h-screen fixed top-0 bg-black bg-opacity-75 flex justify-center items-center`}
         onClick={(e) => {
           if (e.currentTarget === e.target) {
             props.togglePopupLogin();
