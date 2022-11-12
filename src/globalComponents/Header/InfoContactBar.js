@@ -19,19 +19,19 @@ const InfoContactBar = () => {
                 className="lg:hidden"
             >
                 <SwiperSlide>
-                    <div className="flex items-center justify-center mt-2">
+                    <div className="flex items-center justify-center ">
                         <FontAwesomeIcon icon={faLocationDot} color="orange" />
                         <p className="ml-2 text-lg">Hàn Thuyên, Thủ Đức, TP. HCM</p>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <div className="flex items-center justify-center mt-2">
+                    <div className="flex items-center justify-center ">
                         <FontAwesomeIcon icon={faPhone} color="orange" />
                         <p className="ml-2 text-lg">083 913 2695</p>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <div className="flex items-center justify-center mt-2">
+                    <div className="flex items-center justify-center ">
                         <FontAwesomeIcon icon={faTruckFast} color="orange" />
                         <p className="ml-2 text-lg">Freeship từ 100.000đ</p>
                     </div>
