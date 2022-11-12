@@ -42,6 +42,12 @@ module.exports = {
         grey400: "#E0E0E0",
         black: "#333333",
       },
+      screens: {
+        'xs': '540px',
+        '1.5xl': '1400px',
+        '3xl': '1774px',
+        
+      }
     },
   },
   plugins: [],

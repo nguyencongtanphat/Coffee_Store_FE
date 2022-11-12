@@ -16,6 +16,7 @@ import LoginPopup from './modules/loginPopup/screen/loginPopup';
 import SigninPopup from './modules/signinPopup/screen/signinPopup';
 import Provider from './store/Provider';
 import PersonalInfoPage from './modules/personalInfoPage/screens/PersonalInfoPage';
+import BlogPage from './modules/blogPage/screens/BlogPage';
 
 
 const router = createBrowserRouter([
@@ -52,6 +53,7 @@ const router = createBrowserRouter([
       },
       {
         path: "blogs",
+        element: <BlogPage title="CHUYỆN NHÀ" />,
         errorElement: <ErrorPage />,
       },
       {
