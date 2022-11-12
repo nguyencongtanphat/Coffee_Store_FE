@@ -5,8 +5,6 @@ import Item from "./Item";
 
 function Table({ updateSumBill }) {
   const [cartState, cartDispatch] = useContext(CartContext);
-
-  
  
   //   {
   //     name: "Cafe chon",
