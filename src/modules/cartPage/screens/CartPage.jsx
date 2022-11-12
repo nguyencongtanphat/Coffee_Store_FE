@@ -7,7 +7,7 @@ import leafBgL from "../../../assests/images/global/leaf-bg-left.png";
 import { useContext } from "react";
 import { CartContext } from "../../../store/Context";
 import axios from "axios";
-import HttpService, { FormatterService } from "../../../service";
+import HttpService, {  createAxiosInstance, FormatterService } from "../../../service";
 import { UserContext } from "../../../store/Context";
 import { addNewProductCart, fetchCartFromServer } from "../../../store/Actions";
 import {  useNavigate } from "react-router-dom";
@@ -24,15 +24,17 @@ function CartPage() {
   
   useEffect(() => {
     async function fetchData() {
-      const response = await axios.get(HttpService.appUrl + "/cart/1",{
-        withCredentials:true,
-      });
       
-      console.log("data: ", response)
+      console.log("app call cart ")
+      const response = await createAxiosInstance().get("cart/1")
+
+     
+      const listCart = response.data.data;
+      cartDispatch(fetchCartFromServer(listCart));
       
     }
     fetchData();
-  }, [cartDispatch, appState]);
+  }, [cartDispatch, appState.isLogin]);
 
   const updateSumBill = (product, type) => {
     //add product to list confirm

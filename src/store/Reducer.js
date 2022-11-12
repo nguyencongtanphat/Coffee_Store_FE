@@ -13,7 +13,7 @@ const initCartState = [];
 const AppReducer = (currentState, action) => {
   switch (action.type) {
     case SET_STATE_LOGIN: {
-      const userinfo = action.payload.userInfo.user;
+      const userinfo = action.payload;
       return {
         ...currentState,
         id: userinfo.id,
