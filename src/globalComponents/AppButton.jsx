@@ -12,7 +12,7 @@ function AppButton({ icon, text, onClick, className }) {
                 md:py-5 md:px-8 ${className} cursor-pointer`}
       onClick={onClick}
     >
-      <div className="text-white text-b12 
+      <div className="text-b12 
                       md:text-b10 lg:text-b9 "> {text}</div>
       
     </button>
