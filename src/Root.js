@@ -4,7 +4,10 @@ import Header from './globalComponents/Header/Header'
 import Footer from './globalComponents/Footer/Footer'
 import ScrollTopButton from './globalComponents/ScrollTopButton'
 
+
+
 const Root = () => {
+    
     return (
         <div>
             <Header />

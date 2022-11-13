@@ -10,10 +10,12 @@ import HomePage from './modules/homePage/screens/HomePage';
 import ErrorPage from './modules/errorPage/screens/ErrorPage';
 import Root from './Root'
 import ConfirmPage from './modules/orderConfirm/screens/ConfirmPage';
-import Header from './globalComponents/Header/Header';
+import CategoryPage from './modules/categoryPage/screens/CategoryPage';
 import DetailPage from './modules/DetailPage/screens/DetailPage';
 import LoginPopup from './modules/loginPopup/screen/loginPopup';
 import SigninPopup from './modules/signinPopup/screen/signinPopup';
+import Provider from './store/Provider';
+import PersonalInfoPage from './modules/personalInfoPage/screens/PersonalInfoPage';
 
 
 const router = createBrowserRouter([
@@ -30,18 +32,22 @@ const router = createBrowserRouter([
       {
         path: "coffees/:id",
         element: <DetailPage />,
+        errorElement: <ErrorPage />,
       },
       {
         path: "coffees",
-        element: <ErrorPage />,
+        element: <CategoryPage title="CÀ PHÊ" />,
+        errorElement: <ErrorPage />,
       },
 
       {
         path: "teas",
+        element: <CategoryPage title="TRÀ" />,
         errorElement: <ErrorPage />,
       },
       {
         path: "cakes",
+        element: <CategoryPage title="BÁNH NGỌT" />,
         errorElement: <ErrorPage />,
       },
       {
@@ -50,6 +56,7 @@ const router = createBrowserRouter([
       },
       {
         path: "account",
+        element: <PersonalInfoPage />,
         errorElement: <ErrorPage />,
       },
       {
@@ -73,9 +80,13 @@ const router = createBrowserRouter([
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<RouterProvider router={router} />);
+root.render(
+  <Provider>
+    <RouterProvider router={router} />
+  </Provider>
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals 
 
