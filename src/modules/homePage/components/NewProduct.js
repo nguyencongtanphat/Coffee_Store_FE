@@ -21,7 +21,7 @@ const NewProduct = () => {
                 <p className="text-grey100 text-b13 mx-8 lg:mx-0 lg:text-b8 lg:my-8"
                 >Thức uống "đánh thức" năng lượng ngày mới hợp cho những ai mới bước vào thế giới cà phê hoặc ghiền cà phê
                     nhưng muốn khám phá thêm nhiều hương vị mới.</p>
-                <AppButton className="mt-4 mx-7 bg-brown rounded-2xl w-80 lg:w-72 lg:py-4 lg:mx-0 cursor-pointer" text="Thử ngay"/>
+                <AppButton className="mt-4 mx-7 bg-brown rounded-2xl text-white w-80 lg:w-72 lg:py-4 lg:mx-0 cursor-pointer" text="Thử ngay"/>
             </div>
         </div>
     )

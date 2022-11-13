@@ -17,7 +17,7 @@ const BlogSlider = () => {
       bg-[url('/src/assests/images/home/blogs/blogpart_background_portrait.png')]
       lg:bg-[url('/src/assests/images/home/blogs/blogpart_background.png')]
     ">
-      <p className="text-b10 text-beige text-center py-4"
+      <p className="text-b10 text-beige text-center py-4 lg:text-b3"
       >CHUYỆN NHÀ</p>
       <Swiper className="w-64 pb-8 lg:hidden"
         autoplay={{
