@@ -138,7 +138,7 @@ const NavigationBar = (props) => {
             style={{ cursor: "pointer" }}
           />
         </Link>
-        <nav className="hidden lg:flex aligns-center jusfify-center">
+        <nav className="hidden ml-40 lg:flex aligns-center jusfify-center">
           <Link
             className={`no-underline text-b8 p-4 pt-6 hover:text-orange 
                     ${pathname === "/coffees" ? "text-orange" : "text-black"}`}
@@ -168,16 +168,16 @@ const NavigationBar = (props) => {
         </nav>
 
         {/* login signup btn */}
-        <div className={` mt-4 ${!appState.isLogin ? "flex" : "hidden"}`}>
+        <div className={` my-4 mr-8 pt-2.5 max-h-11 ${!appState.isLogin ? "flex" : "hidden"} `}>
           <AppButton
             text="Đăng nhập"
-            className="mr-2 mb-2"
+            className="mb-2 rounded-none text-white rounded-l-full md:py-1.5"
             onClick={togglePopupLogin}
           ></AppButton>
           <AppButton
             onClick={togglePopupSignup}
             text="Đăng kí"
-            className="mr-2 mb-2"
+            className="mb-2 rounded-none bg-white text-orange rounded-r-full md:py-1.5"
           ></AppButton>
         </div>
         {/* user Info show when logined */}

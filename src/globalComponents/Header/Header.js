@@ -1,25 +1,24 @@
-import React,{useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import NavigationBar from './NavigationBar'
 import InfoContactBar from './InfoContactBar'
 const Header = () => {
-    const [visible, setVisible] = useState(true)
-
-    const toggleVisible = () => {
-        const scrolled = document.documentElement.scrollTop;
-        if (scrolled > 150) {
+    const [visible,setVisible] = useState(true)
+    var prevScrollpos = window.pageYOffset;
+    window.onscroll = function () {
+        var currentScrollPos = window.pageYOffset;
+        if (prevScrollpos < currentScrollPos) {
             setVisible(false)
-        }
-        else if (scrolled <= 150) {
-            setVisible(true)
-        }
-    };
-    window.addEventListener('scroll', toggleVisible);
-
+        } 
+        prevScrollpos = currentScrollPos;
+    }
     return (
-        <div className="bg-white sticky top-0 z-10 "
+        <div className={`bg-white sticky z-10 ${visible ? 'top-0' : '-top-10'}`}
+            style={{
+                transition: 'top 0.3s'
+            }}
         >
-            {visible && <InfoContactBar />}
-            <NavigationBar className={`${!visible && 'shadow-md shadow-grey'}`} />
+            <InfoContactBar/>
+            <NavigationBar />
         </div>
     )
 }

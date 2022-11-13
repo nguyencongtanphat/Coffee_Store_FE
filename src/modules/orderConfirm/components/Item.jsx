@@ -5,7 +5,7 @@ export default function Item({item}) {
   return (
     <div className='flex'>
       <div className='flex-auto w-80 md:w-fit flex flex-col items-start'>
-        <label className='text-b15 text-black m-2 md:text-b10 ml-4 md:ml-7 md:text-bold'>{item.Quantity} x Default</label>
+        <label className='text-b15 text-black m-2 md:text-b10 ml-4 md:ml-7 md:text-bold'>{item.Quantity} x {item.Item.Name}</label>
         <p className='text-b15 text-grey200 m-2 ml-8 md:text-b11 md:ml-10 md:my-3'>Size: {item.Size}</p>
       </div>
       <div className='flex-auto '>
