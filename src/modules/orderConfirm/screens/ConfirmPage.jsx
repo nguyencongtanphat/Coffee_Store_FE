@@ -21,7 +21,7 @@ export default function ConfirmPage() {
       <PageTitle title="XÁC NHẬN ĐƠN HÀNG" class="justify-center w-fit" />
       <div class="md:flex md:ml-10 md:m-4 mt-0">
         <div class="md:flex-initial md:w-[35%] md:p-10 md:h-full md:mt-0">
-          <CustomerInfo name={appState.fullName} phone={appState.phoneNumber} address="default"/>
+          <CustomerInfo name={appState.fullName} phone={appState.phoneNumber} address={appState.address[0].Value}/>
         </div>
         <div class="md:flex-initial md:h-full md:w-6/12 md:ml-10 flex flex-col justify-center items-center">
           <Bill class=" md:pl-10 md:ml-20" cat={listProducts}/>
