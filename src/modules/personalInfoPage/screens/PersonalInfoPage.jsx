@@ -16,7 +16,7 @@ export default function PersonalInfoPage() {
                 <PageTitle title="THÔNG TIN CÁ NHÂN"/>
                 <InputField type="text" label="Họ tên" value={appState.fullName} className='mt-5'/>
                 <InputField type="tel" label="Số điện thoại" value={appState.phoneNumber}/>
-                <InputField type="text" label="Địa chỉ" value="default"/>
+                <InputField type="text" label="Địa chỉ" value={appState.address[0].Value}/>
                 <div className='flex flex-col items-center'>
                     <AppButton text="Sửa thông tin" className="w-[60%] mt-4"/>
                     <button className={`flex bg-[#FAFAFA] px-4 justify-center
