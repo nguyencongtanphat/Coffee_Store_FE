@@ -98,7 +98,7 @@ function CartPage() {
       />
     </div>
   ) : (
-    <h1 className="text-center">You need to loggin to see cart</h1>
+    <h1 className="text-center">You need to login to see cart</h1>
   );
 }
 
