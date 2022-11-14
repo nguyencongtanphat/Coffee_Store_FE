@@ -17,7 +17,7 @@ export default function ConfirmPage() {
   console.log("dataInfo", appState);
   
   return (appState.isLogin) ? 
-    ( (location.state!=undefined) ? 
+    ( (location.state!==undefined) ? 
       (
         <div className="flex flex-col align-center">
           <PageTitle title="XÁC NHẬN ĐƠN HÀNG" class="justify-center w-fit" />
