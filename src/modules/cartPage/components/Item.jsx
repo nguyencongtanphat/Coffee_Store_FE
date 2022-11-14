@@ -1,18 +1,20 @@
 import React from "react";
 import { FormatterService } from "../../../service";
+import "./Item.module.css"
 
 function Item(props) {
   const { Price, Quantity, Size, id } = props.itemInfo;
-  const {updateSumBill} = props;
-  
- 
+  const { updateSumBill } = props;
+  const name = props.itemInfo.Item.Name;
+  console.log("item info", props.itemInfo.Item.Name);
+
   let productPrice = Number(Price);
   const toggleSelectItemHandler = (e) => {
     if (e.currentTarget.checked === true) updateSumBill(props.itemInfo, "add");
     else updateSumBill(props.itemInfo, "minus");
   };
   return (
-    <div className="flex items-center justify-around md:justify-start">
+    <div key={id} className="flex items-center justify-around md:justify-start">
       <input
         onClick={toggleSelectItemHandler}
         type="checkbox"
@@ -30,15 +32,15 @@ function Item(props) {
                         md:flex-row md:items-center md:justify-around md:text-b7"
       >
         <div className="flex flex-col space-y-1 md:space-y-3">
-          <p className="text-orange">Default</p>
-          <p>Size: {Size}, Topping: Sốt Caramel</p>
+          <p className="text-orange">{name}</p>
+          <p>Size: {Size}</p>
         </div>
         <div className="flex flex-col space-y-1 md:space-y-3">
           <p>Số lượng: {Quantity}</p>
           <p>
-            Thành tiền:
+            Thành tiền:   
             <span className="text-orange">
-              {FormatterService.format(productPrice)}
+               {FormatterService.format(productPrice)}
             </span>
           </p>
         </div>
