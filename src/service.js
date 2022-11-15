@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const HttpService = {
-  appUrl: "https://voi-coffee.onrender.com",
+  appUrl: "https://voicoffee.onrender.com",
   // appUrl: "http://localhost:3001",
 };
 

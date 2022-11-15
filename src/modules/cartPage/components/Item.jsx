@@ -5,9 +5,10 @@ import "./Item.module.css"
 function Item(props) {
   const { Price, Quantity, Size, id } = props.itemInfo;
   const { updateSumBill } = props;
-  const name = props.itemInfo.Item.Name;
-  console.log("item info", props.itemInfo.Item.Name);
+  const {Image, Name} = props.itemInfo.Item;
+  
 
+  console.log("img:", Image)
   let productPrice = Number(Price);
   const toggleSelectItemHandler = (e) => {
     if (e.currentTarget.checked === true) updateSumBill(props.itemInfo, "add");
@@ -23,7 +24,7 @@ function Item(props) {
         className="w-7"
       />
       <img
-        src="https://product.hstatic.net/1000075078/product/1639377770_cfsua-nong_5029ddcaf58840199c80c173c40bfc4c_large.jpg"
+        src={Image}
         alt="coffee order"
         className="w-20 h-20 mr-3 rounded-2xl md:mr-6 md:w-32 md:h-32  "
       />
@@ -32,7 +33,7 @@ function Item(props) {
                         md:flex-row md:items-center md:justify-start md:text-b7"
       >
         <div className="flex flex-1 flex-col space-y-1 md:space-y-3">
-          <p className="text-orange">{name}</p>
+          <p className="text-orange">{Name}</p>
           <p>Size: {Size}</p>
         </div>
         <div className="flex  flex-col space-y-1 sm:w-[150px] md:space-y-3 md:w-[200px]">
