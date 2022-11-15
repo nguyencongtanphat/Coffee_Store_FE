@@ -11,6 +11,7 @@ import { createAxiosInstance, FormatterService } from "../../../service";
 import { UserContext } from "../../../store/Context";
 import { fetchCartFromServer } from "../../../store/Actions";
 import { useNavigate } from "react-router-dom";
+import NotAuthen from "../../../globalComponents/NotAuthen";
 
 function CartPage() {
   const navigate = useNavigate();
@@ -107,12 +108,7 @@ function CartPage() {
       />
     </div>
   ) : (
-    <>
-      <h2 className="text-center text-h2 my-3 text-brown">
-        Bạn cần đăng nhập để truy cập trang này!!!
-      </h2>
-      <img src={notAụthenImg} className="w-3/4 mx-auto block" alt=""></img>
-    </>
+    <NotAuthen/>
   );
 }
 
