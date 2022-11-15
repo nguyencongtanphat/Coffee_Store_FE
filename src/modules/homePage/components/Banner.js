@@ -5,14 +5,14 @@ import "swiper/css/autoplay"
 import "swiper/css/pagination";
 import "swiper/css";
 import './slider_style.css';
-import banner1 from "d:/COFFEE/Coffee_Store_FE/src/assests/images/home/banner/banner1.png";
-import banner2 from "d:/COFFEE/Coffee_Store_FE/src/assests/images/home/banner/banner2.png";
-import banner3 from "d:/COFFEE/Coffee_Store_FE/src/assests/images/home/banner/banner3.png";
-import banner4 from "d:/COFFEE/Coffee_Store_FE/src/assests/images/home/banner/banner4.png";
-import banner1_mb from "d:/COFFEE/Coffee_Store_FE/src/assests/images/home/banner/banner1_mb.png";
-import banner2_mb from "d:/COFFEE/Coffee_Store_FE/src/assests/images/home/banner/banner2_mb.png";
-import banner3_mb from "d:/COFFEE/Coffee_Store_FE/src/assests/images/home/banner/banner3_mb.png";
-import banner4_mb from "d:/COFFEE/Coffee_Store_FE/src/assests/images/home/banner/banner4_mb.png";
+import banner1 from "../../../assests/images/home/banner/banner1.png";
+import banner2 from "../../../assests/images/home/banner/banner2.png";
+import banner3 from "../../../assests/images/home/banner/banner3.png";
+import banner4 from "../../../assests/images/home/banner/banner4.png";
+import banner1_mb from "../../../assests/images/home/banner/banner1_mb.png";
+import banner2_mb from "../../../assests/images/home/banner/banner2_mb.png";
+import banner3_mb from "../../../assests/images/home/banner/banner3_mb.png";
+import banner4_mb from "../../../assests/images/home/banner/banner4_mb.png";
 
 const Banner = () => {
     return (
