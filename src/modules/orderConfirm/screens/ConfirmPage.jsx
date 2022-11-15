@@ -9,6 +9,7 @@ import { UserContext } from "../../../store/Context";
 import left from "../../../assests/images/orderConfirm/left.png";
 import right from "../../../assests/images/orderConfirm/right.png";
 import NotAuthen from "../../../globalComponents/NotAuthen";
+import havetoadd from "../../../assests/images/orderConfirm/havetoadd.png"
 
 export default function ConfirmPage() {
   const location = useLocation();
@@ -47,8 +48,13 @@ export default function ConfirmPage() {
           />
         </div>
       )
-      : (
-        <h1 className="text-center">Bạn cần phải chọn ít nhất một sản phẩm trong Giỏ hàng để Xác nhận đơn hàng!</h1>
+      : ( <div className="flex items-center flex-col">
+          <img src={havetoadd} className="w-[40%] mx-auto block" alt=""></img>
+          <h2 className="text-center text-h2 mt-3 mb-3 text-orange">
+            Bạn cần chọn ít nhất một sản phẩm trong Giỏ hàng để Xác nhận đơn hàng!!!
+          </h2>
+          <AppButton text="Giỏ hàng" className='bg-orange mt-3 mb-10'/>
+      </div>
       )
     )
     : ( 
