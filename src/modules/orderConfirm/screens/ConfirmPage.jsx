@@ -8,6 +8,7 @@ import { useContext } from "react";
 import { UserContext } from "../../../store/Context";
 import left from "../../../assests/images/orderConfirm/left.png";
 import right from "../../../assests/images/orderConfirm/right.png";
+import NotAuthen from "../../../globalComponents/NotAuthen";
 
 export default function ConfirmPage() {
   const location = useLocation();
@@ -51,6 +52,6 @@ export default function ConfirmPage() {
       )
     )
     : ( 
-      <h1 className="text-center">Bạn cần phải Đăng nhập để Xác nhận đơn hàng!</h1>
+      <NotAuthen/>
     );
 }
