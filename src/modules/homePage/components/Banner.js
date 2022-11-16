@@ -13,6 +13,7 @@ import banner1_mb from "../../../assests/images/home/banner/banner1_mb.png";
 import banner2_mb from "../../../assests/images/home/banner/banner2_mb.png";
 import banner3_mb from "../../../assests/images/home/banner/banner3_mb.png";
 import banner4_mb from "../../../assests/images/home/banner/banner4_mb.png";
+import "./style.css"
 
 const Banner = () => {
     return (
@@ -22,7 +23,7 @@ const Banner = () => {
                 autoplay={{
                     delay: 3000,
                 }}
-                modules={[Autoplay, Pagination]}
+                modules={[Autoplay, Pagination]} 
             >
                 <SwiperSlide className="md:hidden">
                 <img
