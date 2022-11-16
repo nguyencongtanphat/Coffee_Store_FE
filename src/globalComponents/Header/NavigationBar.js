@@ -15,18 +15,22 @@ import { UserContext } from "../../store/Context";
 import LoginPopup from "../../modules/loginPopup/screen/loginPopup";
 import SigninPopup from "../../modules/signinPopup/screen/signinPopup";
 import AppButton from "../AppButton";
-
+import MenuDropdown from './MenuDropdown'
 
 
 const NavigationBar = (props) => {
   const [appState, dispatch] = useContext(UserContext);
-
+  const [isDropdownShown, setDropdownShown] = useState(false)
   const location = useLocation();
   const [isOpenDrawer, setOpenDrawer] = useState(false);
   const [pathname, setPathname] = useState("/");
   const toggleDrawer = (open) => (event) => {
     setOpenDrawer(open);
   };
+
+  function toggleDropdownMenu() {
+    setDropdownShown(!isDropdownShown)
+  }
 
   useEffect(() => {
     setPathname(location.pathname);
@@ -86,6 +90,24 @@ const NavigationBar = (props) => {
       >
         Chuyện nhà
       </Link>
+      <div className={`my-4 mx-4 pt-2.5 max-h-11 sm:hidden ${!appState.isLogin ? "flex" : "hidden"} `}>
+        <AppButton
+          text="Đăng nhập"
+          className="mb-2 rounded-none text-white rounded-l-full py-0.5 md:py-1.5"
+          onClick={() => {
+            toggleDrawer(false)
+            togglePopupLogin()
+          }}
+        ></AppButton>
+        <AppButton
+          onClick={() => {
+            toggleDrawer(false)
+            togglePopupSignup()
+          }} 
+          text="Đăng kí"
+          className="mb-2 rounded-none bg-grey text-orange py-0.5 rounded-r-full md:py-1.5"
+        ></AppButton>
+      </div>
     </div>
   );
 
@@ -133,8 +155,7 @@ const NavigationBar = (props) => {
           <img
             src={logo}
             alt="logo"
-            className="ml-6 w-32 mt-1"
-            onClick={() => {}}
+            className="mx-0 w-32 mt-1 mr-4 sm:mx-28 md:ml-6 md:mr-0"
             style={{ cursor: "pointer" }}
           />
         </Link>
@@ -168,26 +189,37 @@ const NavigationBar = (props) => {
         </nav>
 
         {/* login signup btn */}
-        <div className={` my-4 mr-8 pt-2.5 max-h-11 ${!appState.isLogin ? "flex" : "hidden"} `}>
+        <div className={` my-4 mr-8 pt-2.5 max-h-11 hidden ${!appState.isLogin ? "sm:flex" : "hidden"} `}>
           <AppButton
             text="Đăng nhập"
-            className="mb-2 rounded-none text-white rounded-l-full md:py-1.5"
+            className="mb-2 rounded-none text-white rounded-l-full py-0.5 md:py-1.5"
             onClick={togglePopupLogin}
           ></AppButton>
           <AppButton
             onClick={togglePopupSignup}
             text="Đăng kí"
-            className="mb-2 rounded-none bg-white text-orange rounded-r-full md:py-1.5"
+            className="mb-2 rounded-none bg-white text-orange py-0.5 rounded-r-full md:py-1.5"
           ></AppButton>
         </div>
         {/* user Info show when logined */}
-        <div className={` mt-4 ${appState.isLogin ? "flex" : "hidden"}`}>
-          <Link className="mr-2" to="account">
+        <div className={` my-4 ${appState.isLogin ? "flex" : "hidden"}`}>
+          <Link className="mr-2 no-underline" onClick={toggleDropdownMenu}>
+            <div className="bg-orange hidden md:flex rounded-full py-1">
+              <FontAwesomeIcon
+                icon={faUser}
+                size="lg"
+                border
+                className="text-orange bg-white rounded-full ml-2"
+              />
+              <p className="my-1 text-b12 text-white mx-2 
+                      md:text-b10 lg:text-b9"
+              >{appState.fullName}</p>
+            </div>
             <FontAwesomeIcon
               icon={faUser}
               size="xl"
               border
-              className="text-grey100 border-grey100 rounded-full"
+              className="text-orange border-none rounded-full ml-2 md:hidden"
             />
           </Link>
           <Link className="mr-2" to="cart">
@@ -195,10 +227,11 @@ const NavigationBar = (props) => {
               icon={faBagShopping}
               size="xl"
               border
-              className="text-grey100 border-grey100 rounded-full"
+              className="text-orange border-none rounded-full md:my-1"
             />
           </Link>
         </div>
+        <MenuDropdown open={isDropdownShown} onClose={toggleDropdownMenu} />
       </div>
     </>
   );
