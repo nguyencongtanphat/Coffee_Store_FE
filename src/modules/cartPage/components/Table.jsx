@@ -80,11 +80,12 @@ function Table({ updateSumBill }) {
   //   },
   // ];
   return (
-    <div className="w-4/5 md:w-3/5">
+    <div className="w-[90%] lg:w-[60%]">
       <ul className="list-none p-0 max-h-[70vh] overflow-auto">
         {cartState.map((item) => (
           <li className="my-3">
-            <Item itemInfo={item} updateSumBill={updateSumBill} />
+            <Item key={item.id} itemInfo={item} updateSumBill={updateSumBill} />
+            <hr className="mt-3"></hr>
           </li>
         ))}
       </ul>

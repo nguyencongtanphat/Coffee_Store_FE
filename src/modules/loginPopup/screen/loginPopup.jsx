@@ -37,7 +37,7 @@ function LoginPopup(props) {
     
     await localStorage.setItem("accessToken", JSON.stringify(accessToken));
     //update user state for app
-    dispatch(setStatusLogin(userData.userInfo.user));
+    dispatch(setStatusLogin(userData.userInfo));
   };
 
   const submitHandler = async () => {
@@ -53,6 +53,8 @@ function LoginPopup(props) {
          "/user/login",
           userInfo
         );
+
+        
 
         return successLoginHandler(response.data);
       } else {
@@ -71,10 +73,10 @@ function LoginPopup(props) {
   useEffect(() => {
     const loginHandler = async () => {
       const response = await createAxiosInstance().get("/user/login");
-      dispatch(setStatusLogin(response.data.user));
+      dispatch(setStatusLogin(response.data));
     };
     loginHandler();
-  }, []);
+  }, [dispatch]);
   return (
     <Modal>
       <div

@@ -6,6 +6,7 @@ const initAppState = {
   phoneNumber: "",
   userName: "",
   isLogin: false,
+  address:[],
 };
 
 const initCartState = [];
@@ -13,7 +14,8 @@ const initCartState = [];
 const AppReducer = (currentState, action) => {
   switch (action.type) {
     case SET_STATE_LOGIN: {
-      const userinfo = action.payload;
+      const userinfo = action.payload.user;
+      const userAddress = action.payload.address;
       return {
         ...currentState,
         id: userinfo.id,
@@ -21,6 +23,7 @@ const AppReducer = (currentState, action) => {
         phoneNumber: userinfo.PhoneNumber,
         userName: userinfo.Username,
         isLogin: true,
+        address: [...userAddress],
       };
     }
 

@@ -10,7 +10,10 @@ html{
 h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
 }
-
+::selection{
+  background:rgb(138, 91, 5);
+  color: white;
+}
 @font-face{
   font-family: "Lexend";
   src: local("Lexend"), url("./assests/fonts/Lexend/Lexend-VariableFont_wght.ttf") format("truetype");

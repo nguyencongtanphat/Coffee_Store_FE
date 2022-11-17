@@ -25,7 +25,7 @@ const ScrollTopButton = () => {
   window.addEventListener('scroll', toggleVisible);
 
   return (
-    <div className={`fixed ${visible ? 'inline' : 'hidden'} right-24 top-3/4 bg-orange rounded-full w-14 h-14 cursor-pointer`}
+    <div className={`fixed ${visible ? 'inline' : 'hidden'} z-20 right-24 top-3/4 bg-orange rounded-full w-14 h-14 cursor-pointer`}
       onClick={scrollToTop}
     >
       <FontAwesomeIcon icon={faArrowUp} size="2x" color="white" className="py-3 px-4"/>

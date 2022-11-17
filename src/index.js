@@ -16,6 +16,7 @@ import LoginPopup from './modules/loginPopup/screen/loginPopup';
 import SigninPopup from './modules/signinPopup/screen/signinPopup';
 import Provider from './store/Provider';
 import PersonalInfoPage from './modules/personalInfoPage/screens/PersonalInfoPage';
+import BlogPage from './modules/blogPage/screens/BlogPage';
 
 
 const router = createBrowserRouter([
@@ -30,28 +31,29 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />,
       },
       {
-        path: "coffees/:id",
+        path: "products/:id",
         element: <DetailPage />,
         errorElement: <ErrorPage />,
       },
       {
         path: "coffees",
-        element: <CategoryPage title="CÀ PHÊ" />,
+        element: <CategoryPage title="CÀ PHÊ" type="3"/>,
         errorElement: <ErrorPage />,
       },
 
       {
         path: "teas",
-        element: <CategoryPage title="TRÀ" />,
+        element: <CategoryPage title="TRÀ" type="1"/>,
         errorElement: <ErrorPage />,
       },
       {
         path: "cakes",
-        element: <CategoryPage title="BÁNH NGỌT" />,
+        element: <CategoryPage title="BÁNH NGỌT" type="2"/>,
         errorElement: <ErrorPage />,
       },
       {
         path: "blogs",
+        element: <BlogPage title="CHUYỆN NHÀ" />,
         errorElement: <ErrorPage />,
       },
       {

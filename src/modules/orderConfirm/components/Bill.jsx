@@ -6,7 +6,7 @@ export default function Bill({cat}) {
   let total=0, ship=15000;
   cat.forEach(item => {total+=item.Price*item.Quantity})
   return (
-    <div className=" bg-white rounded-3xl p-5 m-4 md:p-8 pb-10 border-spacing-2 border-grey300 border-solid md:rounded-[25]">
+    <div className=" bg-[#FAFAFA] rounded-3xl p-5 m-4 md:p-8 pb-10 border-spacing-2 border-grey300 border-solid md:rounded-[25]">
       <h1 className="text-orange text-b10 align-middle text-center md:text-b5 md:mb-10">
         Hoá đơn
       </h1>
