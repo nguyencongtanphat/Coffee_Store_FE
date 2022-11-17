@@ -1,4 +1,5 @@
-import { ADD_NEW_CART_PRODUCT, FETCH_CART_FROM_SERVER, SET_STATE_LOGIN } from "./Constant";
+import { createAxiosInstance } from "../service";
+import { ADD_NEW_CART_PRODUCT, DELETE_PRODUCT_FROM_CART, FETCH_CART_FROM_SERVER, SET_STATE_LOGIN } from "./Constant";
 
 const initAppState = {
   id: "",
@@ -32,7 +33,7 @@ const AppReducer = (currentState, action) => {
   }
 };
 
-const CartReducer = (currentState, action) =>{
+const CartReducer =  (currentState, action) =>{
   switch (action.type) {
     case ADD_NEW_CART_PRODUCT:
       return [
@@ -43,6 +44,20 @@ const CartReducer = (currentState, action) =>{
       return [
         ...action.payload,
       ]
+      case DELETE_PRODUCT_FROM_CART:
+      {
+       
+        const deletedId = action.payload.map(item => item.id);
+        console.log("deletedId:", deletedId);
+        
+        //updateState cart global state
+        const cartAfterDelete = currentState.filter(
+          (item) => deletedId.indexOf(item.id) === -1
+        );
+        console.log("cart after delete:", cartAfterDelete)
+        return cartAfterDelete;
+
+      }
     default:
       throw new Error("this Action is not supported");
 
