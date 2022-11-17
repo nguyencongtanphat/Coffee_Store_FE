@@ -4,35 +4,21 @@ import PageTitle from "../../../globalComponents/PageTitle";
 import Table from "../components/Table";
 import leafBgR from "../../../assests/images/global/leaf-bg-right.png";
 import leafBgL from "../../../assests/images/global/leaf-bg-left.png";
-import notAụthenImg from "../../../assests/images/global/NotAuthen.png";
 import { useContext } from "react";
 import { CartContext } from "../../../store/Context";
-import { createAxiosInstance, FormatterService } from "../../../service";
+import {  FormatterService } from "../../../service";
 import { UserContext } from "../../../store/Context";
-import { fetchCartFromServer } from "../../../store/Actions";
 import { useNavigate } from "react-router-dom";
 import NotAuthen from "../../../globalComponents/NotAuthen";
 
 function CartPage() {
   const navigate = useNavigate();
-  const [cartState, cartDispatch] = useContext(CartContext);
+  const [cartState, ] = useContext(CartContext);
 
-  const [appState, dispatch] = useContext(UserContext);
+  const [appState, ] = useContext(UserContext);
   const [sumBill, setSumBill] = useState(0);
   const [listCartConfirm, setListCartConfirm] = useState([]);
 
-  useEffect(() => {
-    async function fetchData() {
-      console.log("app call cart ");
-      if (appState.isLogin) {
-        const response = await createAxiosInstance().get(`cart/${appState.id}`);
-        console.log("cart response:", response);
-        const listCart = response.data.data;
-        cartDispatch(fetchCartFromServer(listCart));
-      }
-    }
-    fetchData();
-  }, [cartDispatch, appState.isLogin, appState.id]);
 
   const updateSumBill = (product, type) => {
     //add product to list confirm
