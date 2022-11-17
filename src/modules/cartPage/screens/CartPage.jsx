@@ -22,6 +22,9 @@ function CartPage() {
   const [listCartConfirm, setListCartConfirm] = useState([]);
 
   useEffect(() => {
+    console.log("test cart,", cartState)
+  }, [cartState]);
+  useEffect(() => {
     async function fetchData() {
       console.log("app call cart ");
       if (appState.isLogin) {

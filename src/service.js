@@ -2,7 +2,7 @@ import axios from "axios";
 
 const HttpService = {
   appUrl: "https://coffeestorebe-production.up.railway.app",
-  // appUrl: "http://localhost:3001",
+  //appUrl: "http://localhost:3001",
 };
 
 export const createAxiosInstance = () => {
