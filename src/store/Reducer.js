@@ -1,3 +1,4 @@
+import { createAxiosInstance } from "../service";
 import { ADD_NEW_CART_PRODUCT, DELETE_PRODUCT_FROM_CART, FETCH_CART_FROM_SERVER, SET_STATE_LOGIN } from "./Constant";
 
 const initAppState = {
@@ -32,7 +33,7 @@ const AppReducer = (currentState, action) => {
   }
 };
 
-const CartReducer = (currentState, action) =>{
+const CartReducer =  (currentState, action) =>{
   switch (action.type) {
     case ADD_NEW_CART_PRODUCT:
       return [
@@ -48,9 +49,8 @@ const CartReducer = (currentState, action) =>{
        
         const deletedId = action.payload.map(item => item.id);
         console.log("deletedId:", deletedId);
-        console.log("cart before delete:", currentState);
-
-        //updateState call
+        
+        //updateState cart global state
         const cartAfterDelete = currentState.filter(
           (item) => deletedId.indexOf(item.id) === -1
         );

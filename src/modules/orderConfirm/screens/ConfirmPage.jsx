@@ -3,7 +3,7 @@ import AppButton from "../../../globalComponents/AppButton";
 import Bill from "../components/Bill";
 import CustomerInfo from "../components/CustomerInfo";
 import PageTitle from "../../../globalComponents/PageTitle";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { CartContext, UserContext } from "../../../store/Context";
 import left from "../../../assests/images/orderConfirm/left.png";
@@ -15,14 +15,15 @@ import { createAxiosInstance } from "../../../service";
 import { deleteProductCart } from "../../../store/Actions";
 
 export default function ConfirmPage() {
+  const navigate = useNavigate();
   const location = useLocation();
-  const [listProducts, setListProducts] = useState(location.state);
+  const [listProducts, ] = useState(location.state);
   console.log("uselocation data", location.state);
-  const [appState, dispatch] = useContext(UserContext);
+  const [appState, ] = useContext(UserContext);
   console.log("dataInfo", appState);
   const [totalAmount, setTotalAmount] = useState(0);
   const ship = 15000;
-  const [cartState, cartDispatch] = useContext(CartContext);
+  const [, cartDispatch] = useContext(CartContext);
   useEffect(() => {
     let sum = 0;
     listProducts.forEach((item) => {
@@ -31,6 +32,11 @@ export default function ConfirmPage() {
     setTotalAmount(sum + ship);
   }, [listProducts]);
 
+const orderSuccessHandler = ()=>{
+  alert("Bạn đã đặt hàng thành công!!!");
+  navigate("/");
+
+}
 
   const orderHandler = async () => {
     try {
@@ -44,15 +50,25 @@ export default function ConfirmPage() {
       };
 
       console.log("thong tin trc khi gui:", orderInfo);
-
+      //post new order to db
       const reponse = await createAxiosInstance().post(
         `order/create`,
         orderInfo
       );
       console.log("thong tin don hang sau khi gui:", reponse);
+      //delete product from cart db 
+      const listIdDeleted = listProducts.map(item => item.id)
+      const response = await createAxiosInstance().delete("cart", {
+        data: {
+          IDs: listIdDeleted,
+        },
+      });
 
+      console.log("response delete cart:", response);
       //update cart state
-     cartDispatch(deleteProductCart(listProducts));
+      cartDispatch(deleteProductCart(listProducts));
+
+      orderSuccessHandler();
     } catch (e) {
       alert(
         "Đã có lỗi xảy ra trong quá trình đặt xin hay thử lại trong giây lát " +
@@ -60,6 +76,7 @@ export default function ConfirmPage() {
       );
     }
   };
+
   return appState.isLogin ? (
     location.state != undefined ? (
       <div className="flex flex-col align-center">
