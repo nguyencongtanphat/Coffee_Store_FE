@@ -5,23 +5,24 @@ import CustomerInfo from "../components/CustomerInfo";
 import PageTitle from "../../../globalComponents/PageTitle";
 import { useLocation } from "react-router-dom";
 import { useContext } from "react";
-import { UserContext } from "../../../store/Context";
+import { CartContext, UserContext } from "../../../store/Context";
 import left from "../../../assests/images/orderConfirm/left.png";
 import right from "../../../assests/images/orderConfirm/right.png";
 import NotAuthen from "../../../globalComponents/NotAuthen";
 import havetoadd from "../../../assests/images/orderConfirm/havetoadd.png"
 import { useEffect } from "react";
 import { createAxiosInstance } from "../../../service";
+import { deleteProductCart } from "../../../store/Actions";
 
 export default function ConfirmPage() {
   const location = useLocation();
   const [listProducts, setListProducts] = useState(location.state);
-  console.log("dataOrder", location.state);
+  console.log("uselocation data", location.state);
   const [appState, dispatch] = useContext(UserContext);
   console.log("dataInfo", appState);
   const [totalAmount, setTotalAmount] = useState(0);
   const ship = 15000;
-
+  const [cartState, cartDispatch] = useContext(CartContext);
   useEffect(() => {
     let sum = 0;
     listProducts.forEach((item) => {
@@ -51,7 +52,7 @@ export default function ConfirmPage() {
       console.log("thong tin don hang sau khi gui:", reponse);
 
       //update cart state
-     //cartDispatch(deleteProductCart(listProducts));
+     cartDispatch(deleteProductCart(listProducts));
     } catch (e) {
       alert(
         "Đã có lỗi xảy ra trong quá trình đặt xin hay thử lại trong giây lát " +

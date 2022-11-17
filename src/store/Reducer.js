@@ -1,4 +1,4 @@
-import { ADD_NEW_CART_PRODUCT, FETCH_CART_FROM_SERVER, SET_STATE_LOGIN } from "./Constant";
+import { ADD_NEW_CART_PRODUCT, DELETE_PRODUCT_FROM_CART, FETCH_CART_FROM_SERVER, SET_STATE_LOGIN } from "./Constant";
 
 const initAppState = {
   id: "",
@@ -43,6 +43,21 @@ const CartReducer = (currentState, action) =>{
       return [
         ...action.payload,
       ]
+      case DELETE_PRODUCT_FROM_CART:
+      {
+       
+        const deletedId = action.payload.map(item => item.id);
+        console.log("deletedId:", deletedId);
+        console.log("cart before delete:", currentState);
+
+        //updateState call
+        const cartAfterDelete = currentState.filter(
+          (item) => deletedId.indexOf(item.id) === -1
+        );
+        console.log("cart after delete:", cartAfterDelete)
+        return cartAfterDelete;
+
+      }
     default:
       throw new Error("this Action is not supported");
 
