@@ -5,32 +5,37 @@ import PageTitle from "../../../globalComponents/PageTitle";
 import leafBgR from "../../../assests/images/global/leaf-bg-right.png";
 import leafBgL from "../../../assests/images/global/leaf-bg-left.png";
 import chitietCoffee from "../../../assests/images/chitietPage/chitietCoffee.png";
-import HttpService from "../../../service";
+import HttpService, { createAxiosInstance } from "../../../service";
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import { FormatterService } from "../../../service";
+import { useContext } from "react";
+import { CartContext, UserContext } from "../../../store/Context";
+import { addNewProductCart, fetchCartFromServer } from "../../../store/Actions";
 
 function DetailPage() {
   const [dtInfo, setDtInfo] = useState({});
-  const [size, setSize] = useState("S");
+  const [size, setSize] = useState("Small");
   const [price, setPrice] = useState(1);
-  const [number, setNumber] = useState(2);
+  const [number, setNumber] = useState(1);
+  const [cartState, cartDispatch] = useContext(CartContext);
+  const [appState, dispatch] = useContext(UserContext);
 
   //fetchData
   useEffect(() => {
     async function fetchData() {
-      const response = await axios.get(HttpService.appUrl + "/menu/products/1");
+      const response = await axios.get(HttpService.appUrl + "/menu/products/3");
       setDtInfo(response.data.data);
-     
+      setPrice(dtInfo.SPrice);
     }
     fetchData();
   }, []);
 
   //update price
   useEffect(() => {
-    if (size === "S") setPrice(() => dtInfo.SPrice);
-    else if (size === "M") setPrice(() => dtInfo.MPrice);
+    if (size === "Small") setPrice(() => dtInfo.SPrice);
+    else if (size === "Medium") setPrice(() => dtInfo.MPrice);
     else setPrice(() => dtInfo.LPrice);
   }, [dtInfo.MPrice, dtInfo.SPrice, dtInfo.LPrice, size]);
 
@@ -42,11 +47,36 @@ function DetailPage() {
     if (type === "add") {
       setNumber((preNum) => ++preNum);
     } else {
-      if(number !== 1)
-        setNumber((preNum) => --preNum);
-
+      if (number !== 1) setNumber((preNum) => --preNum);
     }
-    
+  };
+
+  const addProductToCartHandler = async () => {
+    try {
+      console.log("dasd")
+      if (appState.isLogin) {
+        const item = {
+          ItemID: dtInfo.id,
+          Price: price,
+          Size: size,
+          CustomerID: appState.id,
+          Quantity: number,
+        };
+        console.log("item: ", item);
+        cartDispatch(addNewProductCart(item));
+        //update cart
+        const response = await createAxiosInstance().get(`cart/${appState.id}`);
+        console.log("cart response:", response);
+        const listCart = response.data.data;
+        cartDispatch(fetchCartFromServer(listCart));
+        alert("Bạn đã thêm vào dỏ hàng thành công")
+      }else{
+        alert("Bạn cần đăng nhập để có thể thực hiện thao tác này");
+
+      }
+    } catch (e) {
+      alert("Đã có lỗi xảy ra xin thử lại sau!! ", e.message);
+    }
   };
   return (
     <div className="w-full relative">
@@ -82,21 +112,21 @@ function DetailPage() {
               <p className="text-b11 md:text-b10 lg:text-b9">Size:</p>
               <AppButton2
                 className={`ml-[10p`}
-                isActive={size === "S"}
+                isActive={size === "Small"}
                 text="S"
-                onClick={changeSize.bind(null, "S")}
+                onClick={changeSize.bind(null, "Small")}
               />
               <AppButton2
                 className="ml-[10px]"
-                isActive={size === "M"}
+                isActive={size === "Medium"}
                 text="M"
-                onClick={changeSize.bind(null, "M")}
+                onClick={changeSize.bind(null, "Medium")}
               />
               <AppButton2
                 className="ml-[10px]"
-                isActive={size === "L"}
+                isActive={size === "Large"}
                 text="L"
-                onClick={changeSize.bind(null, "L")}
+                onClick={changeSize.bind(null, "Large")}
               />
             </div>
             <div>
@@ -133,6 +163,7 @@ function DetailPage() {
               <AppButton
                 className="mt-[15px] items-center w-[300px]"
                 text="Thêm vào giỏ hàng"
+                onClick={addProductToCartHandler}
               />
               <AppButton
                 className="md:ml-[10px] mt-[15px] items-center w-[300px]"

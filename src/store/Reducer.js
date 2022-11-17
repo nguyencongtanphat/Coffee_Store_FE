@@ -45,17 +45,31 @@ const AppReducer = (currentState, action) => {
 const CartReducer =  (currentState, action) =>{
   switch (action.type) {
     case ADD_NEW_CART_PRODUCT:
-      return [
-        action.payload,
-        ...currentState
-      ]
+      {
+        const product = action.payload;
+        console.log("new product: ", action.payload);
+        //post new product to cart
+         createAxiosInstance()
+           .post("cart", {
+             ...product,
+           })
+           .then(function (response) {
+             console.log("response add new product: ", response);
+           })
+           .catch(function (error) {
+             console.log(error);
+           });
+           //get product for cart
+           
+         return;
+      }
+     
     case FETCH_CART_FROM_SERVER:
       return [
         ...action.payload,
       ]
-      case DELETE_PRODUCT_FROM_CART:
-      {
-       
+    case DELETE_PRODUCT_FROM_CART:
+      {   
         const deletedId = action.payload.map(item => item.id);
         console.log("deletedId:", deletedId);
         
