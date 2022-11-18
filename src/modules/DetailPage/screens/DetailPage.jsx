@@ -25,7 +25,7 @@ function DetailPage() {
   //fetchData
   useEffect(() => {
     async function fetchData() {
-      const response = await axios.get(HttpService.appUrl + "/menu/products/3");
+      const response = await axios.get(HttpService.appUrl + "/menu/products/2");
       setDtInfo(response.data.data);
       setPrice(dtInfo.SPrice);
     }

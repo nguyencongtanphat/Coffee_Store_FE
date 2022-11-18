@@ -47,19 +47,30 @@ const CartReducer =  (currentState, action) =>{
     case ADD_NEW_CART_PRODUCT:
       {
         const product = action.payload;
-        console.log("new product: ", action.payload);
+        console.log("new product:", product);
         //post new product to cart
          createAxiosInstance()
            .post("cart", {
              ...product,
            })
            .then(function (response) {
-             console.log("response add new product: ", response);
+            
+             const newItem = response.data.data;
+              console.log("new product: ", newItem);
+              let index = currentState.findIndex(e => e.id === newItem.id);
+               
+              if(index!==-1){
+                currentState[index]=newItem;
+                return currentState;
+              }else{
+                return [newItem, ...currentState];
+              }
            })
            .catch(function (error) {
              console.log(error);
            });
-           //get product for cart
+           //update state
+
            
          return;
       }
