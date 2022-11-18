@@ -2,28 +2,46 @@ import { faArrowDownWideShort, faArrowUpShortWide, faSortDown, faSortUp } from '
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
 
-const SortDropdown = () => {
+const SortDropdown = (props) => {
 
     const [isDropdownOpen, setDropdownOpen] = useState(false)
+    const [isIconUp, setIsIconUp] = useState(false)
     const [selectedValue, setSelectedValue] = useState(<div className="flex" id="selected">
         <FontAwesomeIcon icon={faArrowDownWideShort} size="xl" color="orange" className="mt-3" />
         <p className="ml-2 mt-4 text-grey200"
         >Giá giảm dần</p>
     </div>)
-    const [choosenElement,setChoosenElement] = useState()
+    const [choosenElement, setChoosenElement] = useState()
+
+    function PriceDown(a, b) {
+        return b.SPrice - a.SPrice
+    }
+
+    function PriceUp(a, b) {
+        return a.SPrice - b.SPrice
+    }
 
     return (
-        <div className={`flex flex-col bg-grey ${isDropdownOpen ? 'rounded-t-xl' : 'rounded-xl'} w-72 h-12 cursor-pointer`} >
-            <div className="flex pl-3" onClick={() => {
+        <div className={`flex flex-col bg-grey rounded-xl h-12 cursor-pointer mr-3
+        ${isDropdownOpen ? 'lg:rounded-t-xl' : 'lg:rounded-xl'} md:w-72 `} >
+            <div className="hidden md:flex px-3" onClick={() => {
                 setDropdownOpen(!isDropdownOpen)
                 setChoosenElement(document.getElementById("selected"))
             }}>
-                    {selectedValue}
+                {selectedValue}
                 {
                     isDropdownOpen
-                        ? <FontAwesomeIcon icon={faSortUp} size="2x" color="orange" className="ml-24 mt-4" />
-                        : <FontAwesomeIcon icon={faSortDown} size="2x" color="orange" className="ml-24 mt-1" />
+                        ? <FontAwesomeIcon icon={faSortUp} size="2x" color="orange" className="hidden lg:block ml-24 mt-4" />
+                        : <FontAwesomeIcon icon={faSortDown} size="2x" color="orange" className="hidden lg:block ml-24 mt-1" />
                 }
+            </div>
+            <div className="flex md:hidden px-3" onClick={() => {
+                setIsIconUp(!isIconUp)
+                props.handleFilter(props.data.reverse())
+            }}>
+                <p className="mx-1 mt-4 text-grey200"
+                >Giá</p>
+                <FontAwesomeIcon icon={isIconUp ? faArrowUpShortWide : faArrowDownWideShort} size="xl" color="orange" className="mt-3" />
             </div>
             {
                 isDropdownOpen && (
@@ -31,6 +49,7 @@ const SortDropdown = () => {
                         <div className="flex pl-3 hover:bg-grey300" onClick={(e) => {
                             choosenElement.innerHTML = e.currentTarget.innerHTML
                             setDropdownOpen(!isDropdownOpen)
+                            props.handleFilter(props.data.sort(PriceDown))
                         }}>
                             <FontAwesomeIcon icon={faArrowDownWideShort} size="xl" color="orange" className="mt-3" />
                             <p className="ml-2 my-4 text-grey200"
@@ -39,6 +58,7 @@ const SortDropdown = () => {
                         <div className="flex pl-3 hover:bg-grey300" onClick={(e) => {
                             choosenElement.innerHTML = e.currentTarget.innerHTML
                             setDropdownOpen(!isDropdownOpen)
+                            props.handleFilter(props.data.sort(PriceUp))
                         }}>
                             <FontAwesomeIcon icon={faArrowUpShortWide} size="xl" color="orange" className="mt-3" />
                             <p className="ml-2 my-4 text-grey200"

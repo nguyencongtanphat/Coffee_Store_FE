@@ -6,7 +6,7 @@ import { FormatterService } from "../service";
 
 const ProductCard = (props) => {
     return (
-        <div className={`w-40 lg:w-80 rounded-2xl m-4 bg-white transition-shadow shadow-lg shadow-grey300 ${props.className}`}>
+        <div className={`w-40 lg:w-[21rem] rounded-2xl m-4 bg-white transition-shadow shadow-lg shadow-grey300 ${props.className}`}>
             <img src={props.avtSrc} alt="This is a product avatar"
                 className="w-16 lg:w-28 mx-11 lg:mx-28 my-4 lg:m-8 "
             />
