@@ -29,7 +29,7 @@ const MenuDropdown = (props) => {
                 <div className="flex my-4" onClick={() => props.onClose()}>
                     <FontAwesomeIcon icon={faClockRotateLeft} size="lg" color="black"/>
                     <Link className="no-underline ml-5 text-black 
-                    hover:underline underline-offset-4 decoration-2">
+                    hover:underline underline-offset-4 decoration-2" to="history">
                         Lịch sử mua hàng
                     </Link>
                 </div>
