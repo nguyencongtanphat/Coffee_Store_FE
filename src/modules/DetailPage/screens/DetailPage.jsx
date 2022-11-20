@@ -10,6 +10,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import { FormatterService } from "../../../service";
+import { useParams } from "react-router-dom";
 import { useContext } from "react";
 import { CartContext, UserContext } from "../../../store/Context";
 import { addNewProductCart, fetchCartFromServer } from "../../../store/Actions";
@@ -21,13 +22,17 @@ function DetailPage() {
   const [number, setNumber] = useState(1);
   const [cartState, cartDispatch] = useContext(CartContext);
   const [appState, dispatch] = useContext(UserContext);
+  let { productId } = useParams();
+  
 
   //fetchData
   useEffect(() => {
     async function fetchData() {
-      const response = await axios.get(HttpService.appUrl + "/menu/products/2");
+      const response = await axios.get(
+        HttpService.appUrl + `/menu/products/${productId}`
+      );
       setDtInfo(response.data.data);
-       setPrice(dtInfo.SPrice);console.log(dtInfo);
+       setPrice(dtInfo.SPrice);console.log("thong tin san pham", response.data.data);
     }
     fetchData();
   }, []);
@@ -90,9 +95,9 @@ function DetailPage() {
           <div>
             <div className="flex">
               <img
-                src={chitietCoffee}
-                alt=""
-                className="w-[283px] h-auto md:w-[420px] md:h-auto lg:w-[548px] lg:h-auto"
+                src={dtInfo.Image}
+                alt="Ảnh sản phẩm"
+                className="w-[283px] rounded-3xl h-auto md:w-[400px] md:h-auto lg:w-[450px] lg:h-auto"
               />
             </div>
           </div>
