@@ -5,32 +5,37 @@ import PageTitle from "../../../globalComponents/PageTitle";
 import leafBgR from "../../../assests/images/global/leaf-bg-right.png";
 import leafBgL from "../../../assests/images/global/leaf-bg-left.png";
 import chitietCoffee from "../../../assests/images/chitietPage/chitietCoffee.png";
-import HttpService from "../../../service";
+import HttpService, { createAxiosInstance } from "../../../service";
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import { FormatterService } from "../../../service";
+import { useContext } from "react";
+import { CartContext, UserContext } from "../../../store/Context";
+import { addNewProductCart, fetchCartFromServer } from "../../../store/Actions";
 
 function DetailPage() {
   const [dtInfo, setDtInfo] = useState({});
-  const [size, setSize] = useState("S");
+  const [size, setSize] = useState("Small");
   const [price, setPrice] = useState(1);
-  const [number, setNumber] = useState(2);
+  const [number, setNumber] = useState(1);
+  const [cartState, cartDispatch] = useContext(CartContext);
+  const [appState, dispatch] = useContext(UserContext);
 
   //fetchData
   useEffect(() => {
     async function fetchData() {
-      const response = await axios.get(HttpService.appUrl + "/menu/products/1");
+      const response = await axios.get(HttpService.appUrl + "/menu/products/2");
       setDtInfo(response.data.data);
-      console.log(dtInfo);
+       setPrice(dtInfo.SPrice);console.log(dtInfo);
     }
     fetchData();
   }, []);
 
   //update price
   useEffect(() => {
-    if (size === "S") setPrice(() => dtInfo.SPrice);
-    else if (size === "M") setPrice(() => dtInfo.MPrice);
+    if (size === "Small") setPrice(() => dtInfo.SPrice);
+    else if (size === "Medium") setPrice(() => dtInfo.MPrice);
     else setPrice(() => dtInfo.LPrice);
   }, [dtInfo.MPrice, dtInfo.SPrice, dtInfo.LPrice, size]);
 
@@ -43,11 +48,36 @@ function DetailPage() {
     if (type === "add") {
       setNumber((preNum) => ++preNum);
     } else {
-      if(number !== 1)
-        setNumber((preNum) => --preNum);
-
+      if (number !== 1) setNumber((preNum) => --preNum);
     }
-    
+  };
+
+  const addProductToCartHandler = async () => {
+    try {
+      console.log("dasd")
+      if (appState.isLogin) {
+        const item = {
+          ItemID: dtInfo.id,
+          Price: price,
+          Size: size,
+          CustomerID: appState.id,
+          Quantity: number,
+        };
+        console.log("item: ", item);
+        cartDispatch(addNewProductCart(item));
+        //update cart
+        const response = await createAxiosInstance().get(`cart/${appState.id}`);
+        console.log("cart response:", response);
+        const listCart = response.data.data;
+        cartDispatch(fetchCartFromServer(listCart));
+        alert("Bạn đã thêm vào dỏ hàng thành công")
+      }else{
+        alert("Bạn cần đăng nhập để có thể thực hiện thao tác này");
+
+      }
+    } catch (e) {
+      alert("Đã có lỗi xảy ra xin thử lại sau!! ", e.message);
+    }
   };
   return (
     <div className="w-full relative">
@@ -79,20 +109,32 @@ function DetailPage() {
                 Creme Brulee bồng bềnh béo mịn, ngọt thanh của Caramel, thêm xíu
                 đắng nhẹ từ cà phê, kèm topping thạch cà phê dai dai giòn giòn.{" "}
               </p>
-              <div className="mt-[10px] flex flex-row w-[425px] h-auto items-center">
-                <p className="text-b11 md:text-b10 lg:text-b9">Size:</p>
-                <AppButton2
-                  className="ml-[10px]"
-                  isActive={size === "S"}
-                  text="S"
-                  onClick={changeSize.bind(null, "S")}
-                />
-                <AppButton2
-                  className="ml-[10px] md:ml-[20px] "
-                  isActive={size === "M"}
-                  text="M"
-                  onClick={changeSize.bind(null, "M")}
-                />
+            </div>
+            <div className="mt-[10px] flex flex-row w-[425px] h-auto items-center">
+              <p className="text-b11 md:text-b10 lg:text-b9">Size:</p>
+              <AppButton2
+                className={`ml-[10p`}
+                isActive={size === "Small"}
+                text="S"
+                onClick={changeSize.bind(null, "Small")}
+              />
+              <AppButton2
+                className="ml-[10px]"
+                isActive={size === "Medium"}
+                text="M"
+                onClick={changeSize.bind(null, "Medium")}
+              />
+              <AppButton2
+                className="ml-[10px]"
+                isActive={size === "Large"}
+                text="L"
+                onClick={changeSize.bind(null, "Large")}
+              />
+            </div>
+            <div>
+              <div className="mt-[10px] flex flex-row w-[600px] h-auto items-center">
+                <p className="text-b11 md:text-b10 lg:text-b9">Topping:</p>
+                <AppButton2 className="ml-[10px]" text="Macchiato (+5.000đ)" />
                 <AppButton2
                   className="ml-[10px] md:ml-[20px]"
                   isActive={size === "L"}
@@ -100,32 +142,37 @@ function DetailPage() {
                   onClick={changeSize.bind(null, "L")}
                 />
               </div>
-              <did className="flex flex-row mt-[10px] items-center">
-                <p className="text-b11 md:text-b10 lg:text-b9">Số lượng:</p>
-                <p
-                  className="text-b11 md:text-b10 lg:text-b10 ml-[10px] text-gray-400 cursor-pointer"
-                  onClick={changeNumber.bind(null, "minus")}
-                >
-                  -
-                </p>
-                <AppButton2 className="ml-[10px]" text={number} />
-                <p
-                  className="text-b11 md:text-b10 lg:text-b10 ml-[10px] text-gray-400 cursor-pointer"
-                  onClick={changeNumber.bind(null, "add")}
-                >
-                  +
-                </p>
-              </did>
-              <div className="flex flex-col md:flex-row">
-                <AppButton
-                  className="mt-[15px] items-center w-[300px]"
-                  text="Thêm vào giỏ hàng"
-                />
-                <AppButton
-                  className="md:ml-[10px] lg:ml-[15px] mt-[15px] items-center w-[300px]"
-                  text="Đặt hàng ngay"
-                />
-              </div>
+              <AppButton2
+                className="mt-[10px] ml-[65px]"
+                text="Trân châu trắng (+10.000đ)"
+              />
+            </div>
+            <did className="flex flex-row mt-[10px] items-center">
+              <p className="text-b11 md:text-b10 lg:text-b9">Số lượng:</p>
+              <p
+                className="text-b11 md:text-b10 lg:text-b10 ml-[10px] text-gray-400 cursor-pointer"
+                onClick={changeNumber.bind(null, "minus")}
+              >
+                -
+              </p>
+              <AppButton2 className="ml-[10px]" text={number} />
+              <p
+                className="text-b11 md:text-b10 lg:text-b10 ml-[10px] text-gray-400 cursor-pointer"
+                onClick={changeNumber.bind(null, "add")}
+              >
+                +
+              </p>
+            </did>
+            <div className="flex flex-col md:flex-row">
+              <AppButton
+                className="mt-[15px] items-center w-[300px]"
+                text="Thêm vào giỏ hàng"
+                onClick={addProductToCartHandler}
+              />
+              <AppButton
+                className="md:ml-[10px] mt-[15px] items-center w-[300px]"
+                text="Đặt hàng ngay"
+              />
             </div>
           </div>
         </div>
