@@ -136,22 +136,7 @@ function DetailPage() {
                 onClick={changeSize.bind(null, "Large")}
               />
             </div>
-            <div>
-              <div className="mt-[10px] flex flex-row w-[600px] h-auto items-center">
-                <p className="text-b11 md:text-b10 lg:text-b9">Topping:</p>
-                <AppButton2 className="ml-[10px]" text="Macchiato (+5.000đ)" />
-                <AppButton2
-                  className="ml-[10px] md:ml-[20px]"
-                  isActive={size === "L"}
-                  text="L"
-                  onClick={changeSize.bind(null, "L")}
-                />
-              </div>
-              <AppButton2
-                className="mt-[10px] ml-[65px]"
-                text="Trân châu trắng (+10.000đ)"
-              />
-            </div>
+
             <did className="flex flex-row mt-[10px] items-center">
               <p className="text-b11 md:text-b10 lg:text-b9">Số lượng:</p>
               <p
