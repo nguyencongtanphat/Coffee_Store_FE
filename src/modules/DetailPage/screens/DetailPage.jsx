@@ -27,7 +27,7 @@ function DetailPage() {
     async function fetchData() {
       const response = await axios.get(HttpService.appUrl + "/menu/products/2");
       setDtInfo(response.data.data);
-      setPrice(dtInfo.SPrice);
+       setPrice(dtInfo.SPrice);console.log(dtInfo);
     }
     fetchData();
   }, []);
@@ -40,6 +40,7 @@ function DetailPage() {
   }, [dtInfo.MPrice, dtInfo.SPrice, dtInfo.LPrice, size]);
 
   const changeSize = (sz) => {
+    console.log(sz);
     setSize(() => sz);
   };
 
@@ -81,6 +82,7 @@ function DetailPage() {
   return (
     <div className="w-full relative">
       <div className={`flex flex-col justify-center items-center p-2 `}>
+        <PageTitle title="Cà phê"></PageTitle>
         <h2 className="text-b13 text-grey100 md:text-b6 mb-3 md:mb-5">
           Thông tin sản phẩm
         </h2>
@@ -90,16 +92,16 @@ function DetailPage() {
               <img
                 src={chitietCoffee}
                 alt=""
-                className="w-[283px] h-auto md:w-[420px] md:h-auto"
+                className="w-[283px] h-auto md:w-[420px] md:h-auto lg:w-[548px] lg:h-auto"
               />
             </div>
           </div>
-          <div className="md:ml-[30px]">
-            <div className="w-[283px] h-auto md:w-[480px]">
-              <p className="mt-[20px] md:mt-0 text-brown text-b7 lg:text-b5">
+          <div className="md:ml-[30px] flex-col flex justify-center items-center">
+            <div className="w-[283px] h-auto md:w-[480px] ">
+              <p className="mt-[20px] md:mt-0 text-brown text-b5 md:text-b3 lg:text-b1">
                 {dtInfo.Name || "Tên sản phẩm"}
               </p>
-              <p className="mt-[10px] text-orange text-b5">
+              <p className="mt-[10px] text-orange text-b7 md:text-b5 lg:text-b3">
                 {FormatterService.format(price)}
               </p>
               <p className="mt-[10px] text-gray-500 text-b13 md:text-b11 lg:text-b9">
@@ -134,8 +136,10 @@ function DetailPage() {
                 <p className="text-b11 md:text-b10 lg:text-b9">Topping:</p>
                 <AppButton2 className="ml-[10px]" text="Macchiato (+5.000đ)" />
                 <AppButton2
-                  className="ml-[10px]"
-                  text="Sốt caramel (+7.000đ)"
+                  className="ml-[10px] md:ml-[20px]"
+                  isActive={size === "L"}
+                  text="L"
+                  onClick={changeSize.bind(null, "L")}
                 />
               </div>
               <AppButton2
