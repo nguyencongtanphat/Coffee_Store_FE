@@ -6,14 +6,15 @@ import leafBgR from "../../../assests/images/global/leaf-bg-right.png";
 import leafBgL from "../../../assests/images/global/leaf-bg-left.png";
 import { useContext } from "react";
 import { CartContext } from "../../../store/Context";
-import {  FormatterService } from "../../../service";
+import {  createAxiosInstance, FormatterService } from "../../../service";
 import { UserContext } from "../../../store/Context";
 import { useNavigate } from "react-router-dom";
 import NotAuthen from "../../../globalComponents/NotAuthen";
+import { fetchCartFromServer } from "../../../store/Actions";
 
 function CartPage() {
   const navigate = useNavigate();
-  const [cartState, ] = useContext(CartContext);
+  const [cartState, cartDispatch] = useContext(CartContext);
 
   const [appState, ] = useContext(UserContext);
   const [sumBill, setSumBill] = useState(0);
@@ -50,6 +51,18 @@ function CartPage() {
     }
   };
 
+  useEffect(() => {
+    async function fetchData() {
+      console.log("app call cart ");
+      if (appState.isLogin) {
+        const response = await createAxiosInstance().get(`cart/${appState.id}`);
+        console.log("cart response:", response);
+        const listCart = response.data.data;
+        cartDispatch(fetchCartFromServer(listCart));
+      }
+    }
+    fetchData();
+  }, [cartDispatch, appState.isLogin, appState.id]);
   return appState.isLogin ? (
     <div className="w-full relative">
       <div className={`flex flex-col items-center p-2 `}>

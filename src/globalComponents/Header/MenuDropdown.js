@@ -1,11 +1,31 @@
 import { faAddressCard, faArrowRightFromBracket, faClockRotateLeft } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { setStateLogOut } from '../../store/Actions'
+import { UserContext } from '../../store/Context'
 
 const MenuDropdown = (props) => {
+
+  const [appState, dispatch] = useContext(UserContext);
+
+
+    const logoutHandler = () => {
+        
+        const confirm =  window.confirm("Bạn có chắc muốn đăng xuất khỏi ứng dụng!!!");
+        if(confirm){
+            localStorage.removeItem("accessToken");
+            dispatch(setStateLogOut());
+            props.onClose();
+        }
+         //console.log(res);
+    }
+
     return (
-        <div className={`${props.open ? 'flex' : 'hidden'} flex-col rounded-lg justify-center items-start w-64
+      <div
+        className={`${
+          props.open ? "flex" : "hidden"
+        } flex-col rounded-lg justify-center items-start w-64
             absolute top-28 right-12 opacity-90
         `}
             style={{backgroundColor: '#F4D8B2'}}
@@ -42,7 +62,8 @@ const MenuDropdown = (props) => {
                 </div>
             </div>
         </div>
-    )
+      </div>
+    );
 }
 
 
