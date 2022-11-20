@@ -1,31 +1,85 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AppButton from "../../../globalComponents/AppButton";
 import PageTitle from "../../../globalComponents/PageTitle";
 import Table from "../components/Table";
-import style from "../index.module.css"
-import leafBgR from "../../../assests/images/global/leaf-bg-right.png"
+import leafBgR from "../../../assests/images/global/leaf-bg-right.png";
 import leafBgL from "../../../assests/images/global/leaf-bg-left.png";
-
+import { useContext } from "react";
+import { CartContext } from "../../../store/Context";
+import {  FormatterService } from "../../../service";
+import { UserContext } from "../../../store/Context";
+import { useNavigate } from "react-router-dom";
+import NotAuthen from "../../../globalComponents/NotAuthen";
 
 function CartPage() {
-  const test = () => {
-    alert("jjsdnfjnsj");
+  const navigate = useNavigate();
+  const [cartState, ] = useContext(CartContext);
+
+  const [appState, ] = useContext(UserContext);
+  const [sumBill, setSumBill] = useState(0);
+  const [listCartConfirm, setListCartConfirm] = useState([]);
+
+
+  const updateSumBill = (product, type) => {
+    //add product to list confirm
+    if (type === "add") {
+      setSumBill((prev) => {
+        return prev + product.Price * product.Quantity;
+      });
+      setListCartConfirm((pre) => {
+        return [product, ...pre];
+      });
+    } else {
+      //remove product to list confirm
+      setListCartConfirm((pre) => {
+        return pre.filter((item) => item.id !== product.id);
+      });
+      setSumBill((prev) => {
+        return prev - product.Price * product.Quantity;
+      });
+    }
   };
-  return (
+
+  const payHandler = () => {
+    if (listCartConfirm.length > 0) {
+      navigate("/confirm", {
+        state: listCartConfirm,
+      });
+    } else {
+      alert("Bạn cần chọn 1 sản phẩm để lên đơn!!!");
+    }
+  };
+
+  return appState.isLogin ? (
     <div className="w-full relative">
       <div className={`flex flex-col items-center p-2 `}>
         <PageTitle title="Giỏ hàng"></PageTitle>
-        <h2 className="text-b12 text-grey300 md:text-b6 mb-3">
-          Các món đã chọn
-        </h2>
-        <Table />
-        <div className="flex items-end justify-center p-2">
-          <span className=" text-b10 font-bold mr-1 leading-6 md:text-b8">
-            Tổng tiền:
-          </span>
-          <span className="text-brown text-b6">181.000đ</span>
-        </div>
-        <AppButton text="Thanh toán" onClick={test} />
+        {cartState.length !== 0 && (
+          <h2 className="text-b12 text-grey300 md:text-b6 mb-3">
+            Các món đã chọn
+          </h2>
+        )}
+        {cartState.length === 0 ? (
+          <img
+            className="w-full md:w-2/4"
+            src="https://www.combojumbo.in/empty-cart-png.png"
+            alt=""
+          ></img>
+        ) : (
+          <Table updateSumBill={updateSumBill} />
+        )}
+       { cartState.length !== 0 &&
+        <>
+          <div className="flex items-end justify-center p-2">
+            <span className=" text-b10 font-bold mr-1 leading-6 md:text-b8">
+              Tổng tiền:
+            </span>
+            <span className="text-brown text-b6">
+              {FormatterService.format(sumBill)}
+            </span>
+          </div>
+          <AppButton text="Thanh toán" onClick={payHandler} />
+        </>}
       </div>
       {/* image background */}
       <img
@@ -39,6 +93,8 @@ function CartPage() {
         className="absolute hidden top-0  -z-10 md:block md:w-[300px] lg:w-[400px] "
       />
     </div>
+  ) : (
+    <NotAuthen/>
   );
 }
 
