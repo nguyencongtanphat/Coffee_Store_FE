@@ -31,7 +31,7 @@ export default function Footer({props}) {
                                 style={{ cursor: 'pointer' }}
                             />
                         </Link>
-                        <div className="flex flex-row mx-auto sm:mt-4 justify-between w-[132px]">
+                        <div className=" flex flex-row mx-auto sm:mt-4 justify-between w-[132px]">
                             <a className="basis-1/3 h-max w-max"
                             href="https://www.facebook.com/">
                                 <BgFacebook className="absolute"/>

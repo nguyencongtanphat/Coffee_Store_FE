@@ -17,6 +17,7 @@ import SigninPopup from './modules/signinPopup/screen/signinPopup';
 import Provider from './store/Provider';
 import PersonalInfoPage from './modules/personalInfoPage/screens/PersonalInfoPage';
 import BlogPage from './modules/blogPage/screens/BlogPage';
+import OrderHistory from './modules/orderHistoryPage/screens/OrderHistory';
 
 
 const router = createBrowserRouter([
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />,
       },
       {
-        path: "products/:id",
+        path: "products/:productId",
         element: <DetailPage />,
         errorElement: <ErrorPage />,
       },
@@ -64,10 +65,14 @@ const router = createBrowserRouter([
       {
         path: "cart",
         element: <CartPage />,
+        errorElement: <ErrorPage />,
+
       },
       {
         path: "/confirm",
         element: <ConfirmPage />,
+        errorElement: <ErrorPage />,
+
       },
       {
         path: "/login",
@@ -77,6 +82,11 @@ const router = createBrowserRouter([
         path: "/signup",
         element: <SigninPopup />,
       },
+      {
+        path: '/history',
+        element: <OrderHistory />,
+        errorElement: <ErrorPage />,
+      }
     ],
   },
 ]);
