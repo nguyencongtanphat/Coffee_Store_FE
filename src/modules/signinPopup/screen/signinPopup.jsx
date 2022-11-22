@@ -70,15 +70,15 @@ function SigninPopup({ className, togglePopupSignup, togglePopupLogin }) {
 
   return (
     <Modal>
-      <div
-        className={`${className} w-full h-screen absolute top-0 bg-black bg-opacity-75 flex justify-center items-center`}
+      <div 
+        className={`${className} w-full h-screen z-30 fixed top-0 bg-black bg-opacity-75 flex justify-center items-center`}
         onClick={(e)=>{
           if(e.currentTarget === e.target){
             togglePopupSignup();
           }
         }}
       >
-        <div className="flex flex-col justify-center items-center md:flex-row">
+        <div className="flex flex-col justify-center items-center md:flex-row rounded-2xl transition-shadow shadow-gray-800 shadow-opacity-50 shadow-[0px_0px_0px_-1px_rgba(0,0,0,0.3)]">
           <div className="flex justify-center items-center">
             <div className="w-[294px] h-[310px] rounded-t-2xl md:w-[382px] md:h-[505px] md:relative md:rounded-none md:rounded-l-2xl bg-beige100 flex justify-center items-center order-1 md:order-2">
               <div className="">
@@ -153,7 +153,7 @@ function SigninPopup({ className, togglePopupSignup, togglePopupLogin }) {
                 <div className="">
                   <AppButton
                     onClick={submitHandler}
-                    className="w-full h-[32px] mt-[18px] text-b17 flex items-center rounded-md md:w-[342px] md:h-[53px] md:mt-[32px] md:text-b10"
+                    className="w-full h-[32px] mt-[18px] text-b17 flex items-center rounded-md text-white md:w-[342px] md:h-[53px] md:mt-[32px] md:text-b10"
                     text="Đăng ký"
                   />
                 </div>

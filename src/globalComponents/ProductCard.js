@@ -3,13 +3,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import PropTypes from 'prop-types';
 import { FormatterService } from "../service";
+import styles from "./ProductCard.module.css"
 
 const ProductCard = (props) => {
     return (
-        <div className={`w-40 lg:w-80 rounded-2xl m-4 bg-white transition-shadow shadow-lg shadow-grey300 ${props.className}`}>
-            <img src={props.avtSrc} alt="This is a product avatar"
-                className="w-16 lg:w-28 mx-11 lg:mx-28 my-4 lg:m-8 "
-            />
+        <div className={`w-40 lg:w-80 rounded-2xl m-4 bg-white transition-shadow shadow-lg shadow-grey300 hover:bg-gray-100 ${props.className}`}>
+            <div className='overflow-hidden'>
+                <img src={props.avtSrc} alt="This is a product avatar"
+                    className= {`${styles.productImg} max-w-xs w-16 lg:w-28 mx-11 lg:mx-28 my-4 lg:m-8`}  
+                />
+            </div>
+           
+            
             <div className="p-4">
                 <p className="text-b11 lg:text-b7 font-semibold text-grey200 h-9"
                 >{props.name}</p>
@@ -19,8 +24,8 @@ const ProductCard = (props) => {
                     <p className="text-orange text-b9 pt-1 lg:text-b5"
                     >{FormatterService.format(props.price)}
                     </p>
-                    <button className="border-none bg-transparent cursor-pointer">
-                        <FontAwesomeIcon icon={faPlusCircle} color="orange" size="2x" />
+                    <button className="border-none bg-transparent cursor-pointer ">
+                        <FontAwesomeIcon icon={faPlusCircle} color="orange" size="2x"  />
                     </button>
                 </div>
             </div>

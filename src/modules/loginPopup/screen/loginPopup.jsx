@@ -132,27 +132,24 @@ function LoginPopup(props) {
                       className="w-[198px] h-[32px] mt-[7px] p-0 pl-[11px] text-[11px] 
                                 bg-transparent rounded-md border border-solid border-gray outline-none 
                                 md:w-[328px] md:h-[48px] md:text-b13"
-                      type="password"
-                      placeholder="Nhập mật khẩu"
-                    />
-                  </div>
-                  <div>
-                    <p className="mt-[7px] text-[10px] text-end">
-                      Quên mật khẩu
-                    </p>
-                  </div>
-                  <div className="">
-                    <AppButton
-                      className="w-full h-[32px] mt-[7px] text-b17 flex items-center rounded-md md:w-[342px] md:h-[53px] md:text-b10"
-                      text="Đăng nhập"
-                      onClick={submitHandler}
-                    />
-                  </div>
-                  <div className="md:absolute md:bottom-3">
-                    <p className="mt-[8px] mb-[8px] text-orange text-[11px] text-center ">
-                      Đăng ký
-                    </p>
-                  </div>
+                    type="password"
+                    placeholder="Nhập mật khẩu"
+                  />
+                </div>
+                <div>
+                  <p className="mt-[7px] text-[10px] text-end">Quên mật khẩu</p>
+                </div>
+                <div className="">
+                  <AppButton
+                    className="w-full h-[32px] mt-[7px] text-b17 flex items-center rounded-md text-white md:w-[342px] md:h-[53px] md:text-b10"
+                    text="Đăng nhập"
+                    onClick={submitHandler}
+                  />
+                </div>
+                <div className="md:absolute md:bottom-3">
+                  <p className="mt-[8px] mb-[8px] text-orange text-[11px] text-center ">
+                    Đăng ký
+                  </p>
                 </div>
               </div>
             </div>
