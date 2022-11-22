@@ -65,57 +65,49 @@ function CartPage() {
   }, [cartDispatch, appState.isLogin, appState.id]);
 
   return appState.isLogin ? (
-    // <div className="w-full relative">
-    //   <div className={`flex flex-col items-center p-2 `}>
-    //     <PageTitle title="Giỏ hàng"></PageTitle>
-    //     {cartState.length !== 0 && (
-    //       <h2 className="text-b12 text-grey300 md:text-b6 mb-3">
-    //         Các món đã chọn
-    //       </h2>
-    //     )}
-    //     {cartState.length === 0 ? (
-    //       <img
-    //         className="w-full md:w-2/4"
-    //         src="https://www.combojumbo.in/empty-cart-png.png"
-    //         alt=""
-    //       ></img>
-    //     ) : (
-    //       <Table updateSumBill={updateSumBill} />
-    //     )}
-    //    { cartState.length !== 0 &&
-    //     <>
-    //       <div className="flex items-end justify-center p-2">
-    //         <span className=" text-b10 font-bold mr-1 leading-6 md:text-b8">
-    //           Tổng tiền:
-    //         </span>
-    //         <span className="text-brown text-b6">
-    //           {FormatterService.format(sumBill)}
-    //         </span>
-    //       </div>
-    //       <AppButton text="Thanh toán" onClick={payHandler} />
-    //     </>}
-    //   </div>
-    //   {/* image background */}
-    //   <img
-    //     src={leafBgR}
-    //     alt=""
-    //     className="absolute hidden top-0 right-0 -z-10 md:block md:w-[300px] lg:w-[400px]"
-    //   />
-    //   <img
-    //     src={leafBgL}
-    //     alt=""
-    //     className="absolute hidden top-0  -z-10 md:block md:w-[300px] lg:w-[400px] "
-    //   />
-    // </div>
-    <Audio
-      height="80"
-      width="80"
-      radius="9"
-      color="orange"
-      ariaLabel="three-dots-loading"
-      wrapperStyle
-      wrapperClass
-    />
+    <div className="w-full relative">
+      <div className={`flex flex-col items-center p-2 `}>
+        <PageTitle title="Giỏ hàng"></PageTitle>
+        {cartState.length !== 0 && (
+          <h2 className="text-b12 text-grey300 md:text-b6 mb-3">
+            Các món đã chọn
+          </h2>
+        )}
+        {cartState.length === 0 ? (
+          <img
+            className="w-full md:w-2/4"
+            src="https://www.combojumbo.in/empty-cart-png.png"
+            alt=""
+          ></img>
+        ) : (
+          <Table updateSumBill={updateSumBill} />
+        )}
+       { cartState.length !== 0 &&
+        <>
+          <div className="flex items-end justify-center p-2">
+            <span className=" text-b10 font-bold mr-1 leading-6 md:text-b8">
+              Tổng tiền:
+            </span>
+            <span className="text-brown text-b6">
+              {FormatterService.format(sumBill)}
+            </span>
+          </div>
+          <AppButton text="Thanh toán" onClick={payHandler} />
+        </>}
+      </div>
+      {/* image background */}
+      <img
+        src={leafBgR}
+        alt=""
+        className="absolute hidden top-0 right-0 -z-10 md:block md:w-[300px] lg:w-[400px]"
+      />
+      <img
+        src={leafBgL}
+        alt=""
+        className="absolute hidden top-0  -z-10 md:block md:w-[300px] lg:w-[400px] "
+      />
+    </div>
+    
   ) : (
     <NotAuthen />
   );

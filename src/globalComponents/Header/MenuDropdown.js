@@ -62,7 +62,7 @@ const MenuDropdown = (props) => {
             Lịch sử mua hàng
           </Link>
         </div>
-        <div className="flex mb-4" onClick={() => props.onClose()}>
+        <div className="flex mb-4" onClick={logoutHandler}>
           <FontAwesomeIcon
             icon={faArrowRightFromBracket}
             size="lg"

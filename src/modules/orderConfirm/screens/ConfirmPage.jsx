@@ -18,18 +18,21 @@ export default function ConfirmPage() {
   const navigate = useNavigate();
   const location = useLocation();
   const [listProducts, ] = useState(location.state);
-  console.log("uselocation data", location.state);
+  console.log("uselocation data", listProducts);
   const [appState, ] = useContext(UserContext);
   console.log("dataInfo", appState);
   const [totalAmount, setTotalAmount] = useState(0);
   const ship = 15000;
   const [, cartDispatch] = useContext(CartContext);
   useEffect(() => {
-    let sum = 0;
-    listProducts.forEach((item) => {
-      sum += item.Price * item.Quantity;
-    });
-    setTotalAmount(sum + ship);
+    if(listProducts){
+       let sum = 0;
+       listProducts.forEach((item) => {
+         sum += item.Price * item.Quantity;
+       });
+       setTotalAmount(sum + ship);
+    }
+   
   }, [listProducts]);
 
 const orderSuccessHandler = ()=>{
@@ -78,7 +81,7 @@ const orderSuccessHandler = ()=>{
   };
 
   return appState.isLogin ? (
-    location.state != undefined ? (
+    listProducts ? (
       <div className="flex flex-col align-center">
         <PageTitle title="XÁC NHẬN ĐƠN HÀNG" class="justify-center w-fit" />
         <div class="md:flex md:ml-10 md:m-4 mt-0">
