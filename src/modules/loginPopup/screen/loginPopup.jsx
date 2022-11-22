@@ -140,7 +140,7 @@ function LoginPopup(props) {
                 </div>
                 <div className="">
                   <AppButton
-                    className="w-full h-[32px] mt-[7px] text-b17 flex items-center rounded-md md:w-[342px] md:h-[53px] md:text-b10"
+                    className="w-full h-[32px] mt-[7px] text-b17 flex items-center rounded-md text-white md:w-[342px] md:h-[53px] md:text-b10"
                     text="Đăng nhập"
                     onClick={submitHandler}
                   />

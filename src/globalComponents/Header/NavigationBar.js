@@ -43,10 +43,10 @@ const NavigationBar = (props) => {
         className="border-none outline-none bg-transparent cursor-pointer px-4 my-2 w-8 h-8"
         onClick={toggleDrawer(false)}
       >
-        <FontAwesomeIcon icon={faClose} size="2x" className="text-grey100" />
+        <FontAwesomeIcon icon={faClose} size="2x" className="text-grey100  hover:text-orange" />
       </button>
       <Link
-        className={`no-underline text-b8 p-4 font-semibold 
+        className={`no-underline text-b8 p-4 font-semibold hover:text-orange 
                 ${pathname === "/" ? "text-orange" : "text-black"}`}
         to="/"
         onClick={toggleDrawer(false)}
@@ -55,7 +55,7 @@ const NavigationBar = (props) => {
         Trang chủ
       </Link>
       <Link
-        className={`no-underline text-b8 p-4 font-semibold 
+        className={`no-underline text-b8 p-4 font-semibold hover:text-orange
                 ${pathname === "/coffees" ? "text-orange" : "text-black"}`}
         to="/coffees"
         style={{ borderBottom: "2px solid grey" }}
@@ -64,7 +64,7 @@ const NavigationBar = (props) => {
         Cà phê
       </Link>
       <Link
-        className={`no-underline text-b8 p-4 font-semibold 
+        className={`no-underline text-b8 p-4 font-semibold hover:text-orange 
                 ${pathname === "/teas" ? "text-orange" : "text-black"}`}
         to="/teas"
         style={{ borderBottom: "2px solid grey" }}
@@ -73,7 +73,7 @@ const NavigationBar = (props) => {
         Trà
       </Link>
       <Link
-        className={`no-underline text-b8 p-4 font-semibold 
+        className={`no-underline text-b8 p-4 font-semibold hover:text-orange
                 ${pathname === "/cakes" ? "text-orange" : "text-black"}`}
         to="/cakes"
         style={{ borderBottom: "2px solid grey" }}
@@ -82,7 +82,7 @@ const NavigationBar = (props) => {
         Bánh ngọt
       </Link>
       <Link
-        className={`no-underline text-b8 p-4 font-semibold 
+        className={`no-underline text-b8 p-4 font-semibold hover:text-orange
                 ${pathname === "/blogs" ? "text-orange" : "text-black"}`}
         to="/blogs"
         style={{ borderBottom: "2px solid grey" }}
@@ -105,7 +105,7 @@ const NavigationBar = (props) => {
             togglePopupSignup()
           }} 
           text="Đăng kí"
-          className="mb-2 rounded-none bg-grey text-orange py-0.5 rounded-r-full md:py-1.5"
+          className="mb-2 rounded-none bg-grey text-orange py-0.5 rounded-r-full hover:bg-gray-300 md:py-1.5"
         ></AppButton>
       </div>
     </div>
@@ -198,7 +198,7 @@ const NavigationBar = (props) => {
           <AppButton
             onClick={togglePopupSignup}
             text="Đăng kí"
-            className="mb-2 rounded-none bg-white text-orange py-0.5 rounded-r-full md:py-1.5"
+            className="mb-2 rounded-none bg-white text-orange py-0.5 rounded-r-full hover:bg-gray-200 md:py-1.5"
           ></AppButton>
         </div>
         {/* user Info show when logined */}
@@ -218,7 +218,7 @@ const NavigationBar = (props) => {
             <FontAwesomeIcon
               icon={faUser}
               size="xl"
-              border
+              border 
               className="text-orange border-none rounded-full ml-2 md:hidden"
             />
           </Link>
