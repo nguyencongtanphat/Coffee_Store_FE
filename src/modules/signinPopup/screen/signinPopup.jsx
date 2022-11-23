@@ -165,7 +165,7 @@ function SigninPopup({ className, togglePopupSignup, togglePopupLogin }) {
                     text="Đăng ký"
                   />
                 </div>
-                {isProcessing && <ColorRing width={50} height={40}/>}
+                {isProcessing && <ColorRing width={50} height={40} />}
                 <div className="md:flex md:justify-end md:bottom-3">
                   <p className=" text-orange text-[11px] text-center md:mt-[7px]">
                     Đăng nhập
@@ -178,7 +178,7 @@ function SigninPopup({ className, togglePopupSignup, togglePopupLogin }) {
             <img
               src={bgCoffee}
               alt=""
-              className="  object-cover rounded-b-2xl md:w-full md:h-full md:rounded-none md:rounded-r-2xl"
+              className=" w-[294px] h-[174px] object-cover rounded-b-2xl md:w-full md:h-full md:rounded-none md:rounded-r-2xl"
             />
           </div>
           <div
