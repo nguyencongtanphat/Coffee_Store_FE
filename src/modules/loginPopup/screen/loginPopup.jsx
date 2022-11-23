@@ -8,6 +8,7 @@ import { useContext } from "react";
 import { setStatusLogin } from "../../../store/Actions";
 import { useEffect } from "react";
 import { ColorRing } from "react-loader-spinner";
+import PasswordField from "../../../globalComponents/PasswordField";
 function LoginPopup(props) {
   const [appState, dispatch] = useContext(UserContext);
 
@@ -81,6 +82,8 @@ function LoginPopup(props) {
     loginHandler();
   }, [dispatch]);
 
+  const [PasswordInputType, ToggleIcon] = PasswordField();
+
   return (
     <Modal>
       <div
@@ -131,15 +134,16 @@ function LoginPopup(props) {
                   />
                 </div>
                 {/* password */}
-                <div className="">
+                <div className="relative">
                   <input
                     ref={passwordInput}
                     className="w-[198px] h-[32px] mt-[7px] p-0 pl-[11px] text-[11px] 
                                 bg-transparent rounded-md border border-solid border-gray outline-none 
                                 md:w-[328px] md:h-[48px] md:text-b13"
-                    type="password"
+                    type={PasswordInputType}
                     placeholder="Nhập mật khẩu"
                   />
+                  <span className='cursor-pointer absolute right-4 top-[14px] md:right-5 md:top-[22px]'>{ToggleIcon}</span>
                 </div>
                 <div>
                   <p className="mt-[7px] text-[10px] text-end">Quên mật khẩu</p>

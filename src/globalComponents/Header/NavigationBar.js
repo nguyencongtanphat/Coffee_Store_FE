@@ -104,7 +104,7 @@ const NavigationBar = (props) => {
             toggleDrawer(false)
             togglePopupSignup()
           }} 
-          text="Đăng kí"
+          text="Đăng ký"
           className="mb-2 rounded-none bg-grey text-orange py-0.5 rounded-r-full hover:bg-gray-300 md:py-1.5"
         ></AppButton>
       </div>
