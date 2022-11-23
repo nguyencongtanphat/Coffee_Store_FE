@@ -1,5 +1,5 @@
 import { createAxiosInstance } from "../service";
-import { ADD_NEW_CART_PRODUCT, DELETE_PRODUCT_FROM_CART, FETCH_CART_FROM_SERVER, SET_STATE_LOGIN } from "./Constant";
+import { ADD_NEW_CART_PRODUCT, DELETE_PRODUCT_FROM_CART, FETCH_CART_FROM_SERVER, SET_STATE_LOGIN, SET_STATE_LOGOUT } from "./Constant";
 
 const initAppState = {
   id: "",
@@ -27,7 +27,16 @@ const AppReducer = (currentState, action) => {
         address: [...userAddress],
       };
     }
-
+    case SET_STATE_LOGOUT:{
+      return {
+        id: "",
+        fullName: "",
+        phoneNumber: "",
+        userName: "",
+        isLogin: false,
+        address: [],
+      };
+    }
     default:
       throw new Error("this Action is not supported");
   }
@@ -36,17 +45,42 @@ const AppReducer = (currentState, action) => {
 const CartReducer =  (currentState, action) =>{
   switch (action.type) {
     case ADD_NEW_CART_PRODUCT:
-      return [
-        action.payload,
-        ...currentState
-      ]
+      {
+        const product = action.payload;
+        console.log("new product:", product);
+        //post new product to cart
+         createAxiosInstance()
+           .post("cart", {
+             ...product,
+           })
+           .then(function (response) {
+            
+             const newItem = response.data.data;
+              console.log("new product: ", newItem);
+              let index = currentState.findIndex(e => e.id === newItem.id);
+               
+              if(index!==-1){
+                currentState[index]=newItem;
+                return currentState;
+              }else{
+                return [newItem, ...currentState];
+              }
+           })
+           .catch(function (error) {
+             console.log(error);
+           });
+           //update state
+
+           
+         return;
+      }
+     
     case FETCH_CART_FROM_SERVER:
       return [
         ...action.payload,
       ]
-      case DELETE_PRODUCT_FROM_CART:
-      {
-       
+    case DELETE_PRODUCT_FROM_CART:
+      {   
         const deletedId = action.payload.map(item => item.id);
         console.log("deletedId:", deletedId);
         

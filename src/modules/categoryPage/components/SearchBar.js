@@ -12,8 +12,7 @@ const SearchBar = (props) => {
 
     window.addEventListener('keydown',(event) => {
         if (event.code === 'Enter'){
-            console.log(resource.filter(product => product.Name.includes(stringToSearch)));
-            props.handleFilter(resource.filter(product => product.Name.includes(stringToSearch)))
+            props.handleFilter(resource.filter(product => product.Name.toLocaleLowerCase('VN').includes(stringToSearch.toLocaleLowerCase('VN'))))
             setString('')
         }
     })
@@ -28,8 +27,7 @@ const SearchBar = (props) => {
             />
             <button className="border-none bg-grey rounded-tr-xl rounded-br-xl cursor-pointer hover:bg-grey300"
                 onClick={() => {
-                    resource.filter(product => product.Name.includes(stringToSearch))
-                    props.handleFilter(resource.filter(product => product.Name.includes(stringToSearch)))
+                    props.handleFilter(resource.filter(product => product.Name.toLocaleLowerCase('VN').includes(stringToSearch.toLocaleLowerCase('VN'))))
                     setString('')
                 }}
             >

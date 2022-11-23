@@ -51,7 +51,7 @@ const InfoContactBar = () => {
                     >083 913 2695</p>
                 </div>
                 <div className="flex items-center justify-center ">
-                    <FontAwesomeIcon icon={faTruckFast} color="orange" />
+                    <FontAwesomeIcon icon={faTruckFast} color="orange"/>
                     <p 
                         className="ml-2 hover:text-orange"
                     >Freeship từ 100.000đ</p>

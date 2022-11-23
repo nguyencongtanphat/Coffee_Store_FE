@@ -32,6 +32,7 @@ module.exports = {
       colors: {
         brown: "#9D5C0D",
         orange: "#E5890A",
+        orange100: "#B86E09",
         beige: "#F7D08A",
         beige100: "#FFEFD3",
         white: "#FAFAFA",
