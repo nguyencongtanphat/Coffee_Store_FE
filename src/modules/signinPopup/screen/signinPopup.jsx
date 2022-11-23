@@ -5,6 +5,7 @@ import Modal from "../../../globalComponents/Modal";
 import { useRef } from "react";
 import axios from "axios";
 import HttpService from "../../../service";
+import { ColorRing } from "react-loader-spinner";
 
 function SigninPopup({ className, togglePopupSignup, togglePopupLogin }) {
   const fullNameInput = useRef("");
@@ -12,6 +13,8 @@ function SigninPopup({ className, togglePopupSignup, togglePopupLogin }) {
   const numberPhoneInput = useRef("");
   const passwordInput = useRef("");
   const addressInput = useRef("");
+  const [isProcessing, setIsProcessing] = useState(false);
+
 
   const isValid = (input) => {
     let className = input.current.className;
@@ -28,6 +31,7 @@ function SigninPopup({ className, togglePopupSignup, togglePopupLogin }) {
     }
   };
   const successSignupHandler = () => {
+    setIsProcessing((prev) => !prev);
     togglePopupSignup();
     togglePopupLogin();
   };
@@ -45,6 +49,7 @@ function SigninPopup({ className, togglePopupSignup, togglePopupLogin }) {
         isNumberPhoneValid &&
         isAddressValid
       ) {
+        setIsProcessing((prev)=>!prev)
         const userInfo = {
           Fullname: fullNameInput.current.value,
           Username: userNameInput.current.value,
@@ -60,35 +65,38 @@ function SigninPopup({ className, togglePopupSignup, togglePopupLogin }) {
         successSignupHandler();
        
       } else {
+       
         alert("Bạn cần nhập đầy đủ thông tin!!!");
       }
     } catch (e) {
-      alert("Tên người dùng đã được sử dụng hãy chọn tên người dùng khác");
+      const message = e.response.data;
+      setIsProcessing((prev) => !prev);
+      alert(`Đăng kí thất bại do ${message}. Vui lòng thử lại!!`);
       userNameInput.current.value = "";
     }
   };
 
   return (
     <Modal>
-      <div 
+      <div
         className={`${className} w-full h-screen z-30 fixed top-0 bg-black bg-opacity-75 flex justify-center items-center`}
-        onClick={(e)=>{
-          if(e.currentTarget === e.target){
+        onClick={(e) => {
+          if (e.currentTarget === e.target) {
             togglePopupSignup();
           }
         }}
       >
         <div className="flex flex-col justify-center items-center md:flex-row rounded-2xl transition-shadow shadow-gray-800 shadow-opacity-50 shadow-[0px_0px_0px_-1px_rgba(0,0,0,0.3)]">
           <div className="flex justify-center items-center">
-            <div className="w-[294px] h-[310px] rounded-t-2xl md:w-[382px] md:h-[505px] md:relative md:rounded-none md:rounded-l-2xl bg-beige100 flex justify-center items-center order-1 md:order-2">
-              <div className="">
+            <div className="w-[294px] h-[350px] rounded-t-2xl md:w-[382px] md:h-[505px] md:relative md:rounded-none md:rounded-l-2xl bg-beige100 flex justify-center items-center order-1 md:order-2">
+              <div className="text-center">
                 <div className="md:hidden" onClick={togglePopupSignup}>
                   <p className="mt-[3px] mr-[-20px] text-black text-opacity-60 text-[20px] text-end hover:text-brown cursor-pointer md:text-[25px]">
                     x
                   </p>
                 </div>
                 <div className="">
-                  <p className="mt-[-20px] text-orange text-b7 text-center md:text-b5 md:text-start md:mt-[70px]">
+                  <p className="mt-[-20px] text-orange text-b7 text-center md:text-b5 md:text-start ">
                     Đăng ký
                   </p>
                 </div>
@@ -157,8 +165,9 @@ function SigninPopup({ className, togglePopupSignup, togglePopupLogin }) {
                     text="Đăng ký"
                   />
                 </div>
+                {isProcessing && <ColorRing width={50} height={40}/>}
                 <div className="md:flex md:justify-end md:bottom-3">
-                  <p className="mt-[8px] text-orange text-[11px] text-center md:mt-[7px]">
+                  <p className=" text-orange text-[11px] text-center md:mt-[7px]">
                     Đăng nhập
                   </p>
                 </div>
@@ -169,7 +178,7 @@ function SigninPopup({ className, togglePopupSignup, togglePopupLogin }) {
             <img
               src={bgCoffee}
               alt=""
-              className="w-[294px] h-[174px] object-cover rounded-b-2xl md:w-full md:h-auto md:rounded-none md:rounded-r-2xl"
+              className="  object-cover rounded-b-2xl md:w-full md:h-full md:rounded-none md:rounded-r-2xl"
             />
           </div>
           <div

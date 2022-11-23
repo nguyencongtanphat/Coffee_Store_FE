@@ -86,7 +86,7 @@ function DetailPage() {
 
   const content =
     Object.keys(dtInfo).length !== 0 ? (
-      <div className="w-full relative">
+      <div className="w-full relative mb-12 mt-3 md:mt-9">
         <div className={`flex flex-col justify-center items-center p-2 `}>
           <PageTitle title="Cà phê"></PageTitle>
           <h2 className="text-b13 text-grey100 md:text-b6 mb-3 md:mb-5">
@@ -155,12 +155,12 @@ function DetailPage() {
                 </did>
                 <div className="flex flex-col md:flex-row">
                   <AppButton
-                    className="mt-[15px] items-center w-auto"
+                    className="mt-[15px] items-center w-auto text-white"
                     text="Thêm vào giỏ hàng"
                     onClick={addProductToCartHandler}
                   />
                   <AppButton
-                    className="md:ml-[20px] mt-[15px] items-center w-auto"
+                    className="md:ml-[20px] mt-[15px] items-center w-auto text-white"
                     text="Đặt hàng ngay"
                   />
                 </div>
