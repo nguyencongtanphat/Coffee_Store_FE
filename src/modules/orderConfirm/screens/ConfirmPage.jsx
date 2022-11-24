@@ -13,7 +13,6 @@ import { useEffect } from "react";
 import { createAxiosInstance } from "../../../service";
 import { deleteProductCart } from "../../../store/Actions";
 import { useRef } from "react";
-import axios from "axios";
 
 export default function ConfirmPage() {
   // khai báo biến lưu dữ liệu ng dùng nhập
@@ -25,13 +24,28 @@ export default function ConfirmPage() {
   const isValid = (input) => {
     let className = input.current.className;
     if (input.current.value === "") {
-      className = className.replace(" border-gray ", " border-rose-600 ");
-      className = className.replace(" border ", " border-2 ");
+      className = className.replace(" border-grey300 ", " border-rose-600 ");
+      className = className.replace(" border-solid ", " border-2 ");
       input.current.className = className;
       return false;
     } else {
-      className = className.replace(" border-rose-600 ", " border-gray ");
-      className = className.replace(" border-2 ", " border ");
+      className = className.replace(" border-rose-600 ", " border-grey300 ");
+      className = className.replace(" border-2 ", " border-solid ");
+      input.current.className = className;
+      return true;
+    }
+  };
+
+  const isNumber = (input) => {
+    let className = input.current.className;
+    if (isNaN(input.current.value) || (input.current.value).length!==10) {
+      className = className.replace(" border-grey300 ", " border-rose-600 ");
+      className = className.replace(" border-solid ", " border-2 ");
+      input.current.className = className;
+      return false;
+    } else {
+      className = className.replace(" border-rose-600 ", " border-grey300 ");
+      className = className.replace(" border-2 ", " border-solid ");
       input.current.className = className;
       return true;
     }
@@ -41,15 +55,15 @@ export default function ConfirmPage() {
   const location = useLocation();
   const fakeData = [
     {
-      Items: [
-        { ID: 5, Quantity: 1, Size: "Small", Price: 49000 },
-        { ID: 10, Quantity: 2, Size: "Medium", Price: 110000 },
-      ],
-      CustomerType: "Member",
-      CustomerID: 1,
-      PhoneNumber: "12345555",
-      Address: "123 Le Dai Hanh, TP Ho Chi Minh",
-      TotalAmount: 178000,
+      CustomerID: 3,
+      Item: 
+        { Category: [{Name: "Trà"}], Image: "", Name: "Trà Hạt Sen - Đá" },
+      ItemID: 1,
+      Price: 49000,
+      Quantity: 1,
+      Size: "Small",
+      Status: "InCart",
+      id: 7
     },
   ];
   //const [listProducts, ] = useState(location.state);
@@ -74,43 +88,41 @@ export default function ConfirmPage() {
   const submitHandler = async () => {
     try {
       let isUserName = isValid(userName);
-      let isUserPhone = isValid(userPhone);
       let isUserAddress = isValid(userAddress);
-      
+      let isUserPhone = isValid(userPhone);
+      let isPhone = isNumber(userPhone);
       if (
-        isUserAddress &&
         isUserName &&
-        isUserPhone
+        isUserAddress &&
+        isUserPhone &&
+        isPhone
       ) {
         const userInfo = {
           fullName: userName.current.value,
-          phoneNumber: userPhone.current.value,
           address: userAddress.current.value,
+          phoneNumber: userPhone.current.value,
         };
-        const response = await axios.post(
-          `order/create`,
-          userInfo
-        );
-        // alert("Bạn đã đăng kí thành công");
+        console.log("userInfo", userInfo);
+        alert("Bạn đã đặt hàng thành công");
       } else {
+        (!isPhone) ? alert("Số điện thoại của bạn chưa hợp lệ!") :
         alert("Bạn cần nhập đầy đủ thông tin!!!");
       }
     } catch (e) {
       const message = e.response.data;
-      alert(`Đăng ký thất bại do ${message}. Vui lòng thử lại!!`);
+      alert(`Đặt hàng thất bại do ${message}. Vui lòng thử lại!!`);
     }
   };
 
   const orderSuccessHandler = ()=>{
-    //kiểm tra nếu chưa đăng nhập thì sẽ lưu lại thông tin người dùng
-    if (!appState.isLogin) {
-      submitHandler();
-    };
     alert("Bạn đã đặt hàng thành công!!!");
     navigate("/");
   }
 
   const orderHandler = async () => {
+    if (!appState.isLogin) {
+      submitHandler();
+    } else {
     try {
       const orderInfo = {
         Items: listProducts,
@@ -146,7 +158,7 @@ export default function ConfirmPage() {
         "Đã có lỗi xảy ra trong quá trình đặt xin hay thử lại trong giây lát " +
           e.message
       );
-    }
+    }}
   };
 
   return(
@@ -162,17 +174,17 @@ export default function ConfirmPage() {
                 <h1 className='text-orange text-b10 align-middle text-center mb-2 md:mb-10 md:text-b5'>Thông tin nhận hàng</h1>
                 <div className='p-2 md:m-3'>
                   <label for="name" class="block mb-1.5 text-sm font-Lexend text-black text-b14 md:text-b10 md:text-bold ">Họ và tên người nhận</label>
-                  <input rel={userName} type="text" id="first_name" class="bg-white border-spacing-0.5 border-solid border-grey300 text-b16 text-[#6C6A6A] rounded-lg focus:ring-orange focus:border-orange block w-11/12 p-3 mt-0.5 md:text-b11 md:w-full md:p-4" placeholder={"Nhập tên người nhận"} required/>
+                  <input ref={userName} type="text" id="first_name" class="bg-white border-spacing-0.5 border-solid border-grey300 text-b16 text-[#6C6A6A] rounded-lg focus:ring-orange focus:border-orange block w-11/12 p-3 mt-0.5 md:text-b11 md:w-full md:p-4" placeholder={"Nhập tên người nhận"} required/>
                 </div>
 
                 <div className='p-2 md:m-3'>
                   <label for="name" class="block mb-1.5 text-sm font-Lexend text-black text-b14 md:text-b10 md:text-bold ">Số điện thoại người nhận</label>
-                  <input rel={userPhone} type="tel" id="first_name" class="bg-white border-spacing-0.5 border-solid border-grey300 text-b16 text-[#6C6A6A] rounded-lg focus:ring-orange focus:border-orange block w-11/12 p-3 mt-0.5 md:text-b11 md:w-full md:p-4" placeholder="Nhập số điện thoại người nhận" required/>
+                  <input ref={userPhone} type="tel" id="first_name" class="bg-white border-spacing-0.5 border-solid border-grey300 text-b16 text-[#6C6A6A] rounded-lg focus:ring-orange focus:border-orange block w-11/12 p-3 mt-0.5 md:text-b11 md:w-full md:p-4" placeholder="Nhập số điện thoại người nhận" required/>
                 </div>
 
                 <div className='p-2 md:m-3'>
-                  <label for="name" class="block mb-1.5 text-sm font-Lexend text-black text-b14 md:text-b10 md:text-bold ">Địa chỉ nhận hàng</label>
-                  <input rel={userAddress} type="text" id="first_name" class="bg-white border-spacing-0.5 border-solid border-grey300 text-b16 text-[#6C6A6A] rounded-lg focus:ring-orange focus:border-orange block w-11/12 p-3 mt-0.5 md:text-b11 md:w-full md:p-4" placeholder="Nhập địa chỉ nhận hàng" required/>
+                  <label for="name" class="block mb-1.5 text-sm font-Lexend text-black text-b14 md:text-b10 md:text-bold ">Số địa chỉ nhận hàng</label>
+                  <input ref={userAddress} type="tel" id="first_name" class="bg-white border-spacing-0.5 border-solid border-grey300 text-b16 text-[#6C6A6A] rounded-lg focus:ring-orange focus:border-orange block w-11/12 p-3 mt-0.5 md:text-b11 md:w-full md:p-4" placeholder="Nhập địa chỉ nhận hàng" required/>
                 </div>
               </div>
             )}
