@@ -8,7 +8,6 @@ import { useContext } from "react";
 import { CartContext, UserContext } from "../../../store/Context";
 import left from "../../../assests/images/orderConfirm/left.png";
 import right from "../../../assests/images/orderConfirm/right.png";
-import NotAuthen from "../../../globalComponents/NotAuthen";
 import havetoadd from "../../../assests/images/orderConfirm/havetoadd.png"
 import { useEffect } from "react";
 import { createAxiosInstance } from "../../../service";
