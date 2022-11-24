@@ -101,6 +101,7 @@ export default function ConfirmPage() {
           fullName: userName.current.value,
           address: userAddress.current.value,
           phoneNumber: userPhone.current.value,
+          items: fakeData.Size,
         };
         console.log("userInfo", userInfo);
         alert("Bạn đã đặt hàng thành công");
