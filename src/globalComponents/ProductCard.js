@@ -13,7 +13,6 @@ const ProductCard = (props) => {
                     className= {`${styles.productImg} max-w-xs w-16 lg:w-28 mx-11 lg:mx-28 my-4 lg:m-8`}  
                 />
             </div>
-           
             
             <div className="p-4">
                 <p className="text-b11 lg:text-b7 font-semibold text-grey200 h-9"
