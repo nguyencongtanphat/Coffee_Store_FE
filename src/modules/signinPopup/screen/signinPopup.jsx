@@ -61,7 +61,7 @@ function SigninPopup({ className, togglePopupSignup, togglePopupLogin }) {
           HttpService.appUrl + "/user/signup",
           userInfo
         );
-        alert("Bạn đã đăng kí thành công");
+        alert("Bạn đã đăng ký thành công");
         successSignupHandler();
        
       } else {
@@ -71,7 +71,7 @@ function SigninPopup({ className, togglePopupSignup, togglePopupLogin }) {
     } catch (e) {
       const message = e.response.data;
       setIsProcessing((prev) => !prev);
-      alert(`Đăng kí thất bại do ${message}. Vui lòng thử lại!!`);
+      alert(`Đăng ký thất bại do ${message}. Vui lòng thử lại!!`);
       userNameInput.current.value = "";
     }
   };
