@@ -39,7 +39,21 @@ export default function ConfirmPage() {
 
   const navigate = useNavigate();
   const location = useLocation();
-  const [listProducts, ] = useState(location.state);
+  const fakeData = [
+    {
+      Items: [
+        { ID: 5, Quantity: 1, Size: "Small", Price: 49000 },
+        { ID: 10, Quantity: 2, Size: "Medium", Price: 110000 },
+      ],
+      CustomerType: "Member",
+      CustomerID: 1,
+      PhoneNumber: "12345555",
+      Address: "123 Le Dai Hanh, TP Ho Chi Minh",
+      TotalAmount: 178000,
+    },
+  ];
+  //const [listProducts, ] = useState(location.state);
+  const listProducts = location.state ? location.state : fakeData;
   console.log("uselocation data", listProducts);
   const [appState, ] = useContext(UserContext);
   console.log("dataInfo", appState);
