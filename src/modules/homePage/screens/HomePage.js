@@ -18,12 +18,22 @@ function HomePage() {
     FetchData()
   },[])
 
+  // FETCH DATA BLOG LIST
+  const [blogList, setBlogList] = useState([])
+  useEffect(() => {
+      async function fetchData() {
+          const response = await createAxiosInstance().get('/blog');
+          setBlogList(response.data.data)    
+      }
+      fetchData();
+    }, []);
+    
   return (
     <div>
       <Banner />
       <BestSeller bestSeller={bestSellerArray}/>
       <NewProduct />
-      <BlogSlider />
+      <BlogSlider props={blogList}/>
     </div>
   )
 }
