@@ -5,6 +5,7 @@ import {
   faBagShopping,
   faBars,
   faClose,
+  faSortDown,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import Drawer from "react-modern-drawer";
@@ -104,7 +105,7 @@ const NavigationBar = (props) => {
             toggleDrawer(false)
             togglePopupSignup()
           }} 
-          text="Đăng kí"
+          text="Đăng ký"
           className="mb-2 rounded-none bg-grey text-orange py-0.5 rounded-r-full hover:bg-gray-300 md:py-1.5"
         ></AppButton>
       </div>
@@ -211,9 +212,14 @@ const NavigationBar = (props) => {
                 border
                 className="text-orange bg-white rounded-full ml-2"
               />
-              <p className="my-1 text-b12 text-white mx-2 
-                      md:text-b10 lg:text-b9"
+              <p className="my-1 text-b15 text-white mx-2 
+                      md:text-b12 lg:text-b11"
               >{appState.fullName}</p>
+              <FontAwesomeIcon 
+                icon={faSortDown}
+                size="md"
+                className="text-white mx-2 mt-1"
+              />
             </div>
             <FontAwesomeIcon
               icon={faUser}

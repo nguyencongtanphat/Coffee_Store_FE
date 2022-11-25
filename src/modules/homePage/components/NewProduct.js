@@ -7,6 +7,7 @@ const NewProduct = () => {
         <div
             className=" lg:flex justify-center
             bg-no-repeat bg-cover
+            py-10
             bg-[url('/src/assests/images/home/new_product/newproduct_background_portrait.png')]
             lg:bg-[url('/src/assests/images/home/new_product/newproduct_background.png')]"
         >

@@ -6,6 +6,7 @@ import { useRef } from "react";
 import axios from "axios";
 import HttpService from "../../../service";
 import { ColorRing } from "react-loader-spinner";
+import PasswordField from "../../../globalComponents/PasswordField";
 
 function SigninPopup({ className, togglePopupSignup, togglePopupLogin }) {
   const fullNameInput = useRef("");
@@ -76,6 +77,8 @@ function SigninPopup({ className, togglePopupSignup, togglePopupLogin }) {
     }
   };
 
+  const [PasswordInputType, ToggleIcon] = PasswordField();
+
   return (
     <Modal>
       <div
@@ -137,16 +140,18 @@ function SigninPopup({ className, togglePopupSignup, togglePopupLogin }) {
                 </div>
 
                 {/* mật khẩu */}
-                <div className="">
+                <div className="relative">
                   <input
                     ref={passwordInput}
                     className="w-[198px] h-[32px] mt-[7px] p-0 pl-[11px] text-[11px] 
                                 bg-transparent rounded-md border border-solid border-gray outline-none 
                                 md:w-[328px] md:h-[48px] md:text-b13"
-                    type="password"
+                    type={PasswordInputType}
                     placeholder="Nhập mật khẩu"
                   />
+                  <span className='cursor-pointer absolute right-4 top-[14px] md:right-5 md:top-[22px]'>{ToggleIcon}</span>
                 </div>
+
                 {/* address */}
                 <div className="">
                   <input

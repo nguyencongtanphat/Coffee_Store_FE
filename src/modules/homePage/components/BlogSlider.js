@@ -16,6 +16,7 @@ const BlogSlider = () => {
       bg-no-repeat bg-cover
       bg-[url('/src/assests/images/home/blogs/blogpart_background_portrait.png')]
       lg:bg-[url('/src/assests/images/home/blogs/blogpart_background.png')]
+      py-10
     ">
       <p className="text-b10 text-beige text-center py-4 lg:text-b3"
       >CHUYỆN NHÀ</p>
