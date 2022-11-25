@@ -7,20 +7,23 @@ import styles from "./ProductCard.module.css"
 
 const ProductCard = (props) => {
     return (
-        <div className={`w-40 lg:w-80 rounded-2xl m-4 bg-white transition-shadow shadow-lg shadow-grey300 hover:bg-gray-100 ${props.className}`}>
+        <div className={`lg:w-[17rem] lg:max-h-[22rem] lg:w-[17rem]
+                w-[9.5rem] rounded-2xl m-4 bg-white transition-shadow shadow-lg shadow-grey300 hover:bg-gray-100 
+                ${props.className}`}>
             <div className='overflow-hidden'>
                 <img src={props.avtSrc} alt="This is a product avatar"
-                    className= {`${styles.productImg} max-w-xs w-16 lg:w-28 mx-11 lg:mx-28 my-4 lg:m-8`}  
+                    className= {`${styles.productImg} w-[8.5rem] my-4 mx-2 max-h-28
+                    lg:m-4 lg:max-h-48 lg:max-w-60 lg:w-60 rounded-2xl`}  
                 />
             </div>
             
-            <div className="p-4">
-                <p className="text-b11 lg:text-b7 font-semibold text-grey200 h-9"
+            <div className="p-2 lg:p-4">
+                <p className="text-b11 lg:text-b8 text-grey200 h-11"
                 >{props.name}</p>
-                <p className="text-b13 lg:text-b8 text-grey300"
+                <p className="text-b11 lg:text-b9 text-grey300"
                 >{props.category}</p>
-                <div className="flex justify-between mt-4">
-                    <p className="text-orange text-b9 pt-1 lg:text-b5"
+                <div className="flex justify-between mt-1">
+                    <p className="text-orange text-b9 pt-1 lg:text-b7"
                     >{FormatterService.format(props.price)}
                     </p>
                     <button className="border-none bg-transparent cursor-pointer ">

@@ -6,7 +6,7 @@ import ProductCard from "../../../globalComponents/ProductCard";
 import HttpService from "../../../service";
 import axios from "axios";
 import LoadingSpinner from "../../../globalComponents/LoadingSpinner";
-
+import sad_face from '../../../assests/images/error/sad_face.png'
 const CategoryPage = (props) => {
     const [productsByCategory, setProductsByCategory] = useState([])
     const [filterProducts, setFilteredProducts] = useState([])
@@ -42,20 +42,34 @@ const CategoryPage = (props) => {
                         <SortDropdown handleFilter={FilterProducts} data={[...filterProducts]} />
                         <SearchBar handleFilter={FilterProducts} data={productsByCategory} />
                     </div>
-                    <div className="grid grid-cols-2 justify-items-center lg:grid-cols-4">
-                        {
-                            filterProducts.map(item => <ProductCard
-                                avtSrc={item.Image}
-                                name={item.Name}
-                                category={item.Category.Name}
-                                price={item.SPrice}
-                            />)
-                        }
-                    </div>
+                    {
+                        filterProducts.length > 0 ? (
+                            <div className="grid grid-cols-2 justify-items-center lg:grid-cols-4">
+
+                                {filterProducts.map(item => <ProductCard
+                                    avtSrc={item.Image}
+                                    name={item.Name}
+                                    category={item.Category.Name}
+                                    price={item.SPrice}
+                                />)}
+                            </div>
+                        ) : (
+                            <diV className="my-20 ">
+                                <img
+                                    src={sad_face}
+                                    alt="Sad Face"
+                                    className="w-60 h-60 mx-[41rem]"
+                                />
+                                <p className="text-center text-grey100 text-b1 mt-8 mx-auto w-[58rem]"
+                                >Tiếc quá! Sản phẩm bạn đang tìm kiếm không tồn tại hoặc đã bị xóa</p>
+                            </diV>
+                        )
+                    }
                 </div>
             ) : (
                 <LoadingSpinner />
-            )}
+            )
+            }
         </>
     );
 };
