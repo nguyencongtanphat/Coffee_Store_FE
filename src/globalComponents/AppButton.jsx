@@ -1,20 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-regular-svg-icons";
 
-function AppButton({ icon, text, onClick, className }) {
-  
+function AppButton({ icon, text, onClick, className, disabled, icons, }) {
   return (
     <button
-      className={`flex bg-orange border-none px-4 justify-center
-                py-3 gap-3 rounded-xl hover:bg-orange100
+      className={`flex bg-orange border-none px-4 justify-center items-center
+                py-3 gap-3 rounded-xl hover:bg-opacity-75
                 md:py-5 md:px-8 ${className} cursor-pointer`}
       onClick={onClick}
+      disabled={disabled || false}
     >
-      <div className="text-b12
-                      md:text-b10 lg:text-b9 "> {text}</div>
-      
+      <FontAwesomeIcon icon={icons||""} size="xl"/>
+      <div
+        className="text-b12
+                      md:text-b10 lg:text-b9 "
+      >
+        {" "}
+        {text}
+      </div>
     </button>
   );
 }
@@ -22,7 +26,7 @@ function AppButton({ icon, text, onClick, className }) {
 AppButton.propTypes = {
   text: PropTypes.string.isRequired,
   onClick: PropTypes.func,
-  className:PropTypes.string,
+  className: PropTypes.string,
   icon: PropTypes.any,
 };
 

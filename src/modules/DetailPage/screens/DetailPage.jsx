@@ -75,7 +75,7 @@ function DetailPage() {
         console.log("cart response:", response);
         const listCart = response.data.data;
         cartDispatch(fetchCartFromServer(listCart));
-        alert("Bạn đã thêm vào dỏ hàng thành công");
+       // alert("Bạn đã thêm vào dỏ hàng thành công");
       } else {
         alert("Bạn cần đăng nhập để có thể thực hiện thao tác này");
       }
