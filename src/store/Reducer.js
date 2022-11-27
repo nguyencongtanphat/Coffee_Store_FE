@@ -58,13 +58,15 @@ const CartReducer =  (currentState, action) =>{
              const newItem = response.data.data;
               console.log("new product: ", newItem);
               let index = currentState.findIndex(e => e.id === newItem.id);
-               
+              let newListCart = []; 
               if(index!==-1){
                 currentState[index]=newItem;
-                return currentState;
+                newListCart = currentState;
               }else{
-                return [newItem, ...currentState];
+                newListCart = [newItem, ...currentState];
               }
+              console.log("cartListNew:", newListCart);
+              return newListCart;
            })
            .catch(function (error) {
              console.log(error);

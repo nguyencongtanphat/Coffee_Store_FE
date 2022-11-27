@@ -7,7 +7,7 @@ import { useContext } from 'react'
 import { CartContext, UserContext } from './store/Context'
 import { createAxiosInstance } from './service'
 import { fetchCartFromServer } from './store/Actions'
-
+import { ToastContainer } from "react-toastify";
 
 
 const Root = () => {
@@ -32,15 +32,16 @@ const Root = () => {
   console.log("app state: ", appState)
     
     return (
-        <div>
-            <Header />
-            <div id="detail">
-                <Outlet />
-            </div>
-            <ScrollTopButton />
-            <Footer />
+      <div>
+        <Header />
+        <div id="detail">
+          <Outlet />
         </div>
-    )
+        <ScrollTopButton />
+        <Footer />
+        <ToastContainer />
+      </div>
+    );
 }
 
 export default Root
