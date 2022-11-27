@@ -21,11 +21,11 @@ function HomePage() {
   return (
     <div>
       <Banner />
-      <BestSeller bestSeller={bestSellerArray}/>
+      <BestSeller bestSeller={bestSellerArray} />
       <NewProduct />
       <BlogSlider />
     </div>
-  )
+  );
 }
 
 export default HomePage

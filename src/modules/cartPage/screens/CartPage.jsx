@@ -18,6 +18,8 @@ function CartPage() {
   const [appState] = useContext(UserContext);
   const [sumBill, setSumBill] = useState(0);
   const [listCartSelected, setListCartSelected] = useState([]);
+  const [cartListProduct, setCartListProduct] = useState([]);
+
 
   const updateSumBill = (product, type) => {
     //add product to list confirm
@@ -39,6 +41,37 @@ function CartPage() {
     }
   };
 
+  const toggleSelectAll = (e) => {
+    const checked = e.currentTarget.checked;
+    const temList = cartListProduct.map((item) => {
+      return {
+        ...item,
+        isChecked: checked,
+      };
+    });
+    setCartListProduct(temList);
+   
+    if(checked){
+      setSumBill(0);
+      cartListProduct.forEach(item=>{
+        updateSumBill(item, "add");
+      });
+    }else{
+      cartListProduct.forEach((item) => {
+        updateSumBill(item, "minus");
+      });
+    }
+  };
+
+  const toggleItem = (selectedItem, checked) => {
+   
+    const temList = cartListProduct.map((item) =>
+      item.id === selectedItem.id ? { ...item, isChecked: checked } : item
+    );
+    setCartListProduct(temList);
+    if (checked) updateSumBill(selectedItem, "add");
+    else updateSumBill(selectedItem, "minus");
+  };
   const payHandler = () => {
     if (listCartSelected.length > 0) {
       navigate("/confirm", {
@@ -62,56 +95,86 @@ function CartPage() {
     fetchData();
   }, [cartDispatch, appState.isLogin, appState.id]);
 
-  const deleteProductCartHandler = async()=>{
-    try{
-      //delete product from cart db 
-      const listIdDeleted = listCartSelected.map((item) => item.id);
-      const response = await createAxiosInstance().delete("cart", {
-        data: {
-          IDs: listIdDeleted,
-        },
-      });
-      cartDispatch(deleteProductCart(listCartSelected));
-      console.log("delete res:", response);
-      setListCartSelected([]);
-      alert("Xóa thành công");
-    }
-    catch(e){
+  useEffect(()=>{
+   
+    setCartListProduct(cartState);
+  },[cartState])
+
+  console.log("cart render with list:", cartListProduct);
+  const deleteProductCartHandler = async () => {
+    try {
+      //delete product from cart db
+      const isConfirm = window.confirm("Bạn có chắc chắn muốn xóa")
+      if(isConfirm){
+        const listIdDeleted = listCartSelected.map((item) => item.id);
+        const response = await createAxiosInstance().delete("cart", {
+          data: {
+            IDs: listIdDeleted,
+          },
+        });
+        cartDispatch(deleteProductCart(listCartSelected));
+        console.log("delete res:", response);
+        setListCartSelected([]);
+        setSumBill(0);
+        
+      }
+      
+    } catch (e) {
       alert("Đã xảy ra lỗi do ", e.message);
     }
-    
-  }
+  };
+
   return appState.isLogin ? (
     <div className="w-full relative">
       <div className={`flex flex-col items-center p-2 `}>
         <PageTitle title="Giỏ hàng"></PageTitle>
-        {cartState.length !== 0 && (
+        {cartListProduct.length !== 0 && (
           <h2 className="text-b12 text-grey300 md:text-b6 mb-3">
             Các món đã chọn
           </h2>
         )}
         {/* delete button */}
-        {listCartSelected.length > 0 && (
-          <div className="w-[90%] lg:w-[60%] mb-2 flex justify-end">
-            <AppButton
-              onClick={deleteProductCartHandler}
-              text="Xóa"
-              className="bg-red-600 text-white"
-              icons={faTrash}
-            ></AppButton>
+        {cartListProduct.length > 1 && (
+          <div className="w-[90%] lg:w-[60%] mb-2 flex justify-between items-center">
+            <div className="text-b8">
+              <div className="flex items-center mt-2">
+                <input
+                  type="checkbox"
+                  name=""
+                  className="w-7"
+                  checked={!cartListProduct.some(item=>item?.isChecked !== true)}
+                  onClick={toggleSelectAll}
+                />
+                <span>Chọn tất cả</span>
+              </div>
+            </div>
+
+            {listCartSelected.length > 0 && (
+              <AppButton
+                onClick={deleteProductCartHandler}
+                text="Xóa"
+                className="bg-red-600 text-white"
+                icons={faTrash}
+              ></AppButton>
+            )}
           </div>
         )}
 
-        {cartState.length === 0 ? (
+        {cartListProduct.length === 0 ? (
           <img
             className="w-full md:w-2/4"
             src="https://www.combojumbo.in/empty-cart-png.png"
             alt=""
           ></img>
         ) : (
-          <Table updateSumBill={updateSumBill} />
+          <Table
+            cartListProduct={cartListProduct}
+            updateSumBill={updateSumBill}
+            toggleItem={toggleItem}
+            toggleSelectAll={toggleSelectAll}
+          />
         )}
-        {cartState.length !== 0 && (
+        {cartListProduct.length !== 0 && (
           <>
             <div className="flex items-end justify-center p-2">
               <span className=" text-b10 font-bold mr-1 leading-6 md:text-b8">
