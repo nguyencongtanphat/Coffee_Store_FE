@@ -4,20 +4,21 @@ import AppButton2 from "../components/AppButton2";
 import PageTitle from "../../../globalComponents/PageTitle";
 import leafBgR from "../../../assests/images/global/leaf-bg-right.png";
 import leafBgL from "../../../assests/images/global/leaf-bg-left.png";
-import HttpService, { createAxiosInstance } from "../../../service";
+import HttpService, { createAxiosInstance, errorNoti, successNoti } from "../../../service";
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import { FormatterService } from "../../../service";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useContext } from "react";
 import { CartContext, UserContext } from "../../../store/Context";
 import { addNewProductCart, fetchCartFromServer } from "../../../store/Actions";
-import { ColorRing } from "react-loader-spinner";
-import SkeletonLoader from "../../../globalComponents/SkeletonLoader";
 import LoadingSpinner from "../../../globalComponents/LoadingSpinner";
+import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 function DetailPage() {
+  const navigate = useNavigate();
   const [dtInfo, setDtInfo] = useState({});
   const [size, setSize] = useState("Small");
   const [price, setPrice] = useState(1);
@@ -57,6 +58,23 @@ function DetailPage() {
       if (number !== 1) setNumber((preNum) => --preNum);
     }
   };
+  const addProductToConfirm = async () => {
+    const itemBuyNow = {
+      Item: 
+        { Category: [{Name: "Trà"}], Image: "", Name: dtInfo.Name },
+      ItemID: dtInfo.id,
+      Price: price,
+      Size: size,
+      CustomerID: appState.id,
+      Quantity: number,
+      Status: "InCart",
+      id: 7
+    };
+    console.log("item_buy_now: ", itemBuyNow);
+    navigate("/confirm", {
+      state: [itemBuyNow],
+    });
+  }
 
   const addProductToCartHandler = async () => {
     try {
@@ -75,12 +93,13 @@ function DetailPage() {
         console.log("cart response:", response);
         const listCart = response.data.data;
         cartDispatch(fetchCartFromServer(listCart));
-        alert("Bạn đã thêm vào dỏ hàng thành công");
+        successNoti("Đã thêm vào giỏ hàng thành công!!!");
       } else {
-        alert("Bạn cần đăng nhập để có thể thực hiện thao tác này");
+        errorNoti("Bạn cần đăng nhập để thực hiện thao tác này")
       }
     } catch (e) {
-      alert("Đã có lỗi xảy ra xin thử lại sau!! ", e.message);
+      errorNoti(`Đã có lỗi xảy ra do ${e.message} xin thử lại sau!! `);
+
     }
   };
 
@@ -159,9 +178,11 @@ function DetailPage() {
                     text="Thêm vào giỏ hàng"
                     onClick={addProductToCartHandler}
                   />
+                  
                   <AppButton
                     className="md:ml-[20px] mt-[15px] items-center w-auto text-white"
                     text="Đặt hàng ngay"
+                    onClick={addProductToConfirm}
                   />
                 </div>
               </div>
@@ -182,7 +203,12 @@ function DetailPage() {
     ) : (
       <LoadingSpinner />
     );
-  return <>{content}</>;
+  return (
+    <>
+      {content}
+      
+    </>
+  );
 }
 
 export default DetailPage;

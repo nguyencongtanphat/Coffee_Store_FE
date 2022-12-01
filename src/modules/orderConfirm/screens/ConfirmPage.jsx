@@ -53,21 +53,9 @@ export default function ConfirmPage() {
 
   const navigate = useNavigate();
   const location = useLocation();
-  const fakeData = [
-    {
-      CustomerID: 3,
-      Item: 
-        { Category: [{Name: "Trà"}], Image: "", Name: "Trà Hạt Sen - Đá" },
-      ItemID: 1,
-      Price: 49000,
-      Quantity: 1,
-      Size: "Small",
-      Status: "InCart",
-      id: 7
-    },
-  ];
+  
   //const [listProducts, ] = useState(location.state);
-  const listProducts = location.state ? location.state : fakeData;
+  const listProducts = location.state;
   console.log("uselocation data", listProducts);
   const [appState, ] = useContext(UserContext);
   console.log("dataInfo", appState);

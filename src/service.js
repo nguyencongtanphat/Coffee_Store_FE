@@ -1,8 +1,35 @@
 import axios from "axios";
+import { toast } from "react-toastify";
+
+export const successNoti = (text) => {
+  toast.success(`${text || "Default Message"}`, {
+    position: "top-center",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
+}
+
+export const errorNoti = (text)=>{
+  toast.error(`${text || "Default Message"}`, {
+    position: "top-center",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
+}
 
 const HttpService = {
  appUrl: "https://coffeestorebe-production.up.railway.app",
-  // appUrl: "http://localhost:3001",
+// appUrl: "http://localhost:3001",
 };
 
 export const createAxiosInstance = () => {
@@ -23,3 +50,5 @@ const FormatterService = new Intl.NumberFormat("vi-VN", {
 });
 export { FormatterService };
 export default HttpService;
+
+
