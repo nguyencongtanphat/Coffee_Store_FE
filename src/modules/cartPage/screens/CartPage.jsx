@@ -6,7 +6,7 @@ import leafBgR from "../../../assests/images/global/leaf-bg-right.png";
 import leafBgL from "../../../assests/images/global/leaf-bg-left.png";
 import { useContext } from "react";
 import { CartContext } from "../../../store/Context";
-import { createAxiosInstance, FormatterService } from "../../../service";
+import { createAxiosInstance, errorNoti, FormatterService } from "../../../service";
 import { UserContext } from "../../../store/Context";
 import { useNavigate } from "react-router-dom";
 import NotAuthen from "../../../globalComponents/NotAuthen";
@@ -78,7 +78,7 @@ function CartPage() {
         state: listCartSelected,
       });
     } else {
-      alert("Bạn cần chọn 1 sản phẩm để lên đơn!!!");
+      errorNoti("Bạn cần chọn 1 sản phẩm để lên đơn!!!");
     }
   };
 
@@ -120,7 +120,8 @@ function CartPage() {
       }
       
     } catch (e) {
-      alert("Đã xảy ra lỗi do ", e.message);
+      errorNoti("Đã xảy ra lỗi do " + e.message);
+      
     }
   };
 

@@ -11,7 +11,7 @@ import right from "../../../assests/images/orderConfirm/right.png";
 import NotAuthen from "../../../globalComponents/NotAuthen";
 import havetoadd from "../../../assests/images/orderConfirm/havetoadd.png"
 import { useEffect } from "react";
-import { createAxiosInstance } from "../../../service";
+import { createAxiosInstance, errorNoti, successNoti } from "../../../service";
 import { deleteProductCart } from "../../../store/Actions";
 
 export default function ConfirmPage() {
@@ -36,7 +36,8 @@ export default function ConfirmPage() {
   }, [listProducts]);
 
 const orderSuccessHandler = ()=>{
-  alert("Bạn đã đặt hàng thành công!!!");
+ 
+  successNoti("Bạn đã đặt hàng thành công!!!");
   navigate("/");
 
 }
@@ -73,10 +74,12 @@ const orderSuccessHandler = ()=>{
 
       orderSuccessHandler();
     } catch (e) {
-      alert(
+  
+      errorNoti(
         "Đã có lỗi xảy ra trong quá trình đặt xin hay thử lại trong giây lát " +
           e.message
       );
+
     }
   };
 
