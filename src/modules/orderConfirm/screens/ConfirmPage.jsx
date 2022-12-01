@@ -10,7 +10,7 @@ import left from "../../../assests/images/orderConfirm/left.png";
 import right from "../../../assests/images/orderConfirm/right.png";
 import havetoadd from "../../../assests/images/orderConfirm/havetoadd.png"
 import { useEffect } from "react";
-import { createAxiosInstance } from "../../../service";
+import { createAxiosInstance, errorNoti, successNoti } from "../../../service";
 import { deleteProductCart } from "../../../store/Actions";
 import { useRef } from "react";
 
@@ -144,7 +144,8 @@ export default function ConfirmPage() {
 
       orderSuccessHandler();
     } catch (e) {
-      alert(
+  
+      errorNoti(
         "Đã có lỗi xảy ra trong quá trình đặt xin hay thử lại trong giây lát " +
           e.message
       );
