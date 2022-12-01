@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import AppButton from "../../../globalComponents/AppButton";
 import bgCoffee from "../../../assests/images/login/bg-coffee.png";
 import Modal from "../../../globalComponents/Modal";
-import { createAxiosInstance, getLogin } from "../../../service";
+import { createAxiosInstance, errorNoti, getLogin, successNoti } from "../../../service";
 import { UserContext } from "../../../store/Context";
 import { useContext } from "react";
 import { setStatusLogin } from "../../../store/Actions";
@@ -40,7 +40,7 @@ function LoginPopup(props) {
     dispatch(setStatusLogin(userData.userInfo));
     userNameInput.current.value = "";
     passwordInput.current.value = "";
-    
+    successNoti("Bạn đã đăng nhập thành công!");
     setIsProcessing((prev) => !prev);
   };
 
@@ -61,14 +61,17 @@ function LoginPopup(props) {
         );
         return successLoginHandler(response.data);
       } else {
-        alert("Bạn cần nhập đầy đủ thông tin!!!");
+       
+        errorNoti("Bạn cần nhập đầy đủ thông tin!!!");
       }
     } catch (e) {
       setIsProcessing((prev) => !prev);
       const errorMessage = e.response.data.message;
-      alert(
+      
+      errorNoti(
         `Đăng nhập thất bại do ${errorMessage}, bạn vui lòng kiểm tra lại thông tin và thử lại!!!`
       );
+
       userNameInput.current.value = "";
       passwordInput.current.value = "";
     }
