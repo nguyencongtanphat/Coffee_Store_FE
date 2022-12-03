@@ -93,19 +93,19 @@ export default function ConfirmPage() {
           totalAmount: totalAmount,
         };
         console.log("userInfo", userInfo);
-        alert("Bạn đã đặt hàng thành công");
+        successNoti("Bạn đã đặt hàng thành công");
       } else {
-        (!isPhone) ? alert("Số điện thoại của bạn chưa hợp lệ!") :
-        alert("Bạn cần nhập đầy đủ thông tin!!!");
+        (!isPhone) ? errorNoti("Số điện thoại của bạn chưa hợp lệ!") :
+        errorNoti("Bạn cần nhập đầy đủ thông tin!!!");
       }
     } catch (e) {
       const message = e.response.data;
-      alert(`Đặt hàng thất bại do ${message}. Vui lòng thử lại!!`);
+      errorNoti(`Đặt hàng thất bại do ${message}. Vui lòng thử lại!!`);
     }
   };
 
   const orderSuccessHandler = ()=>{
-    alert("Bạn đã đặt hàng thành công!!!");
+    successNoti("Bạn đã đặt hàng thành công!!!");
     navigate("/");
   }
 
