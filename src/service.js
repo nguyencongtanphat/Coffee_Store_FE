@@ -28,8 +28,8 @@ export const errorNoti = (text)=>{
 }
 
 const HttpService = {
-//appUrl: "https://coffeestorebe-production.up.railway.app",
-appUrl: "http://localhost:3001",
+appUrl: "https://coffeestorebe-production.up.railway.app",
+//appUrl: "http://localhost:3001",
 };
 
 export const createAxiosInstance = () => {
