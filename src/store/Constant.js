@@ -8,6 +8,8 @@ export const DELETE_PRODUCT_FROM_CART = "deleteProductFromCart";
 
 export const FETCH_CART_FROM_SERVER = "fetchcartFromServer";
 
+export const UPDATE_STATE_UPDATE = "updateStateUpdate";
+
 
 
  

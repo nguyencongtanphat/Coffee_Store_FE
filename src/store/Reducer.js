@@ -1,5 +1,5 @@
 import { createAxiosInstance } from "../service";
-import { ADD_NEW_CART_PRODUCT, DELETE_PRODUCT_FROM_CART, FETCH_CART_FROM_SERVER, SET_STATE_LOGIN, SET_STATE_LOGOUT } from "./Constant";
+import { ADD_NEW_CART_PRODUCT, DELETE_PRODUCT_FROM_CART, FETCH_CART_FROM_SERVER, SET_STATE_LOGIN, SET_STATE_LOGOUT, UPDATE_STATE_UPDATE } from "./Constant";
 
 const initAppState = {
   id: "",
@@ -35,6 +35,16 @@ const AppReducer = (currentState, action) => {
         userName: "",
         isLogin: false,
         address: [],
+      };
+    }
+    case UPDATE_STATE_UPDATE:{
+      return {
+        id: action.payload.id,
+        fullName: action.payload.Fullname,
+        phoneNumber: action.payload.PhoneNumber,
+        userName: action.payload.Username,
+        isLogin: true,
+        address: action.payload.address,
       };
     }
     default:

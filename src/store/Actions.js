@@ -1,10 +1,17 @@
-import { ADD_NEW_CART_PRODUCT, DELETE_PRODUCT_FROM_CART, FETCH_CART_FROM_SERVER, SET_STATE_LOGIN, SET_STATE_LOGOUT } from "./Constant";
+import { ADD_NEW_CART_PRODUCT, DELETE_PRODUCT_FROM_CART, FETCH_CART_FROM_SERVER, SET_STATE_LOGIN, SET_STATE_LOGOUT, UPDATE_STATE_UPDATE } from "./Constant";
 
 export const setStatusLogin = (payload)=>{
     return {
       type: SET_STATE_LOGIN,
       payload
     };
+}
+ 
+export const updateAppState = (payload)=>{
+  return {
+    type: UPDATE_STATE_UPDATE,
+    payload
+  };
 }
 
 export const setStateLogOut = () => {
