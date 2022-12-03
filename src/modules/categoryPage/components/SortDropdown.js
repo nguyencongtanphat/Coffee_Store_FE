@@ -23,7 +23,8 @@ const SortDropdown = (props) => {
 
     return (
         <div className={`flex flex-col bg-grey rounded-xl h-12 cursor-pointer mr-3
-        ${isDropdownOpen ? 'lg:rounded-t-xl' : 'lg:rounded-xl'} md:w-72 `} >
+        ${isDropdownOpen ? 'rounded-none rounded-t-xl' : 'rounded-xl'} md:w-72 `} >
+            <div className={`${isDropdownOpen ? 'mb-1' : 'mb-0'}`}>
             <div className="hidden md:flex px-3" onClick={() => {
                 setDropdownOpen(!isDropdownOpen)
                 setChoosenElement(document.getElementById("selected"))
@@ -42,6 +43,7 @@ const SortDropdown = (props) => {
                 <p className="mx-1 mt-4 text-grey200"
                 >Giá</p>
                 <FontAwesomeIcon icon={isIconUp ? faArrowUpShortWide : faArrowDownWideShort} size="xl" color="orange" className="mt-3" />
+            </div>
             </div>
             {
                 isDropdownOpen && (
