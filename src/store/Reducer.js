@@ -1,5 +1,5 @@
 import { createAxiosInstance } from "../service";
-import { ADD_NEW_CART_PRODUCT, DELETE_PRODUCT_FROM_CART, FETCH_CART_FROM_SERVER, SET_STATE_LOGIN, SET_STATE_LOGOUT } from "./Constant";
+import { ADD_NEW_CART_PRODUCT, DELETE_PRODUCT_FROM_CART, FETCH_CART_FROM_SERVER, SET_STATE_LOGIN, SET_STATE_LOGOUT, UPDATE_STATE_UPDATE } from "./Constant";
 
 const initAppState = {
   id: "",
@@ -37,6 +37,16 @@ const AppReducer = (currentState, action) => {
         address: [],
       };
     }
+    case UPDATE_STATE_UPDATE:{
+      return {
+        id: action.payload.id,
+        fullName: action.payload.Fullname,
+        phoneNumber: action.payload.PhoneNumber,
+        userName: action.payload.Username,
+        isLogin: true,
+        address: action.payload.address,
+      };
+    }
     default:
       throw new Error("this Action is not supported");
   }
@@ -58,13 +68,15 @@ const CartReducer =  (currentState, action) =>{
              const newItem = response.data.data;
               console.log("new product: ", newItem);
               let index = currentState.findIndex(e => e.id === newItem.id);
-               
+              let newListCart = []; 
               if(index!==-1){
                 currentState[index]=newItem;
-                return currentState;
+                newListCart = currentState;
               }else{
-                return [newItem, ...currentState];
+                newListCart = [newItem, ...currentState];
               }
+              console.log("cartListNew:", newListCart);
+              return newListCart;
            })
            .catch(function (error) {
              console.log(error);

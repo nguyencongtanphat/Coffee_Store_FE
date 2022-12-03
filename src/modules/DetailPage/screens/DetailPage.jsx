@@ -4,7 +4,7 @@ import AppButton2 from "../components/AppButton2";
 import PageTitle from "../../../globalComponents/PageTitle";
 import leafBgR from "../../../assests/images/global/leaf-bg-right.png";
 import leafBgL from "../../../assests/images/global/leaf-bg-left.png";
-import HttpService, { createAxiosInstance } from "../../../service";
+import HttpService, { createAxiosInstance, errorNoti, successNoti } from "../../../service";
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -13,9 +13,8 @@ import { useParams } from "react-router-dom";
 import { useContext } from "react";
 import { CartContext, UserContext } from "../../../store/Context";
 import { addNewProductCart, fetchCartFromServer } from "../../../store/Actions";
-import { ColorRing } from "react-loader-spinner";
-import SkeletonLoader from "../../../globalComponents/SkeletonLoader";
 import LoadingSpinner from "../../../globalComponents/LoadingSpinner";
+import "react-toastify/dist/ReactToastify.css";
 
 function DetailPage() {
   const [dtInfo, setDtInfo] = useState({});
@@ -25,6 +24,7 @@ function DetailPage() {
   const [cartState, cartDispatch] = useContext(CartContext);
   const [appState, dispatch] = useContext(UserContext);
   let { productId } = useParams();
+  
 
   //fetchData
   useEffect(() => {
@@ -75,12 +75,13 @@ function DetailPage() {
         console.log("cart response:", response);
         const listCart = response.data.data;
         cartDispatch(fetchCartFromServer(listCart));
-        alert("Bạn đã thêm vào dỏ hàng thành công");
+        successNoti("Đã thêm vào giỏ hàng thành công!!!");
       } else {
-        alert("Bạn cần đăng nhập để có thể thực hiện thao tác này");
+        errorNoti("Bạn cần đăng nhập để thực hiện thao tác này")
       }
     } catch (e) {
-      alert("Đã có lỗi xảy ra xin thử lại sau!! ", e.message);
+      errorNoti(`Đã có lỗi xảy ra do ${e.message} xin thử lại sau!! `);
+      
     }
   };
 
@@ -182,7 +183,12 @@ function DetailPage() {
     ) : (
       <LoadingSpinner />
     );
-  return <>{content}</>;
+  return (
+    <>
+      {content}
+      
+    </>
+  );
 }
 
 export default DetailPage;

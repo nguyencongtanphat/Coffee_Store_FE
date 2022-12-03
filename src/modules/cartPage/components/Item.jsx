@@ -1,23 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
+import { useRef } from "react";
+import { useEffect } from "react";
 import { FormatterService } from "../../../service";
-import "./Item.module.css"
 
 function Item(props) {
-  const { Price, Quantity, Size, id } = props.itemInfo;
-  const { updateSumBill } = props;
-  const {Image, Name} = props.itemInfo.Item;
-  
+  const { Price, Quantity, Size, id, isChecked } = props.itemInfo;
+  const { updateSumBill, toggleItem } = props;
+  const { Image, Name } = props.itemInfo.Item;
+  const checkbox = useRef("");
 
-  console.log("img:", Image)
   let productPrice = Number(Price);
-  const toggleSelectItemHandler = (e) => {
-    if (e.currentTarget.checked === true) updateSumBill(props.itemInfo, "add");
-    else updateSumBill(props.itemInfo, "minus");
+  const checkClickHandler = (e) => {
+    const checked = e.currentTarget.checked;
+    console.log("click", checked, id);
+    toggleItem(props.itemInfo, checked);
   };
+
   return (
-    <div key={id} className="flex items-center justify-around md:justify-start">
+    <div
+      key={id}
+      className={`flex items-center justify-around md:justify-start hover:bg-[#fff6e4] p-2 ${
+        isChecked && "bg-[#fff6e4]"
+      }`}
+    >
       <input
-        onClick={toggleSelectItemHandler}
+        ref={checkbox}
+        onClick={(e) => {
+          checkClickHandler(e);
+        }}
+        checked={isChecked || false}
         type="checkbox"
         name=""
         id={id}
@@ -41,7 +52,7 @@ function Item(props) {
           <p>
             Thành tiền:
             <span className="text-orange">
-              {FormatterService.format(productPrice)}
+              {FormatterService.format(productPrice * Quantity)}
             </span>
           </p>
         </div>

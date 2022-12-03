@@ -4,7 +4,7 @@ import bgCoffee from "../../../assests/images/login/bg-coffee.png";
 import Modal from "../../../globalComponents/Modal";
 import { useRef } from "react";
 import axios from "axios";
-import HttpService from "../../../service";
+import HttpService, { errorNoti, successNoti } from "../../../service";
 import { ColorRing } from "react-loader-spinner";
 import PasswordField from "../../../globalComponents/PasswordField";
 
@@ -62,17 +62,18 @@ function SigninPopup({ className, togglePopupSignup, togglePopupLogin }) {
           HttpService.appUrl + "/user/signup",
           userInfo
         );
-        alert("Bạn đã ký thành công");
+      
+        successNoti("Bạn đã ký thành công");
         successSignupHandler();
        
       } else {
-       
-        alert("Bạn cần nhập đầy đủ thông tin!!!");
+        errorNoti("Bạn cần nhập đầy đủ thông tin!!!");
       }
     } catch (e) {
       const message = e.response.data;
       setIsProcessing((prev) => !prev);
-      alert(`Đăng ký thất bại do ${message}. Vui lòng thử lại!!`);
+     
+      errorNoti(`Đăng ký thất bại do ${message}. Vui lòng thử lại!!`);
       userNameInput.current.value = "";
     }
   };
