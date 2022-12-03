@@ -13,6 +13,7 @@ const BestSeller = (props) => {
                         name={item.Name}
                         category={item.Category.Name}
                         price={item.SPrice}
+                        id={item.id}
                     />
                     )
                 }

@@ -4,13 +4,19 @@ import React from 'react'
 import PropTypes from 'prop-types';
 import { FormatterService } from "../service";
 import styles from "./ProductCard.module.css"
+import { useNavigate } from 'react-router-dom';
 
 const ProductCard = (props) => {
+     const navigate = useNavigate();
     return (
       <div
-        className={`lg:w-[17rem] lg:max-h-[22rem] overflow-hidden
+        className={`lg:w-[17rem] lg:max-h-[22rem] overflow-hidden cursor-pointer
                 w-[9.5rem] rounded-2xl m-4 bg-white transition-shadow shadow-lg shadow-grey300 hover:bg-gray-100 
                 ${props.className}`}
+                onClick={()=>{
+                     console.log("click")
+                     navigate(`/products/${props.id}}`);
+                }}
       >
         <div className="">
           <img
