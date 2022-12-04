@@ -44,7 +44,7 @@ const CategoryPage = (props) => {
                     </div>
                     {
                         filterProducts.length > 0 ? (
-                            <div className="grid grid-cols-2 justify-items-center lg:grid-cols-4">
+                            <div className="grid grid-cols-2 justify-items-center md:grid-cols-3 lg:grid-cols-4">
 
                                 {filterProducts.map(item => <ProductCard
                                     avtSrc={item.Image}
