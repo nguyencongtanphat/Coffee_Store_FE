@@ -5,7 +5,7 @@ import OrderItemSummary from './OrderItemSummary'
 import sample from './Rectangle 4065.png'
 const OrderSummary = (props) => {
     return (
-        <div className="pb-4 mb-4 lg:pb-8 lg:mb-8 lg:w-2/3 lg:flex"
+        <div className="pb-4 mb-4 lg:pb-8 lg:m-auto lg:w-2/3 lg:flex items-center justify-center"
             style={{borderBottom: '1px solid #E0E0E0'}}
         >
             <div className="flex lg:flex-col">
@@ -26,7 +26,9 @@ const OrderSummary = (props) => {
                             quantity={orderProduct.Quantity}
                         />)
                     }
-                    <Link className="text-b13 md:text-b9 text-orange">
+                    <Link className="text-b13 md:text-b9 text-orange" 
+                        to={`order/${props.orderInfo.DetailOrder[0].ReceiptID}`}
+                    >
                         Xem thêm
                     </Link>
                 </div>
