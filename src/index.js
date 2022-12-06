@@ -18,6 +18,7 @@ import Provider from './store/Provider';
 import PersonalInfoPage from './modules/personalInfoPage/screens/PersonalInfoPage';
 import BlogPage from './modules/blogPage/screens/BlogPage';
 import OrderHistory from './modules/orderHistoryPage/screens/OrderHistory';
+import DetailOrder from './modules/detailOrder/screens/detailOrder';
 
 
 const router = createBrowserRouter([
@@ -85,6 +86,11 @@ const router = createBrowserRouter([
       {
         path: '/history',
         element: <OrderHistory />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: '/orders/:orderId',
+        element: <DetailOrder />,
         errorElement: <ErrorPage />,
       }
     ],
