@@ -17,19 +17,16 @@ const Root = () => {
 
    useEffect(() => {
      async function fetchData() {
-       console.log("app call cart ");
        if (appState.isLogin) {
          const response = await createAxiosInstance().get(
            `cart/${appState.id}`
          );
-         console.log("cart response:", response);
          const listCart = response.data.data;
          cartDispatch(fetchCartFromServer(listCart));
        }
      }
      fetchData();
    }, [cartDispatch, appState.isLogin, appState.id]);
-  console.log("app state: ", appState)
     
     return (
       <div>

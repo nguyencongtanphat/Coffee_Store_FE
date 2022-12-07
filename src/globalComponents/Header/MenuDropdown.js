@@ -25,7 +25,7 @@ const MenuDropdown = (props) => {
 
   return (
     <div className={`${props.open ? "flex" : "hidden"
-      } w-full h-screen fixed top-0
+      } w-full h-screen absolute z-30
     `}
       onClick={(e) => {
         if (e.currentTarget === e.target) {
@@ -35,8 +35,8 @@ const MenuDropdown = (props) => {
     >
 
       <div
-        className={`flex-col rounded-lg justify-center items-start w-64
-            absolute top-28 right-12 opacity-90
+        className={`rounded-lg w-64
+            absolute top-[19rem] right-12 opacity-90 border border-solid
         `}
         style={{ backgroundColor: "#F4D8B2" }}
       >
@@ -45,10 +45,20 @@ const MenuDropdown = (props) => {
           style={{
             borderLeft: "10px solid transparent",
             borderRight: "10px solid transparent",
-            borderBottom: "10px solid #F4D8B2",
+            borderBottom: "10px solid black",
           }}
-        ></span>
-        <div className="flex max-w-full flex-col ml-4">
+        >
+          <span className="absolute top-px -right-2"
+            style={{
+              borderLeft: "8px solid transparent",
+              borderRight: "8px solid transparent",
+              borderBottom: "8px solid #F4D8B2",
+            }}
+          >
+
+          </span>
+        </span>
+        <div className="flex max-w-full flex-col ml-4 ">
           <div className="flex mt-4" onClick={() => props.onClose()}>
             <FontAwesomeIcon icon={faAddressCard} size="lg" color="black" />
             <Link
