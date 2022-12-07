@@ -21,7 +21,7 @@ export default function PersonalInfoPage() {
   const userNameInput = useRef("");
   const phoneNumberInput = useRef("");
   const addressInput = useRef("");
-  
+  const passwordInput = useRef("");
 
    const handleTogglePopup = () => {
       setTogglePopup(prev=>!prev);
@@ -45,13 +45,15 @@ export default function PersonalInfoPage() {
    const updateHandler = async()=>{
     try{
        const newUserInfor = {
-         id:appState.id,
-         Fullname: fullNameInput.current.value || appState.fullName,
-         Username: userNameInput.current.value || appState.userName,
-         PhoneNumber: phoneNumberInput.current.value || appState.phoneNumber,
-         Address: addressInput.current.value || appState.address[0].Value,
+         id: appState.id,
+         Fullname: fullNameInput.current.value.trim() || appState.fullName,
+         Username: userNameInput.current.value.trim() || appState.userName,
+         PhoneNumber:
+           phoneNumberInput.current.value.trim() || appState.phoneNumber,
+         Address:
+           addressInput.current.value.trim() || appState.address[0].Value,
+         Password: passwordInput.current.value.trim(),
        };
-       
        
        const response = await createAxiosInstance().post(
          "/user/update",
@@ -80,7 +82,6 @@ export default function PersonalInfoPage() {
         />
       )}
       <div>
-        
         <div className="p-2 m-auto md:w-[70%] lg:w-[60%] ">
           <PageTitle title="THÔNG TIN CÁ NHÂN" />
           <InputField
@@ -113,6 +114,16 @@ export default function PersonalInfoPage() {
             label="Địa chỉ"
             value={appState.address[0].Value}
           />
+          {isValidate && (
+            <InputField
+              forwardedRef={passwordInput}
+              isDisabled={!isValidate}
+              type="password"
+              label="Mật khẩu"
+              value="Mật khẩu"
+            />
+          )}
+
           <div className="flex flex-col items-center">
             <OutlineBtn
               onClick={isValidate ? updateHandler : handleTogglePopup}
