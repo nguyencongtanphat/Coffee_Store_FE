@@ -53,7 +53,7 @@ function DetailOrder() {
       <div className="flex flex-col items-center p-2">
         <PageTitle title="Chi tiết đơn hàng"></PageTitle>
         <div className="lg:ml-[-460px]">
-          <p className="text-b5 md:text-b3 text-orange">#{dtInfo.id}</p>
+          
           <p className="text-b11 md:text-b9 text-grey200 flex my-2 lg:mx-0">
             Ngày:&nbsp;
             <span className="text-orange">{FormatDate(dtInfo.createdAt)}</span>

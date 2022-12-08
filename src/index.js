@@ -84,7 +84,7 @@ const router = createBrowserRouter([
         element: <SigninPopup />,
       },
       {
-        path: '/history',
+        path: '/orders',
         element: <OrderHistory />,
         errorElement: <ErrorPage />,
       },
