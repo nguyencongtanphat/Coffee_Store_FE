@@ -74,7 +74,7 @@ const MenuDropdown = (props) => {
             <Link
               className="no-underline ml-5 text-black 
                     hover:underline underline-offset-4 decoration-2"
-              to="history"
+              to="orders"
             >
               Lịch sử mua hàng
           </Link>

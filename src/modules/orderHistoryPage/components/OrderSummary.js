@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom'
 import { FormatterService } from '../../../service'
 import OrderItemSummary from './OrderItemSummary'
 import sample from './Rectangle 4065.png'
+import { useNavigate } from "react-router-dom";
+
 const OrderSummary = (props) => {
+    const navigate = useNavigate();
     return (
         <div className="pb-4 mb-4 lg:pb-8 lg:m-auto lg:w-2/3 lg:flex items-center justify-center"
             style={{borderBottom: '1px solid #E0E0E0'}}
@@ -26,11 +29,13 @@ const OrderSummary = (props) => {
                             quantity={orderProduct.Quantity}
                         />)
                     }
-                    <Link className="text-b13 md:text-b9 text-orange" 
-                        to={`order/${props.orderInfo.DetailOrder[0].ReceiptID}`}
+                    <p className="text-b13 md:text-b9 text-orange cursor-pointer" 
+                        onClick={() => {
+                              navigate(`${props.orderInfo.id}`);
+                        }}
                     >
                         Xem thêm
-                    </Link>
+                    </p>
                 </div>
             </div>
         </div>
