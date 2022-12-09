@@ -36,7 +36,7 @@ const MenuDropdown = (props) => {
 
       <div
         className={`rounded-lg w-64
-            absolute top-[19rem] right-12 opacity-90 border border-solid
+            absolute top-[26rem] right-12 opacity-90 border border-solid
         `}
         style={{ backgroundColor: "#F4D8B2" }}
       >
