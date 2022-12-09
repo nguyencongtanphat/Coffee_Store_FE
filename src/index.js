@@ -17,6 +17,7 @@ import SigninPopup from './modules/signinPopup/screen/signinPopup';
 import Provider from './store/Provider';
 import PersonalInfoPage from './modules/personalInfoPage/screens/PersonalInfoPage';
 import BlogPage from './modules/blogPage/screens/BlogPage';
+import BlogDetailPage from './modules/blogDetailPage/screens/blogDetailPage';
 import OrderHistory from './modules/orderHistoryPage/screens/OrderHistory';
 import DetailOrder from './modules/detailOrder/screens/detailOrder';
 
@@ -56,6 +57,11 @@ const router = createBrowserRouter([
       {
         path: "blogs",
         element: <BlogPage title="CHUYỆN NHÀ" />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "blog/:blogId",
+        element: <BlogDetailPage />,
         errorElement: <ErrorPage />,
       },
       {
@@ -100,7 +106,7 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider>
-    <RouterProvider router={router} />
+    <RouterProvider router={router}/>
   </Provider>
 );
 
