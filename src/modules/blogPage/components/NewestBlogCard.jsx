@@ -1,8 +1,13 @@
 import React from 'react'
 import image20 from "../../../assests/images/blogPage/image20.png"
+import { useNavigate } from "react-router-dom";
 export default function NewestBlogCard(props){
+    const navigate = useNavigate();
+    console.log("newsId,", props.id)
     return (
-        <div className='hidden lg:flex lg:flex-wrap xl:flex-nowrap px-[28px] 2xl:px-[82px] 3xl:px-0 my-[70px] lg:mb-[10px] 3xl:mb-[50px]'>
+        <div onClick={()=>{
+              navigate(`/blogs/${props.id}}`);
+        }} className='hidden lg:flex lg:flex-wrap xl:flex-nowrap px-[28px] 2xl:px-[82px] 3xl:px-0 my-[70px] lg:mb-[10px] 3xl:mb-[50px]'>
                 <a href="#" className='basis-1/3 lg:basis-full xl:basis-1/2 no-underline' >
                     <img src={props.image} className=" rounded-3xl lg:w-[850px] xl:w-[525px] 1.5xl:w-[700px] 3xl:w-[850px] block mx-auto 3xl:ml-[42px]" />
                 </a>

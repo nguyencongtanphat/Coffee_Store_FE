@@ -2,15 +2,15 @@ import React, { useEffect, useState } from "react";
 import BlogCard from "../components/BlogCard";
 import NewestBlogCard from "../components/NewestBlogCard";
 import PageTitle from "../../../globalComponents/PageTitle";
-import BlogData from "../components/Data";
 import { createAxiosInstance, FormatterService } from "../../../service";
 import leafBgR from "../../../assests/images/global/leaf-bg-right.png";
 import leafBgL from "../../../assests/images/global/leaf-bg-left.png";
-import { CartReducer } from "../../../store/Reducer";
 import LoadingSpinner from "../../../globalComponents/LoadingSpinner";
+import { useNavigate } from "react-router-dom";
 
 export default function BlogPage(props) {
   const [blogList, setBlogList] = useState([]);
+   const navigate = useNavigate();
   useEffect(() => {
     async function fetchData() {
       const response = await createAxiosInstance().get("/blog");
@@ -22,6 +22,7 @@ export default function BlogPage(props) {
 
   const [newest, setNewest] = useState({});
   const [subContent, setSubContent] = useState("");
+  console.log("dhasdjahfjdhasf:", blogList);
   useEffect(() => {
     async function fetchData() {
       const response = await createAxiosInstance().get("/blog/newest");
@@ -40,6 +41,7 @@ export default function BlogPage(props) {
           <div className=" px-[30px] lg:px-[50px] xl:px-[30px] 3xl:px-[70px]">
             <PageTitle title={props.title} />
             <NewestBlogCard
+              id={newest.id}
               image={newest.TitleImage}
               date={newest.Date}
               content={newest.Description}
@@ -52,7 +54,9 @@ export default function BlogPage(props) {
                   return;
                 }
                 return (
-                  <div className="basis-full lg:basis-1/2 xl:basis-1/3">
+                  <div onClick={()=>{
+                      navigate(`/blogs/${item.id}}`);
+                  }} className="basis-full lg:basis-1/2 xl:basis-1/3">
                     <BlogCard
                       image={item.TitleImage}
                       date={item.Date}
