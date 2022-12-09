@@ -130,10 +130,7 @@ function DetailPage() {
                   {FormatterService.format(price)}
                 </p>
                 <p className="mt-[10px] text-gray-500 text-b13 md:text-b11 lg:text-b9">
-                  CloudFee Creme Brulee Caramel ngon khó cưỡng bởi lớp kem trứng
-                  Creme Brulee bồng bềnh béo mịn, ngọt thanh của Caramel, thêm
-                  xíu đắng nhẹ từ cà phê, kèm topping thạch cà phê dai dai giòn
-                  giòn.{" "}
+                  {dtInfo.Description}
                 </p>
                 <div className="mt-[10px] flex flex-row w-[425px] h-auto items-center">
                   <p className="text-b11 md:text-b10 lg:text-b9">Size:</p>
@@ -178,7 +175,7 @@ function DetailPage() {
                     text="Thêm vào giỏ hàng"
                     onClick={addProductToCartHandler}
                   />
-                  
+
                   <AppButton
                     className="md:ml-[20px] mt-[15px] items-center w-auto text-white"
                     text="Đặt hàng ngay"

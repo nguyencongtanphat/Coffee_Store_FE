@@ -4,6 +4,7 @@ import PageTitle from "../../../globalComponents/PageTitle";
 import Table from "../components/Table";
 import leafBgR from "../../../assests/images/global/leaf-bg-right.png";
 import leafBgL from "../../../assests/images/global/leaf-bg-left.png";
+import emptyCartImg from "../../../assests/images/global/empty_cart.png";
 import { useContext } from "react";
 import { CartContext } from "../../../store/Context";
 import { createAxiosInstance, errorNoti, FormatterService } from "../../../service";
@@ -143,7 +144,9 @@ function CartPage() {
                   type="checkbox"
                   name=""
                   className="w-7"
-                  checked={!cartListProduct.some(item=>item?.isChecked !== true)}
+                  checked={
+                    !cartListProduct.some((item) => item?.isChecked !== true)
+                  }
                   onClick={toggleSelectAll}
                 />
                 <span>Chọn tất cả</span>
@@ -162,11 +165,7 @@ function CartPage() {
         )}
 
         {cartListProduct.length === 0 ? (
-          <img
-            className="w-full md:w-2/4"
-            src="https://www.combojumbo.in/empty-cart-png.png"
-            alt=""
-          ></img>
+          <img className="w-full md:w-2/4" src={emptyCartImg} alt=""></img>
         ) : (
           <Table
             cartListProduct={cartListProduct}
