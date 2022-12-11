@@ -135,7 +135,10 @@ const NavigationBar = (props) => {
         togglePopupSignup={togglePopupSignup}
         togglePopupLogin={togglePopupLogin}
       ></SigninPopup>
-      <div className={`flex items-center justify-between ${props.className}`} style={{backgroundColor:'#F4D8B2'}}>
+      <div
+        className={`flex items-center justify-between ${props.className}`}
+        style={{ backgroundColor: "#F4D8B2" }}
+      >
         <button
           className="border-none outline-none bg-transparent cursor-pointer ml-2 mt-4 lg:hidden"
           onClick={toggleDrawer(true)}
@@ -168,11 +171,13 @@ const NavigationBar = (props) => {
           >
             Cà phê
           </Link>
-          <Link className={`no-underline text-b8 p-4 pt-6 hover:text-orange 
-                    ${(pathname === '/teas') ? 'text-orange' : 'text-black'}`}
-                    to="/teas"
-
-                >Trà</Link>
+          <Link
+            className={`no-underline text-b8 p-4 pt-6 hover:text-orange 
+                    ${pathname === "/teas" ? "text-orange" : "text-black"}`}
+            to="/teas"
+          >
+            Trà
+          </Link>
           <Link
             className={`no-underline text-b8 p-4 pt-6 hover:text-orange 
                     ${pathname === "/cakes" ? "text-orange" : "text-black"}`}
@@ -190,7 +195,11 @@ const NavigationBar = (props) => {
         </nav>
 
         {/* login signup btn */}
-        <div className={` my-4 mr-8 pt-2.5 max-h-11 hidden ${!appState.isLogin ? "sm:flex" : "hidden"} `}>
+        <div
+          className={` my-4 mr-8 pt-2.5 max-h-11 hidden ${
+            !appState.isLogin ? "sm:flex" : "hidden"
+          } `}
+        >
           <AppButton
             text="Đăng nhập"
             className="mb-2 rounded-none text-white rounded-l-full py-0.5 md:py-1.5"
@@ -212,10 +221,13 @@ const NavigationBar = (props) => {
                 border
                 className="text-orange bg-white rounded-full ml-2"
               />
-              <p className="my-1 text-b15 text-white mx-2 
+              <p
+                className="my-1 leading-[22px] text-b15 text-white mx-2 
                       md:text-b12 lg:text-b11"
-              >{appState.fullName}</p>
-              <FontAwesomeIcon 
+              >
+                {appState.fullName}
+              </p>
+              <FontAwesomeIcon
                 icon={faSortDown}
                 size="md"
                 className="text-white mx-2 mt-1"
@@ -224,7 +236,7 @@ const NavigationBar = (props) => {
             <FontAwesomeIcon
               icon={faUser}
               size="xl"
-              border 
+              border
               className="text-orange border-none rounded-full ml-2 md:hidden"
             />
           </Link>

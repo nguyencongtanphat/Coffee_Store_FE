@@ -59,7 +59,8 @@ export default function ConfirmPage() {
   if (listProducts) {
     listProducts = listProducts.map((item) => {
       return {
-        ID: item.id,
+        id:item.id,
+        ID: item.ItemID,
         Quantity: item.Quantity,
         Size: item.Size,
         Price: item.Price,
@@ -91,15 +92,19 @@ export default function ConfirmPage() {
       let isUserPhone = isValid(userPhone);
       let isPhone = isNumber(userPhone);
       if (isUserName && isUserAddress && isUserPhone && isPhone) {
-        const userInfo = {
-          fullName: userName.current.value,
-          address: userAddress.current.value,
-          phoneNumber: userPhone.current.value,
-          items: listProducts,
-          totalAmount: totalAmount,
+        const orderInfo = {
+          FullName: userName.current.value,
+          Address: userAddress.current.value,
+          PhoneNumber: userPhone.current.value,
+          Items: listProducts,
+          TotalAmount: totalAmount,
+          CustomerType: "Non-Member",
         };
-        console.log("userInfo", userInfo);
-        successNoti("Bạn đã đặt hàng thành công");
+        const responseOrder = await createAxiosInstance().post(
+          `order/create`,
+          orderInfo
+        );
+       orderSuccessHandler(responseOrder.data.Order.id);
       } else {
         !isPhone
           ? errorNoti("Số điện thoại của bạn chưa hợp lệ!")
@@ -111,9 +116,9 @@ export default function ConfirmPage() {
     }
   };
 
-  const orderSuccessHandler = () => {
+  const orderSuccessHandler = (id) => {
     successNoti("Bạn đã đặt hàng thành công!!!");
-    navigate("/");
+    navigate(`/orders/${id}`);
   };
 
   const orderHandler = async () => {
@@ -132,13 +137,14 @@ export default function ConfirmPage() {
 
         console.log("thong tin trc khi gui:", orderInfo);
         //post new order to db
-        const reponse = await createAxiosInstance().post(
+        const responseOrder = await createAxiosInstance().post(
           `order/create`,
           orderInfo
         );
-        console.log("thong tin don hang sau khi gui:", reponse);
+        console.log("thong tin don hang sau khi gui:", responseOrder.data.Order.id);
         //delete product from cart db
         const listIdDeleted = listProducts.map(item => item.id)
+        console.log("listIdDelete: " + listIdDeleted)
         const response = await createAxiosInstance().delete("cart", {
           data: {
             IDs: listIdDeleted,
@@ -149,7 +155,7 @@ export default function ConfirmPage() {
         //update cart state
         cartDispatch(deleteProductCart(listProducts));
 
-        orderSuccessHandler();
+        orderSuccessHandler(responseOrder.data.Order.id);
       } catch (e) {
         errorNoti(
           "Đã có lỗi xảy ra trong quá trình đặt xin hay thử lại trong giây lát " +
@@ -240,7 +246,7 @@ export default function ConfirmPage() {
           <AppButton
             text="Đặt hàng"
             onClick={orderHandler}
-            className="w-fit "
+            className="w-fit text-white"
           />
         </div>
       </div>

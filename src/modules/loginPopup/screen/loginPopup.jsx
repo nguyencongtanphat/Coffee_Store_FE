@@ -147,9 +147,7 @@ function LoginPopup(props) {
                   />
                   <span className='cursor-pointer absolute right-4 top-[14px] md:right-5 md:top-[22px]'>{ToggleIcon}</span>
                 </div>
-                <div>
-                  <p className="mt-[7px] text-[10px] text-end">Quên mật khẩu</p>
-                </div>
+               
                 <div className="">
                   <AppButton
                     className="w-full h-[32px] mt-[7px] text-b17 flex items-center rounded-md text-white md:w-[342px] md:h-[53px] md:text-b10"

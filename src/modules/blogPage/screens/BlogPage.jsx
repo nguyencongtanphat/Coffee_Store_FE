@@ -55,7 +55,7 @@ export default function BlogPage(props) {
                 }
                 return (
                   <div onClick={()=>{
-                      navigate(`/blogs/${item.id}}`);
+                      navigate(`/blogs/${item.id}`);
                   }} className="basis-full lg:basis-1/2 xl:basis-1/3">
                     <BlogCard
                       image={item.TitleImage}

@@ -165,7 +165,10 @@ function CartPage() {
         )}
 
         {cartListProduct.length === 0 ? (
-          <img className="w-full md:w-2/4" src={emptyCartImg} alt=""></img>
+          <div className="text-center text-grey100 text-b7 lg:text-b4  mx-auto lg:w-[58rem]">
+            <p>Bạn chưa có sản phẩm nào trong cart</p>
+            <img className="w-full md:w-2/4" src={emptyCartImg} alt=""></img>
+          </div>
         ) : (
           <Table
             cartListProduct={cartListProduct}

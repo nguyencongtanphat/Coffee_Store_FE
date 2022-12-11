@@ -4,7 +4,7 @@ import { createAxiosInstance } from '../../../service.js'
 import OrderSummary from '../components/OrderSummary.js'
 import { useContext } from 'react'
 import { UserContext } from '../../../store/Context'
-import sad_face from '../../../assests/images/error/sad_face.png'
+import sad_face from '../../../assests/images/global/empty_cart.png'
 import AppButton from "../../../globalComponents/AppButton";
 import { Link } from "react-router-dom";
 
@@ -56,13 +56,13 @@ const OrderHistory = () => {
             <img
               src={sad_face}
               alt="Sad Face"
-              className="w-60 h-60 mx-[41rem]"
+              className="w-full md:w-1/3"
             />
-            <p className="text-center text-grey100 text-b7 lg:text-b1 mt-8 mx-auto lg:w-[58rem]">
+            <p className="text-center text-grey100 text-b7 lg:text-b4  mx-auto lg:w-[58rem]">
               Bạn chưa có đơn hàng nào!! Hãy ủng hộ chúng tôi nhé
             </p>
             <Link to="/" className="no-underline my-10">
-              <AppButton text={"Quay về trang chủ"} className="bg-brown" />
+              <AppButton text={"Quay về trang chủ"} className="bg-brown text-white" />
             </Link>
           </div>
         )}

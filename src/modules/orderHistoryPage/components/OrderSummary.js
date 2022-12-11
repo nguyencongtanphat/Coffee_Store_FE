@@ -36,7 +36,7 @@ const OrderSummary = (props) => {
                 navigate(`${props.orderInfo.id}`);
               }}
             >
-              Xem thêm
+              Xem chi tiết
             </p>
           </div>
         </div>

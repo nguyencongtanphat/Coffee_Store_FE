@@ -55,15 +55,15 @@ const CategoryPage = (props) => {
                                 />)}
                             </div>
                         ) : (
-                            <diV className="my-20 ">
+                            <div className="my-20 text-center">
                                 <img
                                     src={sad_face}
                                     alt="Sad Face"
-                                    className="w-60 h-60 mx-[41rem]"
+                                    className="w-60 h-60 mx-auto"
                                 />
                                 <p className="text-center text-grey100 text-b1 mt-8 mx-auto w-[58rem]"
                                 >Tiếc quá! Sản phẩm bạn đang tìm kiếm không tồn tại hoặc đã bị xóa</p>
-                            </diV>
+                            </div>
                         )
                     }
                 </div>
