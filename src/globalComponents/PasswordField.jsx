@@ -7,7 +7,7 @@ import React, {useState} from 'react'
 export default function PasswordField() {
     const [visible, setVisibility] = useState(false);
 
-    const Icon = <FontAwesomeIcon color="#4F4F4F" icon = {visible ? faEyeSlash : faEye} onClick={() => setVisibility(visibility => !visibility )}/>;
+    const Icon = <FontAwesomeIcon color="#4F4F4F" icon = {visible ? faEye : faEyeSlash} onClick={() => setVisibility(visibility => !visibility )}/>;
 
     const InputType = visible ? "text" : "password";
 
